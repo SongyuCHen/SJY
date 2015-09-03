@@ -249,7 +249,7 @@
 	
 	
 	<div class="modal fade" id="editGzsjModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
         			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -259,62 +259,121 @@
       			</div>
 
 				<div class="modal-body">
-					<form action="${pageContext.request.contextPath}/gzsj/edit" id="editGzsjForm"
-							method="post" class="form-horizontal">
-						
-						<input type="hidden" name="editModalBh" id="editModalBh" />	
-						
-						<div class="form-group">
-							<label class="col-lg-4 control-label validateSuc">部门</label>
-							<div class="col-lg-5">
-								<input type="text" class="form-control borderSuc validateSuc" name="editModalBm" 
-									id="editModalBm" readonly />
-							</div>
-							<div class="col-lg-3">
-								<label class="control-label">
-									<span class="glyphicon glyphicon-ok validateSuc"></span>
-								</label>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-lg-4 control-label validateSuc">姓名</label>
-							<div class="col-lg-5">
-								<input type="text" class="form-control borderSuc validateSuc" name="editModalXm"
-									id="editModalXm" readonly />
-							</div>
-							<div class="col-lg-3">
-								<label class="control-label">
-									<span class="glyphicon glyphicon-ok validateSuc"></span>
-								</label>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-lg-4 control-label validateSuc">时间</label>
-							<div class="col-lg-5">
-								<input type="text" class="form-control borderSuc validateSuc" name="editModalSj"
-									id="editModalSj" readonly />
-							</div>
-							<div class="col-lg-3" id="validateEditSj">
-								<label class="control-label">
-									<span class="glyphicon glyphicon-ok validateSuc"></span>
-								</label>
-							</div>
-						</div>
-						
-						<c:forEach items="${pzList }" var="pz">
+					<div class="leftContent">
+						<form action="${pageContext.request.contextPath}/gzsj/edit" id="editGzsjForm"
+								method="post" class="form-horizontal">
+							<input type="hidden" name="editModalBh" id="editModalBh" />	
+							
 							<div class="form-group">
-								<label class="col-lg-4 control-label validateSuc">${pz.mc }</label>
+								<label class="col-lg-3 control-label validateSuc">部门</label>
+								<div class="col-lg-4">
+									<input type="text" class="form-control borderSuc validateSuc" name="editModalBm" 
+										id="editModalBm" readonly />
+								</div>
 								<div class="col-lg-5">
-									<input type="text" class="form-control borderSuc validateSuc" name="editpz${pz.pzbh }" id="editpz${pz.pzbh }" />
+									<label class="control-label">
+										<span class="glyphicon glyphicon-ok validateSuc"></span>
+									</label>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label validateSuc">姓名</label>
+								<div class="col-lg-4">
+									<input type="text" class="form-control borderSuc validateSuc" name="editModalXm"
+										id="editModalXm" readonly />
+								</div>
+								<div class="col-lg-5">
+									<label class="control-label">
+										<span class="glyphicon glyphicon-ok validateSuc"></span>
+									</label>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-lg-3 control-label validateSuc">时间</label>
+								<div class="col-lg-4">
+									<input type="text" class="form-control borderSuc validateSuc" name="editModalSj"
+										id="editModalSj" readonly />
+								</div>
+								<div class="col-lg-5" id="validateEditSj">
+									<label class="control-label">
+										<span class="glyphicon glyphicon-ok validateSuc"></span>
+									</label>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="col-lg-3"></div>
+								<div class="col-lg-3">
+									<label class="validateSuc">原始值</label>
 								</div>
 								<div class="col-lg-3">
-									<span class="glyphicon glyphicon-ok validateSuc"></span>
+									<label class="validateInfo">修改值</label>
 								</div>
 							</div>
-						</c:forEach>						
-					</form>
+							
+							<c:forEach items="${pzList }" var="pz">
+								<div class="form-group">
+									<label class="col-lg-3 control-label validateSuc">${pz.mc }</label>
+									<div class="col-lg-3">
+										<input type="text" class="form-control borderSuc validateSuc" 
+											name="editpz${pz.pzbh }" id="editpz${pz.pzbh }" readonly />
+									</div>
+									<div class="col-lg-3">
+										<input type="text" class="form-control borderInfo validateInfo" 
+											name="editpzDst${pz.pzbh }" id="editpzDst${pz.pzbh }" readonly />
+									</div>
+									<div class="col-lg-3">
+										<button type="button" class="btn btn-primary gzsjxxEditBtn" data-bh="${pz.pzbh }">修改</button>
+										<button type="button" class="btn btn-success gzsjxxViewBtn">查看</button>
+									</div>
+								</div>
+							</c:forEach>						
+						</form>
+					</div>
+					
+					<input type="hidden" id="curGzsjxxBh" value="" />
+					
+					<div class="rightContent">
+						<div class="illustrate">
+							<!-- <label class="note">说 明</label> -->
+							<h2>说明</h2>
+							<p>点击修改按钮，可以修改</p>
+							<p>点击查看按钮，可以查看</p>
+						</div>
+						
+						<div class="reason">
+							<form action="${pageContext.request.contextPath}/gzsj/edit" id="editGzsjxxForm"
+								method="post" class="form-horizontal">
+								<div class="form-group">
+									<label class="col-lg-3 control-label">修改值</label>
+									<div class="col-lg-7">
+										<input type="text" class="form-control" name="gzsjxxEditVal" id="gzsjxxEditVal" />
+									</div>
+									<div class="col-lg-2">
+									
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-3 control-label">原因</label>
+									<div class="col-lg-7">
+										<textarea class="form-control" rows="6" name="gzsjxxEditReason" id="gzsjxxEditReason"></textarea>
+									</div>
+									<div class="col-lg-2">
+									
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-3"></div>
+									<div class="col-lg-7">
+										<button type="button" class="btn btn-success gzsjxxSaveBtn">保存</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="clearFloat"></div>
 				</div>
 				
 				<div class="modal-footer">
