@@ -24,4 +24,6 @@ public interface PfpzDao
 	TPfpz getPfpzByBh(int bh);
 	
 	int getFsByGz(TGypz gz);
+	
+	List<TPfpz> getPfpzByGzlx(String lx);
 }

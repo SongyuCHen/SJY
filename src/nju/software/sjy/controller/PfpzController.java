@@ -298,6 +298,57 @@ public class PfpzController
 		return mav;
 	}
 	
+	@RequestMapping(value="/editGzsjGzqz", method=RequestMethod.POST)
+	@ResponseBody
+	public void editGzsjGzqz(HttpServletRequest request, HttpServletResponse response)
+	{
+		String editPzbh = request.getParameter("editPfbh");
+		String editMc = request.getParameter("editMc");
+		String editLx = request.getParameter("editLx");
+		String editFs = request.getParameter("editFs");
+		
+		List<TGypz> gzxxList = gypzService.getGypzByLx(Constants.GZSJ);
+		int gzxxLen = gzxxList.size();
+		for(int i=0;i<gzxxLen;i++)
+		{
+			String gzxxStr = request.getParameter("gzxx"+i);
+			TPfpz pfpz = pfpzService.getPfpzByGz(gzxxList.get(i));
+			int fs = Integer.parseInt(gzxxStr);
+			pfpz.setFs(fs);
+			
+			pfpzService.update(pfpz);
+		}
+		
+		int bh = Integer.parseInt(editPzbh);
+		TPfpz pfpz = pfpzService.getPfpzByBh(bh);
+		
+		if(pfpz != null)
+		{
+			TGypz gz = gypzService.getGypzByLxMc(editLx, editMc);
+			pfpz.setGz(gz);
+			
+			int fs = Integer.parseInt(editFs);
+			pfpz.setFs(fs);
+			
+			pfpzService.update(pfpz);
+		}
+		
+		String status = "success";
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("status", status);
+		
+		try 
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			String jsonStr = JSONObject.fromObject(jsonObj).toString();
+			response.getWriter().print(jsonStr);
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	public ModelAndView viewGzfs()
 	{
 		List<TPfpz> tlist = pfpzService.getAllPfpz();
@@ -308,11 +359,18 @@ public class PfpzController
 		List<String> gzlxList = gypzService.getMcByLx(Constants.GZ);
 		lxList.addAll(gzlxList);
 		
+		//TGypz gzsjGz = gypzService.getGypzByLxMc(Constants.GZ, Constants.GZSJ);
+		List<TPfpz> gzsjList = pfpzService.getPfpzByGzlx(Constants.GZSJ);
+		List<MPfpz> gzsjlist = PfpzConvertor.convert(gzsjList);
+		int gzxxLen = gzsjlist.size();
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("gzqz");
 		
 		mav.addObject("mlist", mlist);
 		mav.addObject("lxList", lxList);
+		mav.addObject("gzsjlist", gzsjlist);
+		mav.addObject("gzxxLen", gzxxLen);
 		
 		return mav;
 	}

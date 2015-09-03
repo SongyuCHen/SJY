@@ -72,4 +72,9 @@ public class PfpzServiceImpl implements PfpzService
 		return pfpzDao.getFsByGz(gz);
 	}
 	
+	@Cacheable(value="sjyCache")
+	public List<TPfpz> getPfpzByGzlx(String lx)
+	{
+		return pfpzDao.getPfpzByGzlx(lx);
+	}
 }

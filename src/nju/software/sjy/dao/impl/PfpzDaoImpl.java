@@ -113,5 +113,13 @@ public class PfpzDaoImpl extends BaseDaoImpl implements PfpzDao
 		return 0;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TPfpz> getPfpzByGzlx(String lx)
+	{
+		String hql = "from TPfpz where gz.lx=?";
+		List<TPfpz> list = (List<TPfpz>)getHibernateTemplate().find(hql, lx);
+		
+		return list;
+	}
 }
