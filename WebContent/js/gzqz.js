@@ -185,6 +185,22 @@ $(document).ready(function(){
 		}
 		
 		gzsjVal = parseInt(gzsjVal, 10);
+		$("#editGzsjGzqz").modal('show');
+		console.log(gzxxLen);
+	}
+	
+	/**
+	 * 确认提交工作实绩规则权重
+	 */
+	configGzsjGzqz = function(){
+		var tr = $("#gzsjConfigBtn").closest("tr");
+		var gzsjVal = tr.children("td:eq(3)").html();
+		var totalVal = 0;
+		for(var i=0;i<gzxxLen;i++){
+			var gzxxVal = $("#gzxx" + i).val();
+			console.log(gzxxVal);
+			totalVal += parseInt(gzxxVal, 10);
+		}
 		
 		if(totalVal != gzsjVal){
 			var text = "<label class='control-label validateFail'>总分必须等于" + gzsjVal + "分</label>";

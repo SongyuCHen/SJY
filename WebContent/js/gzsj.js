@@ -18,20 +18,6 @@ $(document).ready(function(){
 		}	
 	});
 	
-//	/**
-//	 * uniform美化
-//	 */
-//	$("input[type='checkbox'],input[type='radio']").uniform();//单选框和复选框
-//	$("input:file").uniform({//文件选择
-//		fileDefaultHtml: '请选择文件',
-//		fileButtonHtml: '浏览'
-//	});
-	
-//	/**
-//	 * 所有静态select应用chosen美化
-//	 */
-//	$("select").chosen();
-	
 	/**
 	 * jGrowl消息提示
 	 */
@@ -140,6 +126,9 @@ $(document).ready(function(){
 		else if(operate=="export"){
 			exportGzsj();
 		}
+		else if(operate=="reject"){
+			rejectGzsj();
+		}
 	});
 	
 	/* 增加工作实绩————响应按钮事件 */
@@ -195,8 +184,8 @@ $(document).ready(function(){
 				
 				$("#editpz"+i).removeClass("borderFail validateFail").addClass("borderSuc validateSuc");
 				$("#editpz"+i).parent().prev().css({"color":"#3c763d"});
-				$("#editpz"+i).parent().next().empty().append(
-						'<label class="control-label"><span class="glyphicon glyphicon-ok validateSuc"></span></label>');
+//				$("#editpz"+i).parent().next().empty().append(
+//						'<label class="control-label"><span class="glyphicon glyphicon-ok validateSuc"></span></label>');
 			}
 			
 			$("#editGzsjModal").modal('show');
@@ -278,6 +267,58 @@ $(document).ready(function(){
 	        });
 	    }
 	} ;
+	
+	/**
+	 * 退回工作实绩
+	 */
+	var rejectGzsj = function(){
+		var $checked = $('#gzsjTable tbody :checked');
+		if($checked.size() < 1) {
+	        $.jGrowl('请选择要退回的项', {
+	            life: 5000
+	        });
+	    }
+	    else {
+	        $.alerts.dialogClass = 'alert-info';
+	        jConfirm('是否确认要退回这些记录？', '确认对话框', function(r) {
+	        	var bhArr = "";
+	        	$checked.each(function(){
+	        		bhArr += bhArr==""?$(this).val():"-"+$(this).val();
+	        	});
+	        	
+	    		$.ajax({
+	    			cache:false,
+	    			type:"POST",
+	    			url:basePath + "/gzsj/reject",
+	    			data:{bhArr:bhArr},
+	    			dataType:'json',
+	    			async:false,
+	    			success:function(data){
+	    				var result = data.result;
+	    				var status = result.status;
+	    				var msg = result.msg;
+	    				if(status==5){
+	    					var zt = result.zt;
+	    					$checked.each(function(){
+		    					var tr = $(this).closest("tr");
+		    					var index = "td:eq(" + (4 + pzSize) + ")";
+		    					tr.children(index).html(zt);
+		    				});
+	    				}
+	    				else{
+	    					var text = "<strong>" + msg + "</strong>";
+	    					$("#gzsjErrorInfo").empty();
+	    					$("#gzsjErrorInfo").append(text);
+	    					$("#gzsjError").modal('show');
+	    				}	
+	    			},
+	    			error:function(request){
+	    				
+	    			}
+	    		});
+	        });
+	    }
+	}
 	
 	/**
 	 * 打印工作实绩
@@ -525,6 +566,57 @@ $(document).ready(function(){
 		window.location = url;
 	});
 	
+	/**
+	 * 工作实绩细项编辑按钮事件
+	 */
+	$(".gzsjxxEditBtn").on('click', function(){
+		$("#gzsjxxEditVal").val("");
+		$("#gzsjxxEditReason").val("");
+		var bh = $(this).attr("data-bh");
+		$("#curGzsjxxBh").val(bh);
+		console.log(bh);
+		$(".reason").css({"display":"block"});
+	});
+	
+	/**
+	 * 工作实绩细项查看按钮事件
+	 */
+	$(".gzsjxxViewBtn").on('click', function(){
+		
+	});
+	
+	/**
+	 * 工作实绩细项保存按钮事件
+	 */
+	$(".gzsjxxSaveBtn").on('click', function(){
+		var editGzsjBh = $("#editModalBh").val();
+		var gzsjxxEditVal = $("#gzsjxxEditVal").val();
+		var gzsjxxEditReason = $("#gzsjxxEditReason").val();
+		var bh = $("#curGzsjxxBh").val();
+		$.ajax({
+			cache:false,
+			type:"POST",
+			url:basePath + "/gzsj/modifyGzsjxx.aj",
+			data:{
+				editGzsjBh:editGzsjBh,
+				gzxxpzbh:bh,
+				gzsjxxEditVal:gzsjxxEditVal,
+				gzsjxxEditReason:gzsjxxEditReason
+			},
+			dataType:'json',
+			async:false,
+			success:function(data){
+				var status = data.status;
+				$("#editpzDst"+bh).val(gzsjxxEditVal);
+				
+				$(".reason").css({"display":"none"});
+			},
+			error:function(request){
+			}
+		});
+		
+	});
+	
 	/*对addModal和editModal中的字段进行验证*/
 	var regex = /^[0-9]*$/;/*正整数和0*/
 	
@@ -562,35 +654,7 @@ $(document).ready(function(){
 			    validAddPz=true;
 			}
 		});
-		
-		$("#editpz"+i).blur(function(){
-			var sz = $(this).val();
-			if(!sz){
-				$(this).parent().prev().css({"color":"#a94442"});
-				$(this).removeClass("borderSuc validateSuc").addClass("borderFail validateFail");
-				
-				$(this).parent().next().empty().append('<label class="control-label validateFail">不能为空</label>');
-				validEditPz=false;
-			}
-			else if(!regex.test(sz))
-			{
-				$(this).parent().prev().css({"color":"#a94442"});
-				$(this).removeClass("borderSuc validateSuc").addClass("borderFail validateFail");
-				
-				$(this).parent().next().empty().append('<label class="control-label validateFail">请输入数字</label>');
-				validEditPz=false;
-			}
-			else
-			{
-				$(this).parent().prev().css({"color":"#3c763d"});
-				$(this).removeClass("borderFail validateFail").addClass("borderSuc validateSuc");
-				
-				$(this).parent().next().empty().append(
-						'<label class="control-label"><span class="glyphicon glyphicon-ok validateSuc"></span></label>');
 
-			    validEditPz=true;
-			}
-		});
 	}
 	
 	$("#addModalSj").change(function(){

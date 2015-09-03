@@ -468,6 +468,44 @@ public class GzsjController
 		return mav;
 	}
 	
+	@RequestMapping(value="/modifyGzsjxx.aj", method=RequestMethod.POST)
+	@ResponseBody
+	public void modifyGzsjxx(HttpServletRequest request, HttpServletResponse response)
+	{
+		String gzxxpzbh = request.getParameter("gzxxpzbh");
+		String gzsjxxEditVal = request.getParameter("gzsjxxEditVal");
+		String gzsjxxEditReason = request.getParameter("gzsjxxEditReason");
+		String bhStr = request.getParameter("editGzsjBh");
+		
+		log.info("pzbh:" + gzxxpzbh + ", gzsjxxEditVal:" + gzsjxxEditVal + ", gzsjxxEditReason:" + gzsjxxEditReason);
+		
+		int pzbh = Integer.parseInt(gzxxpzbh);
+		int gzsjbh = Integer.parseInt(bhStr);
+		
+		//工作实绩具体的配置项
+		TGypz gypz = gypzService.getGypzByPzbhLx(pzbh, Constants.GZSJ);
+		TGzsj gzsj = gzsjService.getGzsjByBh(gzsjbh);
+		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+		
+		/* add your code --- note that gzsjxx may be null, gzsj and gypz can not be null */
+		
+		
+		/* return */
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("result", "success");
+		
+		try 
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			String jsonStr = JSONObject.fromObject(jsonObj).toString();
+			response.getWriter().print(jsonStr);
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
 	public ModelAndView downloadExcel() throws UnsupportedEncodingException
 	{
