@@ -301,36 +301,31 @@ public class PfpzController
 	@RequestMapping(value="/editGzsjGzqz", method=RequestMethod.POST)
 	@ResponseBody
 	public void editGzsjGzqz(HttpServletRequest request, HttpServletResponse response)
-	{
-		String editPzbh = request.getParameter("editPfbh");
-		String editMc = request.getParameter("editMc");
-		String editLx = request.getParameter("editLx");
-		String editFs = request.getParameter("editFs");
-		
+	{		
 		List<TGypz> gzxxList = gypzService.getGypzByLx(Constants.GZSJ);
 		int gzxxLen = gzxxList.size();
 		for(int i=0;i<gzxxLen;i++)
 		{
 			String gzxxStr = request.getParameter("gzxx"+i);
-			TPfpz pfpz = pfpzService.getPfpzByGz(gzxxList.get(i));
+			TGypz gypz = gzxxList.get(i);
+			TPfpz pfpz = pfpzService.getPfpzByGz(gypz);
 			int fs = Integer.parseInt(gzxxStr);
-			pfpz.setFs(fs);
 			
-			pfpzService.update(pfpz);
-		}
-		
-		int bh = Integer.parseInt(editPzbh);
-		TPfpz pfpz = pfpzService.getPfpzByBh(bh);
-		
-		if(pfpz != null)
-		{
-			TGypz gz = gypzService.getGypzByLxMc(editLx, editMc);
-			pfpz.setGz(gz);
-			
-			int fs = Integer.parseInt(editFs);
-			pfpz.setFs(fs);
-			
-			pfpzService.update(pfpz);
+			if(pfpz != null)
+			{
+				pfpz.setFs(fs);
+				pfpzService.update(pfpz);
+			}
+			else
+			{
+				synchronized(sync)
+				{
+					// 添加到表T_PFPZ中
+					int pfpzBh = pfpzService.getMaxBh() + 1;
+					TPfpz tpfpz = new TPfpz(pfpzBh, gypz, fs);
+					pfpzService.save(tpfpz);
+				}
+			}
 		}
 		
 		String status = "success";
@@ -359,10 +354,13 @@ public class PfpzController
 		List<String> gzlxList = gypzService.getMcByLx(Constants.GZ);
 		lxList.addAll(gzlxList);
 		
-		//TGypz gzsjGz = gypzService.getGypzByLxMc(Constants.GZ, Constants.GZSJ);
+		TGypz gzsjGz = gypzService.getGypzByLxMc(Constants.GZ, Constants.GZSJ);
+		List<TGypz> gzxxList = gypzService.getGypzByLx(Constants.GZSJ);
 		List<TPfpz> gzsjList = pfpzService.getPfpzByGzlx(Constants.GZSJ);
-		List<MPfpz> gzsjlist = PfpzConvertor.convert(gzsjList);
-		int gzxxLen = gzsjlist.size();
+		int gzsjVal = pfpzService.getFsByGz(gzsjGz);
+		
+		List<MPfpz> gzsjlist = PfpzConvertor.convert(gzsjList, gzxxList);
+		int gzxxLen = gzxxList.size();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("gzqz");
@@ -371,6 +369,7 @@ public class PfpzController
 		mav.addObject("lxList", lxList);
 		mav.addObject("gzsjlist", gzsjlist);
 		mav.addObject("gzxxLen", gzxxLen);
+		mav.addObject("gzsjVal", gzsjVal);
 		
 		return mav;
 	}

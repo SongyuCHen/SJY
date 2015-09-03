@@ -59,6 +59,7 @@
 							<th>规则名称</th>
 							<th>类型</th>
 							<th>分数</th>
+							<th>配置</th>
 						</tr>
 					</thead>
 					
@@ -71,6 +72,14 @@
 								<td>${pfpz.mc }</td>
 								<td>${pfpz.lx }</td>
 								<td>${pfpz.fs }</td>
+								<td>
+									<c:if test="${pfpz.mc=='工作实绩' }">
+										<button type="button" class="btn btn-success btn-xs" onclick="editGzsjGzqz()">
+											<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+										</button>
+									</c:if>
+								</td>
+								
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -79,6 +88,8 @@
 		</div>
 	</div>
 	
+	<input type="hidden" id="gzxxLen" value="${gzxxLen }" />
+	<input type="hidden" id="gzsjVal" value="${gzsjVal }" />
 	
 	<div id="addGzqzModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog">
@@ -234,6 +245,51 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="editGzsjGzqz" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="${pageContext.request.contextPath}/pfpz/editGsjGzqz" id="editGzsjGzqzForm"
+							method="post" class="form-horizontal">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">工作实绩总分: ${gzsjVal }</h4>
+					</div>
+					
+					<div class="modal-body">
+						<div class="leftContent">
+							
+								<c:forEach items="${gzsjlist}" var="gzsjgzqz" varStatus="status">
+									<div class="form-group">
+										<label class="col-lg-3 control-label" id="">${gzsjgzqz.mc }</label>
+										<div class="col-lg-5">
+											<input type="text" class="form-control" id="gzxx${status.index }" 
+												name="gzxx${status.index }" data-id="${gzsjgzqz.bh }" value="${gzsjgzqz.fs }" />
+										</div>
+										<div class="col-lg-4"></div>
+									</div>
+								</c:forEach>
+								
+								<div class="form-group">
+									<div class="col-lg-3"></div>
+									<div class="col-lg-9" id="gzsjValValidate">
+										
+									</div>
+								</div>
+						</div>
+						
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-success" onclick="configGzsjGzqz()">确定</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -6,6 +6,9 @@ var basePath = getRootPath();
 
 $(document).ready(function(){
 	
+	var gzxxLen = $("#gzxxLen").val();
+	var gzsjVal = $("#gzsjVal").val();
+	
 	$("#selectAllBtn").on('click', function(){
 		var text = $(this).text();
 		if(text == "全  选"){
@@ -17,15 +20,6 @@ $(document).ready(function(){
 			$(this).text("全  选");
 		}	
 	});
-	
-//	/**
-//	 * uniform美化
-//	 */
-//	$("input[type='checkbox'],input[type='radio']").uniform();//单选框和复选框
-//	$("input:file").uniform({//文件选择
-//		fileDefaultHtml: '请选择文件',
-//		fileButtonHtml: '浏览'
-//	});
 	
 	/**
 	 * jGrowl消息提示
@@ -166,6 +160,59 @@ $(document).ready(function(){
 		});
 	}
 	
+	/**
+	 * 编辑工作实绩规则权重
+	 */
+	editGzsjGzqz = function(){
+		$("#editGzsjGzqz").modal('show');
+		console.log(gzxxLen);
+	}
+	
+	/**
+	 * 确认提交工作实绩规则权重
+	 */
+	configGzsjGzqz = function(){
+		var totalVal = 0;
+		for(var i=0;i<gzxxLen;i++){
+			var gzxxVal = $("#gzxx" + i).val();
+			console.log(gzxxVal);
+			totalVal += parseInt(gzxxVal, 10);
+		}
+		
+		if(totalVal != gzsjVal){
+			var text = "<label class='control-label validateFail'>总分必须等于" + gzsjVal + "分</label>";
+			$("#gzsjValValidate").empty().append(text);
+			
+			return;
+		}
+		
+		// ajax submit
+		$.ajax({
+			cache:false,
+			type:"POST",
+			url:basePath + "/pfpz/editGzsjGzqz",
+			data:$('#editGzsjGzqzForm').serialize(),
+			dataType:'json',
+			async:false,
+			success:function(data){
+				
+				$("#editGzsjGzqz").modal('hide');
+				$("#gzsjValValidate").empty();
+					
+				var text = "<strong>编辑成功！</strong>";
+				$("#gzqzSucInfo").empty().append(text);
+				$("#gzqzSuc").modal('show');
+					
+			},
+			error:function(request){
+				$("#editGzsjGzqz").modal('hide');
+				var text = "<strong>编辑时发生了错误</strong>";
+				$("#gzqzErrorInfo").empty();
+				$("#gzqzErrorInfo").append(text);
+				$("#gzqzError").modal('show');
+			}
+		});
+	}
 	
 	/* 增加和编辑的表单验证 */
 	//var regex = /^(100|[1-9]?\d(\.\d\d?)?)%$/;  //验证百分数的正则表达式
