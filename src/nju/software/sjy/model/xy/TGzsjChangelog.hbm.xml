@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-4 14:59:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TGzsjChangelog" table="T_GZSJ_CHANGLOG" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="bh" type="int">
+            <column name="BH" />
+            <generator class="assigned" />
+        </id>      
+        <many-to-one name="gzsjxx"
+        			 column="GZSJXXBH"
+        			 class="nju.software.sjy.model.xy.TGzsjxx"
+        			 cascade="none"
+        			 lazy="false"
+        			 fetch="join" />
+        <property name="sz1" type="int">
+            <column name="SZ1" not-null="true" />
+        </property>  
+       <property name="sz2" type="int">
+            <column name="SZ2" not-null="true" />
+        </property> 
+        <property name="xgr" type="string">
+            <column name="XGR" length="20" />
+        </property>  
+        <property name="xgrq" type="timestamp">
+            <column name="XGRQ" length="23" />
+        </property> 
+        <property name="xgyy" type="text">
+            <column name="XGYY"  />
+        </property>  
+    </class>
+</hibernate-mapping>
