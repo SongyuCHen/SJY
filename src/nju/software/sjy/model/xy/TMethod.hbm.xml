@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2015 2:10:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TMethod" table="T_METHOD" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="methodbh" type="int">
+            <column name="METHODBH" />
+            <generator class="assigned" />
+        </id>
+        <property name="classname" type="string">
+            <column name="CLASSNAME" length="50" not-null="true" />
+        </property>
+        <property name="methodname" type="string">
+            <column name="METHODNAME" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

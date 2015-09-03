@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <bean id="gzsjExcelView" class="nju.software.sjy.util.GzsjExcelBuilder" /> 
+    <bean id="jfqxExcelView" class="nju.software.sjy.util.JfqxExcelBuilder" />
+    <bean id="kfqxExcelView" class="nju.software.sjy.util.KfqxExcelBuilder" />
+    <bean id="khpmExcelView" class="nju.software.sjy.util.KhpmExcelBuilder" />
+    <bean id="pfkhExcelView" class="nju.software.sjy.util.PfkhExcelBuilder" />
+    <bean id="plkhExcelView" class="nju.software.sjy.util.PlkhExcelBuilder" />
+    <bean id="sjygzlExcelView" class="nju.software.sjy.util.SjygzlExcelBuilder" />
+</beans>

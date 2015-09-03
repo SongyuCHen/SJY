@@ -1,0 +1,110 @@
+*{
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+#wrapper{
+    margin: 0 auto;
+    padding:0;
+    border:0;
+    width:960px;
+    height:617px;
+    background-image: url(../images/background_white.png);
+}
+
+#title{
+    width:960px;
+    height:127px;
+    background-image:url(../images/index_title.png);
+}
+
+#select{
+    width:960px;
+    height:57px;
+    padding-top:9px;
+    background-image:url(../images/select_background.png);
+}
+
+.nav-pills > li + li {
+  margin-left: 35px;
+}
+
+#menu_left{
+    width:100px;
+    height:25px;
+    margin-left:45px;
+    display: inline-block;
+}
+
+#ok{
+    width:30px;
+    height:25px;
+    background-image:url(../images/ok.png);
+    display:inline-block;
+}
+
+#word{
+    width:60px;
+    height:25px;
+    display:inline-block;
+    float:right;
+    line-height: 25px;
+}
+
+#menu_right{
+    width:500px;
+    height:25px;
+    float:right;
+    margin-right: 45px;
+}
+
+label{
+    font-weight: normal;
+}
+
+#bm{
+    width:120px;
+    border:1px solid rgb(127,157,185);
+}
+
+#sj{
+    margin-left:20px;
+}
+
+.time{
+    border:1px solid rgb(127,157,185);
+}
+
+.btn{
+    margin-left:20px;
+}
+
+#content{
+    width:960px;
+    height:345px;
+    padding-top:10px;
+    padding-left:35px;
+}
+
+#table_content{
+    width:890px;
+    height:270px;
+}
+
+#button_content{
+    width:890px;
+    height:45px;
+}
+
+th,td{
+    text-align: center;
+}
+
+#edit{
+    float:right;
+}
+
+#save{
+    float:right;
+}

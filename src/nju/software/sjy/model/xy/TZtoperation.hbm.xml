@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2015 2:10:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TZtoperation" table="T_ZTOPERATION" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="zobh" type="int">
+            <column name="ZOBH" />
+            <generator class="assigned" />
+        </id>
+		
+		<property name="status" type="java.lang.Integer">
+        	<column name="STATUS" />
+        </property>
+		
+		<many-to-one name="zt" 
+                     column="ZTBH"
+                     class="nju.software.sjy.model.xy.TGypz"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+		
+		<many-to-one name="operation" 
+                     column="OPERATIONBH"
+                     class="nju.software.sjy.model.xy.TOperation"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+        
+        <many-to-one name="nextZt" 
+                     column="NEXTZTBH"
+                     class="nju.software.sjy.model.xy.TGypz"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/> 
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-19 0:24:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.tdh.Pbcatcol" table="pbcatcol">
+        <composite-id name="id" class="nju.software.sjy.model.tdh.PbcatcolId">
+            <key-property name="pbcTnam" type="string">
+                <column name="pbc_tnam" length="30" />
+            </key-property>
+            <key-property name="pbcTid" type="int">
+                <column name="pbc_tid" />
+            </key-property>
+            <key-property name="pbcOwnr" type="string">
+                <column name="pbc_ownr" length="30" />
+            </key-property>
+            <key-property name="pbcCnam" type="string">
+                <column name="pbc_cnam" length="30" />
+            </key-property>
+            <key-property name="pbcCid" type="short">
+                <column name="pbc_cid" />
+            </key-property>
+            <key-property name="pbcLabl" type="string">
+                <column name="pbc_labl" length="254" />
+            </key-property>
+            <key-property name="pbcLpos" type="java.lang.Short">
+                <column name="pbc_lpos" />
+            </key-property>
+            <key-property name="pbcHdr" type="string">
+                <column name="pbc_hdr" length="254" />
+            </key-property>
+            <key-property name="pbcHpos" type="java.lang.Short">
+                <column name="pbc_hpos" />
+            </key-property>
+            <key-property name="pbcJtfy" type="java.lang.Short">
+                <column name="pbc_jtfy" />
+            </key-property>
+            <key-property name="pbcMask" type="string">
+                <column name="pbc_mask" length="31" />
+            </key-property>
+            <key-property name="pbcCase" type="java.lang.Short">
+                <column name="pbc_case" />
+            </key-property>
+            <key-property name="pbcHght" type="java.lang.Short">
+                <column name="pbc_hght" />
+            </key-property>
+            <key-property name="pbcWdth" type="java.lang.Short">
+                <column name="pbc_wdth" />
+            </key-property>
+            <key-property name="pbcPtrn" type="string">
+                <column name="pbc_ptrn" length="31" />
+            </key-property>
+            <key-property name="pbcBmap" type="java.lang.Character">
+                <column name="pbc_bmap" length="1" />
+            </key-property>
+            <key-property name="pbcInit" type="string">
+                <column name="pbc_init" length="254" />
+            </key-property>
+            <key-property name="pbcCmnt" type="string">
+                <column name="pbc_cmnt" length="254" />
+            </key-property>
+            <key-property name="pbcEdit" type="string">
+                <column name="pbc_edit" length="31" />
+            </key-property>
+            <key-property name="pbcTag" type="string">
+                <column name="pbc_tag" length="254" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

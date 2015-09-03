@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 27, 2015 2:10:42 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TRoleres" table="T_ROLERES" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="rrbh" type="int">
+            <column name="RRBH" />
+            <generator class="assigned" />
+        </id>
+        <!-- <property name="rolebh" type="int">
+            <column name="ROLEBH" not-null="true" />
+        </property>
+        <property name="resbh" type="int">
+            <column name="RESBH" not-null="true" />
+        </property> -->
+        
+        <many-to-one name="role" 
+                     column="ROLEBH"
+                     class="nju.software.sjy.model.xy.TRole"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>
+                     
+    	<many-to-one name="res" 
+                     column="RESBH"
+                     class="nju.software.sjy.model.xy.TResource"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>                 
+    </class>
+</hibernate-mapping>

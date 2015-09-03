@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://cxf.apache.org/transports/http/configuration
+        http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+    
+    <aop:aspectj-autoproxy proxy-target-class="true"/> 
+    <http-conf:conduit name="*.http-conduit">
+    	<http-conf:client ReceiveTimeout = "0" />
+    </http-conf:conduit>
+	<!--指定注入Bean时Spring要查找的包 -->
+	<context:component-scan base-package="nju.software.sjy.aspectj" />
+	<context:component-scan base-package="nju.software.sjy.controller" />
+	
+	<bean id="viewResolver1" class="org.springframework.web.servlet.view.XmlViewResolver">
+        <property name="order" value="1"/>
+        <property name="location" value="/WEB-INF/views.xml"/>
+    </bean>
+    
+	<!--配置视图解析器,Controller回传ModelAndView，DispatcherServlet将其交给ViewResolver解析。 -->
+	<bean id="viewResolver2"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2"/>
+		<!--指定目录前缀 -->
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<!--指定文件后缀 -->
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+	
+</beans>

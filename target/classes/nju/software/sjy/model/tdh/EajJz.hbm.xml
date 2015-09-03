@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-19 0:24:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.tdh.EajJz" table="EAJ_JZ">
+        <composite-id name="id" class="nju.software.sjy.model.tdh.EajJzId">
+            <key-property name="ahdm" type="string">
+                <column name="AHDM" length="10" />
+            </key-property>
+            <key-property name="xh" type="string">
+                <column name="XH" length="20" />
+            </key-property>
+        </composite-id>
+        <property name="mc" type="string">
+            <column name="MC" length="200" />
+        </property>
+        <property name="wjgs" type="string">
+            <column name="WJGS" length="10" />
+        </property>
+        <property name="wjzs" type="java.lang.Integer">
+            <column name="WJZS" length="10" />
+        </property>
+        <property name="zzsj" type="timestamp">
+            <column name="ZZSJ" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

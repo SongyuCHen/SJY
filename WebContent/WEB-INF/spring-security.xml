@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	
+	<!-- 静态的资源文件不用过滤 -->
+	<http pattern="/css/**" security="none" />
+	<http pattern="/js/**" security="none" />
+	<http pattern="/images/**" security="none" />
+	<http pattern="/fonts/**" security="none" />
+	<http pattern="/vendor/**" security="none" />
+	
+	<!-- 登录页面不用过滤 -->
+	<http pattern="/user/login" security="none" />
+	<http pattern="/user/signIn" security="none" />
+
+	<http use-expressions="true" auto-config="false" 
+		entry-point-ref="myAuthenticationEntryPoint"
+		access-denied-page="/user/deny">
+
+		<logout logout-url="/user/tcdl" logout-success-url="/user/login" />
+
+		<session-management invalid-session-url="/user/timeout" session-fixation-protection="none">
+			<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+		</session-management>
+		
+		<custom-filter ref="mySecurityFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+	</http>
+	
+	<!-- 未登录的切入点 -->
+	<beans:bean id="myAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:property name="loginFormUrl" value="/user/login"></beans:property>
+	</beans:bean>
+	
+	<authentication-manager alias="myAuthenticationManager">
+		<authentication-provider user-service-ref="myUserDetailServiceImpl" />
+	</authentication-manager>
+	
+</beans:beans>

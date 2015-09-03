@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2015 12:08:21 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TJfpz" table="T_JFPZ" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="bh" type="int">
+            <column name="BH" />
+            <generator class="assigned" />
+        </id>
+        <property name="jb" type="string">
+            <column name="JB" length="50" not-null="true" />
+        </property>
+        <property name="jfz" type="int">
+            <column name="JFZ" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

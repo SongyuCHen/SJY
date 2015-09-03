@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<class>
+	<bean id="SJYGZL" class="nju.software.sjy.webservice.bean.response.SjyGzlResp" />
+	<bean id="RY" class="nju.software.sjy.webservice.bean.response.RyResp" />
+	<bean id="ZZJG" class="nju.software.sjy.webservice.bean.response.ZzjgResp" />
+</class>

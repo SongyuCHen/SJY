@@ -1,0 +1,127 @@
+@CHARSET "UTF-8";
+
+/*使用微软雅黑*/
+body{
+	font-family: "Microsoft YaHei";
+}
+
+/*menu*/
+#wrapper{
+    margin: 0 auto;
+    padding:0 15px;
+    border:0;
+    width:960px;
+    background-image: url(../images/background_white.png);
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+#menu{
+	position: relative;
+    width:960px;
+    height:69px;
+    padding-top: 20px;
+    border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+
+/*dataTable样式*/
+#operationDiv{
+	position: absolute;
+}
+div.dataTables_length{
+	float: right;
+	padding-right: 30px;
+	padding-top: 3px;
+}
+div.dataTables_filter {
+	float: right;
+	padding-top: 3px;
+	padding-right: 30px;
+}
+div.dataTables_paginate {
+	float: right;
+}
+div.dataTables_info {
+	float:left;
+}
+/*表头不换行*/
+table th{
+	word-break: keep-all;
+	white-space:nowrap;
+}
+
+/**/
+.panel-title > a, .panel-title > small, .panel-title > .small, .panel-title > small > a, .panel-title > .small > a{
+	display: block;
+	width: 100%;
+	height: inherit;
+	text-decoration: none;
+	font-weight: bold;
+}
+#header{
+	text-align:center;
+	min-width: 960px;
+}
+
+#picture{
+	position: relative;
+	height:127px;
+	background:url(../images/title_middle.png) repeat-x;
+	overflow:hidden;
+	margin:0 auto;
+}
+#picture #title_left{
+	position:absolute;
+	left: 0;
+	height:127px;
+	width: 184px;
+	background:url(../images/title_left.png) no-repeat;
+}
+#picture #title_text{
+	position:absolute;
+	left: 50%;
+	margin-left: -255px;
+	height:127px;
+	width: 511px;
+	background:url(../images/title_text.png) no-repeat;
+	z-index: 10;
+}
+#picture #title_right{
+	position:absolute;
+	height:127px;
+	width: 327px;
+	right: 0;
+	background:url(../images/title_right.png) no-repeat;
+}
+
+#navWrapper{
+	width: 960px;
+	margin: 0 auto;
+}
+
+#navigation{
+	height:57px;
+	padding-top:9px;
+	background:url(../images/select_background.png);
+}
+
+#btnGroup{
+	float:left;
+}
+.attention{
+	color:blue;
+}
+#userInfo{
+	float:right;
+	padding-top:10px;
+	padding-bottom:10px;
+	color:#337ab7;
+}
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+#logoutSpan{
+	margin-left:10px;
+}

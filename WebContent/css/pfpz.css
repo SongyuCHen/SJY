@@ -1,0 +1,112 @@
+@CHARSET "UTF-8";
+
+#wrapper{
+    width:960px;
+    height:445px;
+    padding-top:30px;
+    text-align:center;
+    margin:0 auto;
+    background:url(../images/background_white.png);
+}
+
+#menu_left{
+    width:100px;
+    height:25px;
+    margin-left:45px;
+    display: inline-block;
+}
+
+#ok{
+    width:30px;
+    height:25px;
+    background-image:url(../images/ok.png);
+    display:inline-block;
+}
+
+#word{
+    width:60px;
+    height:25px;
+    display:inline-block;
+    float:right;
+    line-height: 25px;
+}
+
+#menu_right{
+    width:650px;
+    height:25px;
+    float:right;
+    margin-right: 45px;
+}
+
+#table_content{
+    width:430px;
+    height:200px;
+    margin:0 auto;
+}
+
+#button_content{
+    width:150px;
+    height:45px;
+    top:230px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10px;
+    text-align:center;
+}
+
+#editBtn{
+	margin-right:10px;
+}
+
+th{
+	text-align:center;
+}
+
+#pfpzTitle{
+	text-align:center;
+}
+
+#pfpzTitleLabel{
+	font-size:24px;
+}
+
+#alertInfo{
+	text-align:center;
+	width:430px;
+	margin-bottom:20px;
+	margin-left:auto;
+	margin-right:auto;
+	display:none;
+}
+
+.labelSuc{
+	color:#3c763d;
+}
+
+.labelFail{
+	color:#a94442;
+}
+
+.spanSuc{
+	color:#3c763d;
+}
+
+.spanFail{
+	color:#a94442;
+}
+
+.inputTextSuc{
+	border:1px solid #3c763d;
+}
+
+.inputTextFail{
+	border:1px solid #a94442;
+}
+
+h4{
+	color:#3c763d;
+}
+
+p{
+	color:#3c763d;
+}

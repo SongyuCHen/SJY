@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-2 17:43:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TLog" table="T_LOG" schema="dbo" catalog="SJY">
+    	<cache usage="read-write" />
+        <id name="bh" type="int">
+            <column name="BH" />
+            <generator class="assigned" />
+        </id>
+        <property name="sj" type="timestamp">
+            <column name="SJ" length="23"  />
+        </property>
+        <property name="nr" type="string">
+            <column name="NR" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

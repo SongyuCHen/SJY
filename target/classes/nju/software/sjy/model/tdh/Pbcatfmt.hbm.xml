@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-19 0:24:10 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.tdh.Pbcatfmt" table="pbcatfmt">
+        <composite-id name="id" class="nju.software.sjy.model.tdh.PbcatfmtId">
+            <key-property name="pbfName" type="string">
+                <column name="pbf_name" length="30" />
+            </key-property>
+            <key-property name="pbfFrmt" type="string">
+                <column name="pbf_frmt" length="254" />
+            </key-property>
+            <key-property name="pbfType" type="short">
+                <column name="pbf_type" />
+            </key-property>
+            <key-property name="pbfCntr" type="java.lang.Integer">
+                <column name="pbf_cntr" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

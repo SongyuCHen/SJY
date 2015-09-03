@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-3-4 14:59:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.TPfkhgz" table="T_PFKHGZ" schema="dbo" catalog="SJY">
+        <cache usage="read-write" />
+        <id name="bh" type="int">
+            <column name="BH" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="gzdf" type="double">
+            <column name="GZDF" not-null="true" />
+        </property>
+        
+        <many-to-one name="pfkh"
+        			 column="PFKHBH"
+        			 class="nju.software.sjy.model.xy.TPfkh"
+        			 cascade="none"
+        			 lazy="false"
+        			 fetch="join" />
+        
+        <many-to-one name="gz"
+        			 column="GZBH"
+        			 class="nju.software.sjy.model.xy.TGypz"
+        			 cascade="none"
+        			 lazy="false"
+        			 fetch="join" />
+    </class>
+</hibernate-mapping>
