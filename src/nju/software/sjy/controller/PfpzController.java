@@ -344,6 +344,46 @@ public class PfpzController
 		}
 	}
 	
+	@RequestMapping("/jsff")
+	public ModelAndView jsff()
+	{
+		ModelAndView mav = viewJsff();
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/editJsff", method=RequestMethod.POST)
+	@ResponseBody
+	public void editJsff(HttpServletRequest request, HttpServletResponse response)
+	{		
+		String maxScore = request.getParameter("maxScore");
+		String minScore = request.getParameter("minScore");
+		
+		TGypz maxGypz = gypzService.getGypzByPzbhLx(1, Constants.MAX_SCORE);
+		TGypz minGypz = gypzService.getGypzByPzbhLx(1, Constants.MIN_SCORE);
+		
+		maxGypz.setMc(maxScore);
+		minGypz.setMc(minScore);
+		
+		gypzService.update(maxGypz);
+		gypzService.update(minGypz);
+		
+		String status = "success";
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("status", status);
+		
+		try 
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			String jsonStr = JSONObject.fromObject(jsonObj).toString();
+			response.getWriter().print(jsonStr);
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	public ModelAndView viewGzfs()
 	{
 		List<TPfpz> tlist = pfpzService.getPfpzByGzlx(Constants.GZ);
@@ -367,6 +407,23 @@ public class PfpzController
 		mav.addObject("lxList", lxList);
 		mav.addObject("gzsjlist", gzsjlist);
 		mav.addObject("gzxxLen", gzxxLen);
+		
+		return mav;
+	}
+	
+	public ModelAndView viewJsff()
+	{
+		TGypz maxGypz = gypzService.getGypzByPzbhLx(1, Constants.MAX_SCORE);
+		TGypz minGypz = gypzService.getGypzByPzbhLx(1, Constants.MIN_SCORE);
+		
+		String maxScore = maxGypz.getMc();
+		String minScore = minGypz.getMc();
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("jsff");
+		
+		mav.addObject("maxScore", maxScore);
+		mav.addObject("minScore", minScore);
 		
 		return mav;
 	}
