@@ -34,5 +34,11 @@
                      cascade="none"
                      lazy="false"
                      fetch="join"/> 
+         <many-to-one name="beforeZt" 
+                     column="BEFOREZTBH"
+                     class="nju.software.sjy.model.xy.TGypz"
+                     cascade="none"
+                     lazy="false"
+                     fetch="join"/>             
     </class>
 </hibernate-mapping>

@@ -218,4 +218,18 @@ public class OperationDaoImpl extends BaseDaoImpl implements OperationDao
 		return null;
 	}
 
+	@Override
+	public TGypz getBeforeZt(TGypz zt) {
+		// TODO Auto-generated method stub
+		String hql = "select z.beforeZt from TZtoperation z where z.zt=?";
+		List<TGypz> list = (List<TGypz>)getHibernateTemplate().find(hql, zt);
+		
+		if(list != null && !list.isEmpty())
+		{
+			return list.get(0);
+		}
+		
+		return null;
+	}
+
 }

@@ -14,6 +14,8 @@ public class TZtoperation implements Serializable
 	
 	private TGypz nextZt;
 	
+	private TGypz beforeZt;
+	
 	private Integer status;
 	
 	public TZtoperation()
@@ -69,6 +71,14 @@ public class TZtoperation implements Serializable
 	public void setStatus(Integer status)
 	{
 		this.status = status;
+	}
+
+	public TGypz getBeforeZt() {
+		return beforeZt;
+	}
+
+	public void setBeforeZt(TGypz beforeZt) {
+		this.beforeZt = beforeZt;
 	}
 
 

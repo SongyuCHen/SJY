@@ -41,4 +41,6 @@ public interface OperationDao
 	TGypz getZtByOperation(TOperation operation);
 	
 	TGypz getNextZt(TGypz zt);
+	
+	TGypz getBeforeZt(TGypz zt);
 }
