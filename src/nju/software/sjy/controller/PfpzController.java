@@ -346,7 +346,7 @@ public class PfpzController
 	
 	public ModelAndView viewGzfs()
 	{
-		List<TPfpz> tlist = pfpzService.getAllPfpz();
+		List<TPfpz> tlist = pfpzService.getPfpzByGzlx(Constants.GZ);
 		List<MPfpz> mlist = PfpzConvertor.convert(tlist);
 		
 		List<String> lxList = new ArrayList<String>();
@@ -354,10 +354,8 @@ public class PfpzController
 		List<String> gzlxList = gypzService.getMcByLx(Constants.GZ);
 		lxList.addAll(gzlxList);
 		
-		TGypz gzsjGz = gypzService.getGypzByLxMc(Constants.GZ, Constants.GZSJ);
 		List<TGypz> gzxxList = gypzService.getGypzByLx(Constants.GZSJ);
 		List<TPfpz> gzsjList = pfpzService.getPfpzByGzlx(Constants.GZSJ);
-		int gzsjVal = pfpzService.getFsByGz(gzsjGz);
 		
 		List<MPfpz> gzsjlist = PfpzConvertor.convert(gzsjList, gzxxList);
 		int gzxxLen = gzxxList.size();
@@ -369,7 +367,6 @@ public class PfpzController
 		mav.addObject("lxList", lxList);
 		mav.addObject("gzsjlist", gzsjlist);
 		mav.addObject("gzxxLen", gzxxLen);
-		mav.addObject("gzsjVal", gzsjVal);
 		
 		return mav;
 	}

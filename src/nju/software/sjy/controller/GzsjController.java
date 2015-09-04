@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +21,14 @@ import nju.software.sjy.mapper.MGzsj;
 import nju.software.sjy.model.xy.TBm;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TGzsj;
+import nju.software.sjy.model.xy.TGzsjChangelog;
 import nju.software.sjy.model.xy.TGzsjxx;
 import nju.software.sjy.model.xy.TGzsjxxBase;
 import nju.software.sjy.model.xy.TOperation;
 import nju.software.sjy.model.xy.TUser;
 import nju.software.sjy.service.BmService;
 import nju.software.sjy.service.GypzService;
+import nju.software.sjy.service.GzsjChangelogService;
 import nju.software.sjy.service.GzsjService;
 import nju.software.sjy.service.GzsjxxBaseService;
 import nju.software.sjy.service.GzsjxxService;
@@ -87,6 +90,9 @@ public class GzsjController
 	
 	@Autowired
 	private ViewGztbService viewGztbService;
+	
+	@Autowired
+	private GzsjChangelogService changelogService;
 	
 	@RequestMapping("/index")
 	public ModelAndView index()
@@ -466,6 +472,57 @@ public class GzsjController
 		ModelAndView mav = view(bmmc, startDate, endDate);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="/modifyGzsjxx.aj", method=RequestMethod.POST)
+	@ResponseBody
+	public void modifyGzsjxx(HttpServletRequest request, HttpServletResponse response)
+	{
+		String gzxxpzbh = request.getParameter("gzxxpzbh");
+		String gzsjxxEditVal = request.getParameter("gzsjxxEditVal");
+		String gzsjxxEditReason = request.getParameter("gzsjxxEditReason");
+		String bhStr = request.getParameter("editGzsjBh");
+		
+		log.info("pzbh:" + gzxxpzbh + ", gzsjxxEditVal:" + gzsjxxEditVal + ", gzsjxxEditReason:" + gzsjxxEditReason);
+		
+		int pzbh = Integer.parseInt(gzxxpzbh);
+		int gzsjbh = Integer.parseInt(bhStr);
+		
+		//工作实绩具体的配置项
+		TGypz gypz = gypzService.getGypzByPzbhLx(pzbh, Constants.GZSJ);
+		TGzsj gzsj = gzsjService.getGzsjByBh(gzsjbh);
+		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+		
+		/* add your code --- note that gzsjxx may be null, gzsj and gypz can not be null */
+		TUser user = (TUser)request.getSession().getAttribute(SessionKey.SESSION_USER);
+		TGzsjChangelog changelog = new TGzsjChangelog();
+		int sz1 = gzsjxx.getSz();
+		int sz2 = Integer.parseInt(gzsjxxEditVal);
+		int maxbh = changelogService.getMaxBh();
+		maxbh++;
+		changelog.setBh(maxbh);
+		changelog.setGzsjxx(gzsjxx);
+		changelog.setSz1(sz1);
+		changelog.setSz2(sz2);
+		changelog.setXgr(user.getXm());
+		changelog.setXgrq(new Date());
+		changelog.setXgyy(gzsjxxEditReason);
+		changelogService.save(changelog);
+		
+		/* return */
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("result", "success");
+		
+		try 
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			String jsonStr = JSONObject.fromObject(jsonObj).toString();
+			response.getWriter().print(jsonStr);
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
