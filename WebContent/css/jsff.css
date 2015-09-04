@@ -30,3 +30,23 @@
 	float: right;
 	line-height: 25px;
 }
+
+.leftDesc{
+	float: left;
+	width: 50%;
+}
+
+.rightEdit{
+	float: right;
+	width: 50%;
+	padding: 50px 0;
+}
+
+.jumbotron{
+	padding: 1px 20px;
+	border-radius: 6px;
+}
+
+#saveJsffBtn{
+	margin-left: 20px;
+}

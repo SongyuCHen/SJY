@@ -39,7 +39,8 @@
 					<div class="form-group">
 						<label class="col-lg-4 control-label" id="maxScoreLabel">最高分</label>
 						<div class="col-lg-5">
-							<input type="text" class="form-control" name="maxScore" id="maxScore" readonly />
+							<input type="text" class="form-control" name="maxScore" id="maxScore" 
+								value="${maxScore }" readonly />
 						</div>
 						<div class="col-lg-3" id="validateMaxScore">
 						</div>
@@ -48,7 +49,8 @@
 					<div class="form-group">
 						<label class="col-lg-4 control-label" id="minScoreLabel">最低分</label>
 						<div class="col-lg-5">
-							<input type="text" class="form-control" name="minScore" id="minScore"/>
+							<input type="text" class="form-control" name="minScore" id="minScore"
+								value="${minScore }" readonly />
 						</div>
 						<div class="col-lg-3" id="validateMinScore">
 						</div>
@@ -57,7 +59,10 @@
 					<div class="form-group">
 						<div class="col-lg-4">
 						</div>
-						
+						<div class="col-lg-5">
+							<button type="button" class="btn btn-primary" id="editJsffBtn">编辑</button>
+							<button type="button" class="btn btn-success" id="saveJsffBtn">保存</button>
+						</div>
 					</div>
 				</form>
 			</div>

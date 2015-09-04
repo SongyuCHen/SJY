@@ -122,19 +122,47 @@ public class ScoreServiceImpl implements ScoreService
 	 */
 	public double getScoreOfGZSJ(TGypz gzxx, TUser user, int nf, int jd)
 	{
-		String gzxxmc = gzxx.getMc();
+		//String gzxxmc = gzxx.getMc();
 		
 		double score = 0;
-		/*装订卷宗*/
-		if(Constants.ZDJZ.equals(gzxxmc))
-		{
-			score = getScoreOfZDJZ(user, nf, jd, gzxx);
-		}
-		/*庭审记录*/
-		else if(Constants.TSJL.equals(gzxxmc))
-		{
-			score = getScoreOfTSJL(user, nf, jd, gzxx);
-		}
+//		/*装订卷宗*/
+//		if(Constants.ZDJZ.equals(gzxxmc))
+//		{
+//			score = getScoreOfZDJZ(user, nf, jd, gzxx);
+//		}
+//		/*庭审记录*/
+//		else if(Constants.TSJL.equals(gzxxmc))
+//		{
+//			score = getScoreOfTSJL(user, nf, jd, gzxx);
+//		}
+		
+		score = getScoreOfGzsjxx(user, nf, jd, gzxx);
+		
+		return score;
+	}
+	
+	/**
+	 * 计算工作实绩细项得分
+	 */
+	public double getScoreOfGzsjxx(TUser user, int nf, int jd, TGypz gzxx)
+	{
+		int curNum = statisticsService.getCountOfGZSJ(gzxx, user, nf, jd);
+		
+		int maxNum = statisticsService.getMaxCountOfApprovedGZSJ(gzxx, nf, jd);
+		int minNum = statisticsService.getMinCountOfApprovedGZSJ(gzxx, nf, jd);
+		
+		TGypz gzsj = gypzService.getGypzByLxMc(Constants.GZ, Constants.GZSJ);
+		int gzsjScore = pfpzService.getFsByGz(gzsj);
+		int gzxxScore = pfpzService.getFsByGz(gzxx);
+		
+		double rate = (double)gzxxScore/gzsjScore;
+		
+		TGypz maxGypz = gypzService.getGypzByPzbhLx(1, Constants.MAX_SCORE);
+		TGypz minGypz = gypzService.getGypzByPzbhLx(1, Constants.MIN_SCORE);
+		int maxScore = Integer.parseInt(maxGypz.getMc());
+		int minScore = Integer.parseInt(minGypz.getMc());
+		
+		double score = calculateScore(curNum, maxNum, minNum, maxScore, minScore, rate);
 		
 		return score;
 	}
@@ -354,6 +382,21 @@ public class ScoreServiceImpl implements ScoreService
 		else
 		{
 			fs = maxScore;
+		}
+		
+		return fs;
+	}
+	
+	private double calculateScore(int curNum, int maxNum, int minNum, int maxScore, int minScore, double rate)
+	{
+		double fs = 0.0;
+		if((maxNum - minNum) != 0)
+		{
+			fs = ((curNum - minNum) * (maxScore - minScore) / (maxNum - minNum) + minScore) * rate;
+		}
+		else
+		{
+			fs = maxScore * rate;
 		}
 		
 		return fs;

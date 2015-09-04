@@ -101,4 +101,8 @@ public class Constants
 	public final static String SYJS = "所有角色";
 	
 	public final static String FYDM = "法院代码";
+	
+	public final static String MAX_SCORE = "最高分";
+	
+	public final static String MIN_SCORE = "最低分";
 }
