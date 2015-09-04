@@ -3,24 +3,31 @@ package nju.software.sjy.model.xy;
 import java.io.Serializable;
 import java.util.Date;
 
-public class TGzsjChangelog implements Serializable {
 
-	/**
-	 * 
-	 */
+public class TGzsjChangelog implements Serializable
+{
 	private static final long serialVersionUID = 1L;
+	
 	private int bh;
+	
 	private TGzsjxx gzsjxx;
+	
 	private int sz1;
+	
 	private int sz2;
+	
 	private String xgr;
+	
 	private Date xgrq;
+	
 	private String xgyy;
-	public TGzsjChangelog(){
-		
-	}
+	
+	public TGzsjChangelog(){}
+
 	public TGzsjChangelog(int bh, TGzsjxx gzsjxx, int sz1, int sz2, String xgr,
-			Date xgrq, String xgyy) {
+			Date xgrq, String xgyy)
+	{
+
 		this.bh = bh;
 		this.gzsjxx = gzsjxx;
 		this.sz1 = sz1;
@@ -29,6 +36,7 @@ public class TGzsjChangelog implements Serializable {
 		this.xgrq = xgrq;
 		this.xgyy = xgyy;
 	}
+
 	public int getBh() {
 		return bh;
 	}
@@ -72,5 +80,6 @@ public class TGzsjChangelog implements Serializable {
 		this.xgyy = xgyy;
 	}
 	
+
 
 }
