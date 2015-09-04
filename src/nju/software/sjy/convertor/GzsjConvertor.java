@@ -104,13 +104,14 @@ public class GzsjConvertor
 	 * @param pzSize
 	 * @return
 	 */
-	public static MGzsj convertGzsj(TGzsj tgzsj, List<TGzsjxx> gzsjxxList, int pzSize)
+	public static MGzsj convertGzsj(TGzsj tgzsj, List<TGzsjxx> gzsjxxList, List<TGzsjxxBase> gzsjxxBaseList, int pzSize)
 	{
 		if(tgzsj == null)
 		{
 			return null;
 		}
-		
+		/*是否修改工作量*/
+		boolean isChange = false;
 		/*人员姓名*/
 		TUser user = tgzsj.getUser();
 		
@@ -126,11 +127,27 @@ public class GzsjConvertor
 		}
 		
 		List<Integer> szList = new ArrayList<Integer>();
-		if(gzsjxxList != null)
+		List<Integer> szList2 = new ArrayList<Integer>();
+		if(gzsjxxList.size()> 0)
 		{
 			for(TGzsjxx gzsjxx : gzsjxxList)
 			{
 				szList.add(gzsjxx.getSz());
+				
+			}
+		}
+		if(gzsjxxBaseList.size()>0)
+		{
+			for(TGzsjxxBase gzsjxxBase : gzsjxxBaseList)
+			{
+				szList2.add(gzsjxxBase.getSz());
+				
+			}
+		}else{
+			for(TGzsjxx gzsjxx : gzsjxxList)
+			{
+				szList2.add(gzsjxx.getSz());
+				
 			}
 		}
 		
@@ -138,6 +155,16 @@ public class GzsjConvertor
 		for(k = szList.size();k<pzSize;k++)
 		{
 			szList.add(0);
+			szList2.add(0);
+		}
+		//若值相同，则表示没有修改
+		for(k = 0;k<pzSize;k++)
+		{
+			if(szList.get(k)==szList2.get(k)){
+				szList.set(k, 0);
+			}else{
+				isChange = true;
+			}
 		}
 		
 		MGzsj mgzsj = new MGzsj();
@@ -146,8 +173,9 @@ public class GzsjConvertor
 		mgzsj.setBmmc(bm.getBmmc());
 		mgzsj.setRq(tgzsj.getRq());
 		mgzsj.setZt(ztmc);
-		mgzsj.setSzList(szList);
-		
+		mgzsj.setSzList(szList2);
+		mgzsj.setSzList2(szList);
+		mgzsj.setChange(isChange);
 		return mgzsj;
 	}
 	

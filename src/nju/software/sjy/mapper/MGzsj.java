@@ -13,7 +13,8 @@ public class MGzsj implements Serializable
 	private String rq;
 	private String zt;
 	private List<Integer> szList;
-	
+	private List<Integer> szList2;
+	private boolean isChange;
 	public MGzsj()
 	{
 		
@@ -92,6 +93,22 @@ public class MGzsj implements Serializable
 	public void setZt(String zt)
 	{
 		this.zt = zt;
+	}
+
+	public List<Integer> getSzList2() {
+		return szList2;
+	}
+
+	public void setSzList2(List<Integer> szList2) {
+		this.szList2 = szList2;
+	}
+
+	public boolean isChange() {
+		return isChange;
+	}
+
+	public void setChange(boolean isChange) {
+		this.isChange = isChange;
 	}
 	
 }

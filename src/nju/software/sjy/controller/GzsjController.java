@@ -557,8 +557,8 @@ public class GzsjController
 		{
 			/* 根据工作实绩和规则类型 查询出所有的规则细项及数值 */
 			List<TGzsjxx> gzsjxxList = gzsjxxService.getGzsjxxByGzsjGzlx(tgzsj, Constants.GZSJ);
-			
-			MGzsj mgzsj = GzsjConvertor.convertGzsj(tgzsj, gzsjxxList, pzSize);
+			List<TGzsjxxBase> gzsjxxBaseList = gzsjxxBaseService.getGzsjxxBaseByGzsj(tgzsj);
+			MGzsj mgzsj = GzsjConvertor.convertGzsj(tgzsj, gzsjxxList, gzsjxxBaseList, pzSize);
 			
 			mlist.add(mgzsj);
 		}
@@ -631,8 +631,8 @@ public class GzsjController
 						
 				/* 根据工作实绩和规则类型 查询出所有的规则细项及数值 */
 				List<TGzsjxx> gzsjxxList = gzsjxxService.getGzsjxxByGzsjGzlx(tgzsj, Constants.GZSJ);
-						
-				MGzsj mgzsj = GzsjConvertor.convertGzsj(tgzsj, gzsjxxList, pzSize);
+				List<TGzsjxxBase> gzsjxxBaseList = gzsjxxBaseService.getGzsjxxBaseByGzsj(tgzsj);
+				MGzsj mgzsj = GzsjConvertor.convertGzsj(tgzsj, gzsjxxList, gzsjxxBaseList, pzSize);
 						
 				mlist.add(mgzsj);
 			}
