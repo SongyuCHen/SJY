@@ -33,7 +33,7 @@ public class GzsjxxChangelogDaoImpl extends BaseDaoImpl implements
 	@Override
 	public Integer getMaxBh() {
 		// TODO Auto-generated method stub
-		String hql = "select max(bh) from TGzsjxxChangelog";
+		String hql = "select max(bh) from TGzsjChangelog";
 		List<Integer> list = (List<Integer>)getHibernateTemplate().find(hql);
 		if(list != null && !list.isEmpty() && list.get(0) != null)
 		{
@@ -46,7 +46,7 @@ public class GzsjxxChangelogDaoImpl extends BaseDaoImpl implements
 	@Override
 	public List<TGzsjChangelog> getGzsjxxChangelogByGzsjxx(TGzsjxx gzsjxx) {
 		// TODO Auto-generated method stub
-		String hql = "select sz from TGzsjxxChangelog where gzsjxx=? ";
+		String hql = "select sz from TGzsjChangelog where gzsjxx=? ";
 		
 		List<TGzsjChangelog> list = (List<TGzsjChangelog>)getHibernateTemplate().find(hql, gzsjxx);
 		
