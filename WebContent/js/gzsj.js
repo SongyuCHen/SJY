@@ -364,17 +364,17 @@ $(document).ready(function(){
 	 */
 	confirmEdit = function(){
 		//验证输入
-		$("#editModalSj").change();
-		for(var i=1;i<=pzSize;i++){
-			$("#editpz"+i).blur();
-			if(!validEditPz){
-				return false;
-			}
-		}
+//		$("#editModalSj").change();
+//		for(var i=1;i<=pzSize;i++){
+//			$("#editpz"+i).blur();
+//			if(!validEditPz){
+//				return false;
+//			}
+//		}
 		
-		if(!validEditTime || !validEditPz){
-			return false;
-		}
+//		if(!validEditTime || !validEditPz){
+//			return false;
+//		}
 		
 		var $checked = $('#gzsjTable tbody :checked');
 		var tr = $checked.closest("tr");
@@ -425,17 +425,17 @@ $(document).ready(function(){
 	 */
 	confirmEditSubmit = function(){
 		//验证输入
-		$("#editModalSj").change();
-		for(var i=1;i<=pzSize;i++){
-			$("#editpz"+i).blur();
-			if(!validEditPz){
-				return false;
-			}
-		}
-		
-		if(!validEditTime || !validEditPz){
-			return false;
-		}
+//		$("#editModalSj").change();
+//		for(var i=1;i<=pzSize;i++){
+//			$("#editpz"+i).blur();
+//			if(!validEditPz){
+//				return false;
+//			}
+//		}
+//		
+//		if(!validEditTime || !validEditPz){
+//			return false;
+//		}
 		
 		var $checked = $('#gzsjTable tbody :checked');
 		var tr = $checked.closest("tr");

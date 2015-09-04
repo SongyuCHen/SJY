@@ -18,7 +18,7 @@
 	<div id="wrapper">
 		<h2>修改记录</h2>
 		
-		<div class="">
+		<div class="loglist">
 			
 		</div>
 	</div>
