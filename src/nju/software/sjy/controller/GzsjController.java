@@ -494,7 +494,7 @@ public class GzsjController
 		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
 		
 		/* add your code --- note that gzsjxx may be null, gzsj and gypz can not be null */
-<<<<<<< HEAD
+
 		TUser user = (TUser)request.getSession().getAttribute(SessionKey.SESSION_USER);
 		TGzsjChangelog changelog = new TGzsjChangelog();
 		int sz1 = gzsjxx.getSz();
@@ -509,9 +509,7 @@ public class GzsjController
 		changelog.setXgrq(new Date());
 		changelog.setXgyy(gzsjxxEditReason);
 		changelogService.save(changelog);
-=======
-		
->>>>>>> 63e39dbbf1e492a15383cd19c7642e981c8151c6
+
 		
 		/* return */
 		JSONObject jsonObj = new JSONObject();
