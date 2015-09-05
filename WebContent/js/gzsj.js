@@ -181,8 +181,9 @@ $(document).ready(function(){
 				var index = "td:eq(" + (3 + i) + ")";
 				var pzVal = tr.children(index).find('a').html();
 				var pzDstVal = tr.children(index).find('input').val();
-				$("#editpz"+i).val(pzVal);
-				$("#editpzDst"+i).val(pzDstVal);				
+				if (pzVal == pzDstVal) pzVal = 0
+				$("#editpzDst"+i).val(pzVal);
+				$("#editpz"+i).val(pzDstVal);		
 				$("#editpz"+i).removeClass("borderFail validateFail").addClass("borderSuc validateSuc");
 				$("#editpz"+i).parent().prev().css({"color":"#3c763d"});
 //				$("#editpz"+i).parent().next().empty().append(
@@ -396,7 +397,8 @@ $(document).ready(function(){
 					$("#editGzsjModal").modal('hide');
 					
 					for(var i=1;i<=pzSize;i++){
-						var value = $("#editpz"+i).val();
+						var value = $("#editpzDst"+i).val();
+						if(value == 0) value = $("#editpz"+i).val();
 						var index = "td:eq(" + (3 + i) + ")";
 						tr.children(index).children(0).html(value);
 					}
@@ -457,7 +459,8 @@ $(document).ready(function(){
 					$("#editGzsjModal").modal('hide');
 					
 					for(var i=1;i<=pzSize;i++){
-						var value = $("#editpz"+i).val();
+						var value = $("#editpzDst"+i).val();
+						if(value == 0) value = $("#editpz"+i).val();
 						var index = "td:eq(" + (3 + i) + ")";
 						tr.children(index).children(0).html(value);
 					}

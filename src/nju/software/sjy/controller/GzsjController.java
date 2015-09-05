@@ -196,18 +196,22 @@ public class GzsjController
 		int pzSize = pzList.size();
 		
 		String[] pzInfos = new String[pzSize];
-		
+		String[] pzDstInfos = new String[pzSize];
+
 		for(int i=1;i<=pzSize;i++)
 		{
 			pzInfos[i-1] = request.getParameter("editpz"+i);
+			pzDstInfos[i-1] = request.getParameter("editpzDst"+i);
 			int sz = Integer.parseInt(pzInfos[i-1]);
+			int sz2 = Integer.parseInt(pzDstInfos[i-1]);
+			if(sz2 == 0) sz2 = sz;
 			
 			TGypz gzxx = pzList.get(i-1);
 			/* 根据工作实绩和规则细项或者该工作实绩的规则细项详细数值 */
 			TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gzxx);
 			if(gzsjxx != null)
 			{
-				gzsjxx.setSz(sz);
+				gzsjxx.setSz(sz2);
 				gzsjxxService.update(gzsjxx);
 			}
 			else
@@ -290,6 +294,7 @@ public class GzsjController
 			pzDstInfos[i-1] = request.getParameter("editpzDst"+i);
 			int sz = Integer.parseInt(pzInfos[i-1]);
 			int sz2 = Integer.parseInt(pzDstInfos[i-1]);
+			if(sz2 == 0) sz2 = sz;
 			TGypz gzxx = pzList.get(i-1);
 			/* 根据工作实绩和规则细项或者该工作实绩的规则细项详细数值 */
 			TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gzxx);

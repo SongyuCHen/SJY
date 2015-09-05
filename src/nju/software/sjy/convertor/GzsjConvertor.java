@@ -160,10 +160,9 @@ public class GzsjConvertor
 		//若值相同，则表示没有修改
 		for(k = 0;k<pzSize;k++)
 		{
-			if(szList.get(k)==szList2.get(k)){
-				szList.set(k, 0);
-			}else{
+			if(szList.get(k)!=szList2.get(k)){
 				isChange = true;
+				break;
 			}
 		}
 		
@@ -173,8 +172,9 @@ public class GzsjConvertor
 		mgzsj.setBmmc(bm.getBmmc());
 		mgzsj.setRq(tgzsj.getRq());
 		mgzsj.setZt(ztmc);
-		mgzsj.setSzList(szList2);
-		mgzsj.setSzList2(szList);
+		//szList2表示原始值  szList表示现在值
+		mgzsj.setSzList(szList);
+		mgzsj.setSzList2(szList2);
 		mgzsj.setChange(isChange);
 		return mgzsj;
 	}
