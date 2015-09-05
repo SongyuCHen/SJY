@@ -135,11 +135,12 @@
 								<td class="no-wrap">${mgzsj.xm }</td>
 								<td class="no-wrap">${mgzsj.bmmc }</td>
 								<td class="no-wrap">${mgzsj.rq }</td>
-								<c:forEach items="${mgzsj.szList }" var="sz">
+								<c:forEach items="${mgzsj.szList }" var="sz" varStatus="status">
 									<%-- <td class="no-wrap">${sz }</td> --%>
 									<td class="no-wrap">
 										<a href="javascript:void(0)" class="szHref">${sz }</a>
-										<a type="hidden" class="szHref">${mgzsj.szList2[index] }</a>
+										<%-- <a type="hidden">${mgzsj.szList2[status.index] }</a> --%>
+										<input type="hidden" value="${mgzsj.szList2[status.index] }" />
 									</td>
 								</c:forEach>
 								

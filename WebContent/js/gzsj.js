@@ -179,8 +179,8 @@ $(document).ready(function(){
 			
 			for(var i=1;i<=pzSize;i++){
 				var index = "td:eq(" + (3 + i) + ")";
-				var pzVal = tr.children(index).children(0).html();
-				var pzDstVal = tr.children(index).children(1).html();
+				var pzVal = tr.children(index).find('a').html();
+				var pzDstVal = tr.children(index).find('input').val();
 				$("#editpz"+i).val(pzVal);
 				$("#editpzDst"+i).val(pzDstVal);				
 				$("#editpz"+i).removeClass("borderFail validateFail").addClass("borderSuc validateSuc");
@@ -608,7 +608,15 @@ $(document).ready(function(){
 			async:false,
 			success:function(data){
 				var status = data.status;
+				
+				//弹框中的值立即生效
 				$("#editpzDst"+bh).val(gzsjxxEditVal);
+				
+				//主页面的值立即生效
+				var tr = $(":checkbox:checked").closest("tr");
+				var i = parseInt(bh, 10);
+				var index = "td:eq(" + (3 + i) + ")";
+				tr.children(index).find('input').val(gzsjxxEditVal);
 				
 				$(".reason").css({"display":"none"});
 			},
