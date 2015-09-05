@@ -17,9 +17,13 @@ public interface SplcService
 	
 	String APPROVAL_AGAIN = "记录已完成审批，无法再次审批！";
 	
+	String REJECT_AGAIN = "记录已退回或者未提交，无法再次退回！";
+	
 	String APPROVAL_SUCCESS = "审批成功！";
 	
 	ZtStatusMsg approvalGzsj(List<TGzsj> tlist, TUser user);
+	
+	ZtStatusMsg rejectlGzsj(List<TGzsj> tlist, TUser user);
 	
 	ZtStatusMsg approvalJfqx(List<TJfqx> tlist, TUser user);
 	

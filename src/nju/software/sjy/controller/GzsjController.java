@@ -398,7 +398,7 @@ public class GzsjController
 		
 		/* 开始退回操作并得到返回结果-----注意设置ZtStatusMsg的zt，比如设为"部门已退回" */
 		/* add you code here */
-		ZtStatusMsg result = null;
+		ZtStatusMsg result = splcService.approvalGzsj(tlist, user);;
 		
 		
 		
