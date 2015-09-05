@@ -372,6 +372,51 @@ public class GzsjController
 		}
 	}
 	
+	@RequestMapping(value="/reject")
+	@ResponseBody
+	public void reject(HttpServletRequest request, HttpServletResponse response)
+	{
+		String bhArrStr = request.getParameter("bhArr");
+
+		String[] bhStrArr = bhArrStr.split("-");
+		Integer[] bhArr = null;
+		if(bhStrArr != null)
+		{
+			bhArr = new Integer[bhStrArr.length];
+			for(int i=0; i < bhStrArr.length; i++)
+			{
+				String bhStr = bhStrArr[i];
+				int bh = Integer.parseInt(bhStr);
+				bhArr[i] = bh;
+			}
+		}
+		
+		/* 获取要退回的记录 */
+		List<TGzsj> tlist = gzsjService.getGzsjByBhArr(bhArr);
+		
+		TUser user = (TUser)request.getSession().getAttribute(SessionKey.SESSION_USER);
+		
+		/* 开始退回操作并得到返回结果-----注意设置ZtStatusMsg的zt，比如设为"部门已退回" */
+		/* add you code here */
+		ZtStatusMsg result = null;
+		
+		
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("result", result);
+		
+		try 
+		{
+			response.setContentType("text/html;charset=UTF-8");
+			String jsonStr = JSONObject.fromObject(jsonObj).toString();
+			response.getWriter().print(jsonStr);
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping(value="/add")
 	@Transactional
 	public ModelAndView add(HttpServletRequest request, HttpServletResponse response)
