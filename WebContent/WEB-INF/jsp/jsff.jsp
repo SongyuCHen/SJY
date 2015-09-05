@@ -27,9 +27,9 @@
 				<div class="jumbotron">
 					<h1>方法说明</h1>
 					<p>工作量按照每个分项值计算</p>
-					<p>分项值最高为100分，最低为60分</p>
+					<p>分项值最高为${maxScore }分，最低为${minScore }分</p>
 					<p>假定分项高值为X，低值为Y，某人分项值为M</p>
-					<p>则得分为：(M-Y)/(X-Y)*(100-60)+60</p>
+					<p>则得分为：(M-Y)/(X-Y)*(${maxScore }-${minScore })+${minScore }</p>
 				</div>
 			</div>
 			

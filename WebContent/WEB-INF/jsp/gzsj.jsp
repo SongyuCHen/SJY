@@ -23,7 +23,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	
+
 	<div id="wrapper">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/gzsj/cx">
@@ -139,6 +139,7 @@
 									<%-- <td class="no-wrap">${sz }</td> --%>
 									<td class="no-wrap">
 										<a href="javascript:void(0)" class="szHref">${sz }</a>
+										<a type="hidden" class="szHref">${mgzsj.szList2[index] }</a>
 									</td>
 								</c:forEach>
 								

@@ -180,8 +180,9 @@ $(document).ready(function(){
 			for(var i=1;i<=pzSize;i++){
 				var index = "td:eq(" + (3 + i) + ")";
 				var pzVal = tr.children(index).children(0).html();
+				var pzDstVal = tr.children(index).children(1).html();
 				$("#editpz"+i).val(pzVal);
-				
+				$("#editpzDst"+i).val(pzDstVal);				
 				$("#editpz"+i).removeClass("borderFail validateFail").addClass("borderSuc validateSuc");
 				$("#editpz"+i).parent().prev().css({"color":"#3c763d"});
 //				$("#editpz"+i).parent().next().empty().append(
