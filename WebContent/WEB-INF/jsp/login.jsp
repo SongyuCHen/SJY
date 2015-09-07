@@ -43,7 +43,7 @@
 							<div class="col-lg-2">
 							</div>
 						</div>
-						
+						<!--
 						<div class="form-group">
 							<div class="col-lg-offset-4 col-lg-10">
 								<div class="checkbox">
@@ -52,9 +52,10 @@
 								</div>
 							</div>
 						</div>
+						-->
 						<div class="form-group">
 							<div class="col-lg-12" id="buttongroup">
-								<button type="submit" class="btn btn-success" id="btn_login">登  录</button>
+								<button type="submit" class="btn btn-success" id="btn_login">登  录</button>&nbsp;
 								<button type="reset" class="btn btn-default">重  置</button>
 							</div>
 						</div>
@@ -66,7 +67,7 @@
 		<div id="footer">
 			<div id="footContent" class="inline">
 				<!-- <p>©版权所有：徐州市中级人民法院。</p> -->
-				<p>©2015 版权所有：南京铉盈网络科技有限公司</p>
+				<p style="font-size: 17px">©2015 版权所有：南京铉盈网络科技有限公司</p>
 			</div>
 			<%-- <div id="footImg" class="inline">
 				<img id="logo" src="${pageContext.request.contextPath}/images/XuanYingLogo.jpg" />
