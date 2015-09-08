@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,7 @@
 <title>登录</title>
 </head>
 <body>
+   
 	<div id="wrapper">
 		<div id="title">
 			<div id="title_content">
@@ -35,7 +36,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-lg-4 control-label">密       码:</label>
+							<label class="col-lg-4 control-label">密码:</label>
 							<div class="col-lg-6">
 								<input type="password" class="form-control" id="password" name="password"
 									placeholder="请输入密码">
@@ -43,7 +44,7 @@
 							<div class="col-lg-2">
 							</div>
 						</div>
-						
+						<!-- 
 						<div class="form-group">
 							<div class="col-lg-offset-4 col-lg-10">
 								<div class="checkbox">
@@ -52,9 +53,10 @@
 								</div>
 							</div>
 						</div>
+						 -->
 						<div class="form-group">
 							<div class="col-lg-12" id="buttongroup">
-								<button type="submit" class="btn btn-success" id="btn_login">登  录</button>
+								<button type="submit" class="btn btn-success" id="btn_login">登  录</button>&nbsp;
 								<button type="reset" class="btn btn-default">重  置</button>
 							</div>
 						</div>
@@ -66,7 +68,7 @@
 		<div id="footer">
 			<div id="footContent" class="inline">
 				<!-- <p>©版权所有：徐州市中级人民法院。</p> -->
-				<p>©2015 版权所有：南京铉盈网络科技有限公司</p>
+				<p  style="font-size: 17px">©2015 版权所有：南京铉盈网络科技有限公司</p>
 			</div>
 			<%-- <div id="footImg" class="inline">
 				<img id="logo" src="${pageContext.request.contextPath}/images/XuanYingLogo.jpg" />
@@ -81,7 +83,7 @@
 		
 		
 	</div>
-	
+	 
 	<div class="modal fade" id="resModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -93,8 +95,7 @@
 				</div>
 
 				<div class="modal-body">
-					<div class="alert alert-warning" role="alert" id="resInfo">
-						
+					<div class="alert alert-warning" role="alert" id="resInfo">						
 					</div>
 				</div>
 				
@@ -104,5 +105,7 @@
 			</div>
 		</div>
 	</div>
+	
+	
 </body>
 </html>

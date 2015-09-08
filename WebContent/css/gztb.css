@@ -1,11 +1,17 @@
 @CHARSET "UTF-8";
 
+body{
+	
+}
 #wrapper{
 	width:960px;
+	height:600px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:0px;
-	background-image: none;
+	overflow:hidden;
+	background-image: url('../images/background07.png') ;
+	
 }
 
 #content{
@@ -26,7 +32,16 @@
 	padding-bottom:10px;
 	text-align:left;
 }
-
+.bottom_pic{
+	width:100%;
+	height:27px;
+	background:url('../images/bg_06.png');
+	float:left;
+}
+.bottom_pic span{
+	margin-left:85%;
+	color:#fff;
+}
 .span-color{
 	color:#3c763d;
 }
@@ -35,10 +50,16 @@ button{
 	margin-left:5px;
 	margin-right:5px;
 }
-
+.panelAll{
+	
+}
 .panelHead{
+	width:80px;
 	position: relative;
 	padding: 10px 0 15px 0;
+	margin-right:30px;
+	margin-top:40px;
+	float:left;
 }
 
 .panelHead hr{
@@ -62,17 +83,22 @@ button{
 	padding: 0;
 }
 .panelBody ul li{
+	width:70px;
+	height:100px;
 	display: inline-block;
+	float:left;
 	margin-right: 50px;
+	margin-top:40px;
 }
 .panelBody ul li a{
 	display: block;
 	height: inherit;
-	width: 100%;
+	width: 100%;	
+	color:#000;
 }
 .panelBody ul li a img{
 	height: 60px;
-	width: 168px;
+	
 }
 .panelBody ul li:hover{
 	cursor: pointer;

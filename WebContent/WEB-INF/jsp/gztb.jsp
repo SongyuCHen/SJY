@@ -18,17 +18,19 @@
 		<c:forEach items="${mResList }" var="mres" varStatus="loop">
 			<c:choose>
 				<c:when test="${fun:length(mres.childrenList) > 0 }">
-				<div>
-					<div class="panelHead">
-		     			<hr>		        				
+				<div class="panelAll">
+					<%-- <div class="panelHead">	
+					<a href="${pageContext.request.contextPath}${mres.url}">
+						<img/>
+					</a>			
 		       			<span>${mres.resname }</span>
-					</div>
+					</div> --%>
 			      	<div class="panelBody">
 				       	<ul>
 							<c:forEach items="${mres.childrenList }" var="child">
 								<li>
 									<a href="${pageContext.request.contextPath}${child.url}">
-										<img/>
+										<img/>${child.resname}
 									</a>
 								</li>
 							</c:forEach>
@@ -38,8 +40,11 @@
 				</c:when>
 			</c:choose>
 		</c:forEach>
+		
 	</div>
-	
+	<div class="bottom_pic">
+	   <span>欢迎您！${USER.xm }</span>
+	</div>
 	<!-- 修改密码的modal -->
 	<div id="modifyPwdModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog">
@@ -99,5 +104,6 @@
 			</form>
 		</div>
 	</div>
+	
 </body>
 </html>

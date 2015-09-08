@@ -34,18 +34,24 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
+					<li id="" class="dropdown">
+					  <a href="${pageContext.request.contextPath}/user/tcdl">退出登录</a>
+					</li>
+					<li id="" class="dropdown">
+					<a href="javascript:void(0)" onclick="modifyPwd()">修改密码</a>
+					</li>
 				</ul>
 				</div>
 				
-				<div id="userInfo">
-					<span>欢迎您！</span>
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${USER.xm }
+				 <div id="userInfo">
+					<%-- <span>欢迎您！</span>
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${USER.xm } --%>
 					<span id="logoutSpan">
-						<a href="${pageContext.request.contextPath}/user/tcdl">[退出]</a>
+						<%-- <a href="${pageContext.request.contextPath}/user/tcdl">[退出]</a> --%>
 						<a href="${pageContext.request.contextPath}/user/fhsy">[首页]</a>
-						<a href="javascript:void(0)" onclick="modifyPwd()">[修改密码]</a>
+						<!-- <a href="javascript:void(0)" onclick="modifyPwd()">[修改密码]</a> -->
 					</span>
-				</div>
+				</div> 
 			</div>
 		</div>
 		<!-- 修改密码的modal -->

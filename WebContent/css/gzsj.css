@@ -190,49 +190,6 @@ td{
 	border:1px solid #a94442;
 }
 
-.validateInfo{
-	color:#337ab7;
-}
-
-.borderInfo{
-	border:1px solid #337ab7;
-}
-
 .modalTable{
 	padding-bottom:30px;
-}
-
-.leftContent{
-	width:64%;
-	float:left;
-}
-
-.rightContent{
-	width:36%;
-	float:right;
-	padding-left: 25px;
-}
-
-.clearFloat{
-	clear: both;
-}
-
-.illustrate{
-	height: 160px;
-	background-color:#eee;
-	padding: 1px 20px;
-	border-radius: 6px;
-}
-
-.note{
-	font-size: 20px;
-}
-
-.reason{
-	padding-top: 30px;
-	display: none;
-}
-
-.col-lg-twenty{
-	width: 20%;
 }
