@@ -12,7 +12,7 @@ body{
     padding:0 15px;
     border:0;
     width:960px;
-    background-image: url(../images/background_white.png);
+    background-image: url(../images/background_white.jpg);
     border-left: 1px solid #eee;
     border-right: 1px solid #eee;
 }
@@ -115,7 +115,9 @@ table th{
 }
 #userInfo{
 	margin-top:-28px;
-	float:right;
+	float:left;
+	position:relative;
+	left:-50px;
 	padding-top:0px;
 	padding-bottom:0px;
 	/*color:#337ab7;*/

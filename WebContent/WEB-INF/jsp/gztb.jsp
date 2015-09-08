@@ -13,8 +13,8 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	
-	<div id="wrapper">
+	<div id="wrapperouter">
+	<div id="wrappergztb">
 		<c:forEach items="${mResList }" var="mres" varStatus="loop">
 			<c:choose>
 				<c:when test="${fun:length(mres.childrenList) > 0 }">
@@ -41,6 +41,7 @@
 			</c:choose>
 		</c:forEach>
 		
+	</div>
 	</div>
 	<div class="bottom_pic">
 	   <span>欢迎您！${USER.xm }</span>
