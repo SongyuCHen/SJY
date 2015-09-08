@@ -9,7 +9,7 @@ body{
 }
 #wrappergztb{
 	width:960px;
-	height:600px;
+	height:532px;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:0px;
@@ -57,12 +57,12 @@ button{
 	
 }
 .panelHead{
-	width:80px;
+	width:100px;
 	position: relative;
-	padding: 10px 0 15px 0;
+	padding: 10px 0 0 0;
 	margin-right:30px;
-	margin-top:40px;
-	float:left;
+	/* margin-top:40px; */
+	/* float:left; */
 }
 
 .panelHead hr{
@@ -81,6 +81,22 @@ button{
 	background: white;
 }
 
+.commonDiv{
+	height: 150px;
+	clear: both;
+}
+
+.floatDiv{
+	float: left;
+	padding: 0 10px;
+	height: 150px;
+	margin-right: 36px;
+}
+
+.panelTitle{
+	color: #333;
+}
+
 .panelBody ul{
 	list-style: none;
 	padding: 0;
@@ -90,8 +106,8 @@ button{
 	height:100px;
 	display: inline-block;
 	float:left;
-	margin-right: 50px;
-	margin-top:40px;
+	margin-right: 40px;
+	/* margin-top:40px; */
 }
 .panelBody ul li a{
 	display: block;
