@@ -592,7 +592,10 @@ $(document).ready(function(){
 	 * 工作实绩细项查看按钮事件
 	 */
 	$(".gzsjxxViewBtn").on('click', function(){
-		
+		var editGzsjBh = $("#editModalBh").val();
+		var gzsjxxpzbh = $(this).attr("data-bh");
+		var url = basePath + "/gzsj/viewChangeLog?gzxxpzbh=" + gzsjxxpzbh + "&editGzsjBh=" + editGzsjBh;
+		window.location.href = url;
 	});
 	
 	/**

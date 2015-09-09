@@ -328,7 +328,7 @@
 									</div>
 									<div class="col-lg-3">
 										<button type="button" class="btn btn-primary gzsjxxEditBtn" data-bh="${pz.pzbh }">修改</button>
-										<button type="button" class="btn btn-success gzsjxxViewBtn">查看</button>
+										<button type="button" class="btn btn-success gzsjxxViewBtn" data-bh="${pz.pzbh }">查看</button>
 									</div>
 								</div>
 							</c:forEach>						

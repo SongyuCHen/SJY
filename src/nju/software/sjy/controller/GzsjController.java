@@ -135,8 +135,10 @@ public class GzsjController
 		TGzsj gzsj = gzsjService.getGzsjByBh(gzsjbh);
 		
 		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
-		List<TGzsjChangelog> changeLog = changelogService.getGzsjxxChangelogByGzsjxx(gzsjxx);
-		mav.addObject("changeLog", changeLog);
+		List<TGzsjChangelog> changeLogList = changelogService.getGzsjxxChangelogByGzsjxx(gzsjxx);
+		mav.addObject("changeLogList", changeLogList);
+		
+		mav.setViewName("gzsjChangelog");
 		
 		return mav;
 	}

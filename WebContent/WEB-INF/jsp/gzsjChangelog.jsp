@@ -16,9 +16,41 @@
 	<jsp:include page="header.jsp" />
 	
 	<div id="wrapper">
-		<h2>修改记录</h2>
+		<div id="menu">
+			<div id="menu_left">
+				<div id="ok"></div>
+				<div id="word">
+					<span>修改记录</span>
+				</div>
+			</div>
+		</div>
 		
 		<div class="loglist">
+			
+			<c:forEach items="${changeLogList }" var="changeLog">
+				<div class="singleLog">
+					<div class="form-group">
+						<label class="col-lg-3 control-label">修改前</label>
+						<label class="col-lg-3 control-label">${changeLog.sz1 }</label>
+						<label class="col-lg-3 control-label">修改后</label>
+						<label class="col-lg-3 control-label">${changeLog.sz2 }</label>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label">修改人</label>
+						<label class="col-lg-3 control-label">${changeLog.xgr }</label>
+						<label class="col-lg-3 control-label">修改日期</label>
+						<label class="col-lg-3 control-label">${changeLog.xgrq }</label>
+					</div>
+					<div class="">
+						<div class="">
+							<label>修改原因</label>
+						</div>
+						<div class="">
+							<p>${changeLog.xgyy }</p>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 			
 		</div>
 	</div>
