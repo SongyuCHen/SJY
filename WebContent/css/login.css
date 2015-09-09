@@ -105,7 +105,10 @@ label{
 	width:960px;
 	height:100px;
 	text-align:center;
-	margin:400px auto;
+	/* margin:400px auto; */
+	margin-top: 400px;
+	margin-left: auto;
+	margin-right: auto;
 	
 	top:580px;
 }

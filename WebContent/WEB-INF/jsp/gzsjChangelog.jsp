@@ -28,25 +28,31 @@
 		<div class="loglist">
 			
 			<c:forEach items="${changeLogList }" var="changeLog">
-				<div class="singleLog">
-					<div class="form-group">
-						<label class="col-lg-3 control-label">修改前</label>
-						<label class="col-lg-3 control-label">${changeLog.sz1 }</label>
-						<label class="col-lg-3 control-label">修改后</label>
-						<label class="col-lg-3 control-label">${changeLog.sz2 }</label>
-					</div>
-					<div class="form-group">
-						<label class="col-lg-3 control-label">修改人</label>
-						<label class="col-lg-3 control-label">${changeLog.xgr }</label>
-						<label class="col-lg-3 control-label">修改日期</label>
-						<label class="col-lg-3 control-label">${changeLog.xgrq }</label>
-					</div>
-					<div class="">
-						<div class="">
-							<label>修改原因</label>
+				<div class="single-log">
+					<div class="single-line">
+						<label class="col-lg-3 label-control">修改前</label>
+						<div class="col-lg-2">
+							<p class="text-control">${changeLog.sz1 }</p>
 						</div>
-						<div class="">
-							<p>${changeLog.xgyy }</p>
+						<label class="col-lg-2 label-control">修改后</label>
+						<div class="col-lg-5">
+							<p class="text-control">${changeLog.sz2 }</p>
+						</div>
+					</div>
+					<div class="single-line">
+						<label class="col-lg-3 label-control">修改人</label>
+						<div class="col-lg-2">
+							<p class="text-control">${changeLog.xgr }</p>
+						</div>
+						<label class="col-lg-2 label-control">修改日期</label>
+						<div class="col-lg-5">
+							<p class="text-control">${changeLog.xgrq }</p>
+						</div>
+					</div>
+					<div class="multiple-line">
+						<label class="col-lg-3 label-control">修改原因</label>
+						<div class="col-lg-7">
+							<p class="text-control">${changeLog.xgyy }</p>
 						</div>
 					</div>
 				</div>

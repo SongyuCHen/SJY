@@ -32,5 +32,33 @@
 }
 
 .loglist{
-	text-align:center;
+	padding: 5px 50px;
+	text-align: center;
+}
+
+.single-log{
+	width: 800px;
+	margin: 6px auto;
+	border: 1px solid #eee;
+	background-color: #eee;
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.single-line{
+	height:34px;
+}
+
+.label-control{
+	text-align:right;
+}
+
+.multiple-line{
+	height: 34px;
+}
+
+.text-control{
+	text-align:left;
 }
