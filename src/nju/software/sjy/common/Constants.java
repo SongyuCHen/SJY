@@ -62,7 +62,11 @@ public class Constants
 	
 	public final static String SP = "审批";
 	
+	public final static String TH = "退回";
+	
 	public final static String SPDW = "审批单位";
+	
+	public final static String THDW = "退回单位";
 	
 	public final static String YHYTJ = "用户已提交";
 	

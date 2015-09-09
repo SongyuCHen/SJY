@@ -29,6 +29,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+
 @Controller
 @RequestMapping("/role")
 public class RoleController 
@@ -245,6 +247,8 @@ public class RoleController
 				if(name.equals(Constants.SP))
 				{
 					range = gypzService.getGypzByLxMc(Constants.SPDW, rangeStr);
+				}else if(name.equals(Constants.TH)){
+					range = gypzService.getGypzByLxMc(Constants.THDW, rangeStr);
 				}
 				else
 				{
