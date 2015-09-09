@@ -119,6 +119,28 @@ public class GzsjController
 		return mav;
 	}
 	
+	@RequestMapping("/viewChangeLog")
+	public ModelAndView viewChangeLog(HttpServletRequest request)
+	{
+		String gzxxpzbh = request.getParameter("gzxxpzbh");
+		String bhStr = request.getParameter("editGzsjBh");
+		ModelAndView mav = new ModelAndView();
+		log.info("pzbh:" + gzxxpzbh + ", gzsjBh:" + bhStr);
+		
+		int pzbh = Integer.parseInt(gzxxpzbh);
+		int gzsjbh = Integer.parseInt(bhStr);
+		
+		//工作实绩具体的配置项
+		TGypz gypz = gypzService.getGypzByPzbhLx(pzbh, Constants.GZSJ);
+		TGzsj gzsj = gzsjService.getGzsjByBh(gzsjbh);
+		
+		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+		List<TGzsjChangelog> changeLog = changelogService.getGzsjxxChangelogByGzsjxx(gzsjxx);
+		mav.addObject("changeLog", changeLog);
+		
+		return mav;
+	}
+	
 	@RequestMapping(value="/previous", method=RequestMethod.POST)
 	@ResponseBody
 	public void previous(HttpServletRequest request, HttpServletResponse response)
