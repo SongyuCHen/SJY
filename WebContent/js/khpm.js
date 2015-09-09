@@ -18,8 +18,8 @@ $(document).ready(function(){
 	$("#nf").val(curYear);
 	$("#jd").val(curQuarter);
 	
-	$("#operationBtn").attr("disabled","disabled");
-	
+	//$("#operationBtn").attr("disabled","disabled");
+	$("#operationBtn").hide();
 	$("#searchForm").on("submit", function(e){
 		e.preventDefault();
 		//读取并保存
@@ -32,7 +32,7 @@ $(document).ready(function(){
 		
 		$("#loading-indicator").show();
 		$("#searchBtn").attr("disabled","disabled");
-		$("#operationBtn").attr("disabled","disabled");
+		//$("#operationBtn").attr("disabled","disabled");
 		
 		var getAllKfxmReq = $.ajax({
 			url: basePath +"/khpm/cx.aj",
@@ -77,7 +77,8 @@ $(document).ready(function(){
 		    
 		    $("#loading-indicator").hide();
 		    $("#searchBtn").removeAttr("disabled");
-		    $("#operationBtn").removeAttr("disabled");
+		   // $("#operationBtn").removeAttr("disabled");
+		    $("#operationBtn").show();
 		});
 	});
 	
