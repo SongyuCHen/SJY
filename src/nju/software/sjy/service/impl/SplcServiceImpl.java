@@ -571,7 +571,7 @@ public class SplcServiceImpl implements SplcService
 			}
 			
 			status = 4;
-			msg = "无法执行退回操作，记录接下来需要的是" + range.getMc() + "审批，您的审批权限是" + sb.toString() + "。";
+			msg = "无法执行退回操作，记录接下来需要的是" + range.getMc() + "退回，您的退回权限是" + sb.toString() + "。";
 			result = new ZtStatusMsg(status, msg, ztStr);
 			return result;
 		}
