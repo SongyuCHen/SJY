@@ -15,7 +15,7 @@ public class BmDaoImpl extends BaseDaoImpl implements BmDao
 	@Override
 	public List<TBm> getAllBm()
 	{
-		String hql = "from TBm";
+		String hql = "from TBm order by bmlx";
 		List<TBm> list = (List<TBm>)getHibernateTemplate().find(hql);
 		return list;
 	}
