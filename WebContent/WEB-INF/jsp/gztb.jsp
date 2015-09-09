@@ -17,27 +17,42 @@
 	<div id="wrappergztb">
 		<c:forEach items="${mResList }" var="mres" varStatus="loop">
 			<c:choose>
-				<c:when test="${fun:length(mres.childrenList) > 0 }">
-				<div class="panelAll">
-					<%-- <div class="panelHead">	
-					<a href="${pageContext.request.contextPath}${mres.url}">
-						<img/>
-					</a>			
-		       			<span>${mres.resname }</span>
-					</div> --%>
-			      	<div class="panelBody">
-				       	<ul>
-							<c:forEach items="${mres.childrenList }" var="child">
-								<li>
-									<a href="${pageContext.request.contextPath}${child.url}">
-										<img/>${child.resname}
-									</a>
-								</li>
-							</c:forEach>
-						</ul>
-				  	</div>
-				</div>
+				<c:when test="${fun:length(mres.childrenList) > 4 }">
+					<div class="commonDiv">
+						<div class="panelHead">	
+			       			<h4 class="panelTitle">${mres.resname }</h4>
+						</div>
+				      	<div class="panelBody">
+					       	<ul>
+								<c:forEach items="${mres.childrenList }" var="child">
+									<li>
+										<a href="${pageContext.request.contextPath}${child.url}">
+											<img/>${child.resname}
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+					  	</div>
+					</div>
 				</c:when>
+				<c:otherwise>
+					<div class="floatDiv">
+						<div class="panelHead">
+							<h4 class="panelTitle">${mres.resname }</h4>
+						</div>
+						<div class="panelBody">
+							<ul>
+								<c:forEach items="${mres.childrenList }" var="child">
+									<li>
+										<a href="${pageContext.request.contextPath}${child.url}">
+											<img/>${child.resname}
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		
