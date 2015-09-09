@@ -5,6 +5,8 @@ var basePath = getRootPath();
 //保存上一次查询的条件，用于导出Excel
 var khzb, bmlx, nf, jd;
 
+var CONT;
+
 $(document).ready(function(){
 	$("#pfkh").addClass('active').siblings().removeClass('active');
 	
@@ -67,8 +69,9 @@ $(document).ready(function(){
 				cont = Mustache.to_html($('#khpmTableTemplate').html(), data);
 			}
 			
+			
 		    $('#table_content').html(cont);
-		    
+		    CONT = cont;
 		    var khpmTable = $("#khpmTable").DataTable({
 		        "order": [[ 0, "asc" ]],
 		        "dom": '<pfltpi>',
@@ -86,10 +89,11 @@ $(document).ready(function(){
 	 * 打印考核排名
 	 */
 	$("#printKhpmLink").on('click', function(){
-		var wind=window.open('about:blank', '', ''),
-	      cont=$('#khpmTable').html();
+		var wind=window.open('about:blank', '', '');
+	     // cont=$('#khpmTable').html();
+		//alert(cont);
 	      //打印样式
-	      wind.document.write('<style>@media print{.no-print{display:none;}.no-wrap{word-break: keep-all;white-space:nowrap;}} @media all{th,td{border:1px solid #000;}table{border-collapse:collapse;width:95%;}}</style><table>'+cont+'</table>');
+	      wind.document.write('<style>@media print{.no-print{display:none;}.no-wrap{word-break: keep-all;white-space:nowrap;}} @media all{th,td{border:1px solid #000;}table{border-collapse:collapse;width:95%;}}</style><table>'+CONT+'</table>');
 	      wind.print();
 	});
 	

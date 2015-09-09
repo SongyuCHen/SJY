@@ -40,6 +40,7 @@ body{
 	height:27px;
 	background:url('../images/bg_06.png');
 	float:left;
+	z-index:999; position:fixed; bottom:0; left:0; width:100%;
 }
 .bottom_pic span{
 	margin-left:85%;
