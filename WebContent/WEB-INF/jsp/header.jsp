@@ -51,7 +51,7 @@
 				</div> 
 				<div id="logout">
 					<span id="logoutSpan">
-						<a href="${pageContext.request.contextPath}/user/tcdl">[退出登录]</a>
+						<a href="${pageContext.request.contextPath}/user/tcdl">[退出]</a>
 					</span>
 				</div>
 			</div>
