@@ -4,6 +4,12 @@
 var basePath = getRootPath();
 
 $(document).ready(function(){
+	//查看
+	$(".gzsjxxViewBtn").on('click',function(){
+		//天尊这边调用
+	});
+	
+	
 	$(".input-group").removeClass("timeGroup");
 	
 	$("#selectAllBtn").on('click', function(){
