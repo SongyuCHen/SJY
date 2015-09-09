@@ -129,7 +129,7 @@ $(document).ready(function(){
 	});
 	
 	var bmglTable = $("#bmglTable").DataTable({
-		"order": [[ 1, "asc" ]],
+		"order": [[ 2, "asc" ]],
 		"dom": '<pfltpi>',
 		"pagingType": "full_numbers"
 	});
