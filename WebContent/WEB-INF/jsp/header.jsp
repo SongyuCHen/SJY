@@ -35,9 +35,6 @@
 						</c:choose>
 					</c:forEach>
 					<li id="" class="dropdown">
-					  <a href="${pageContext.request.contextPath}/user/tcdl">退出登录</a>
-					</li>
-					<li id="" class="dropdown">
 					<a href="javascript:void(0)" onclick="modifyPwd()">修改密码</a>
 					</li>
 				</ul>
@@ -52,6 +49,11 @@
 						<!-- <a href="javascript:void(0)" onclick="modifyPwd()">[修改密码]</a> -->
 					</span>
 				</div> 
+				<div id="logout">
+					<span id="logoutSpan">
+						<a href="${pageContext.request.contextPath}/user/tcdl">[退出登录]</a>
+					</span>
+				</div>
 			</div>
 		</div>
 		<!-- 修改密码的modal -->

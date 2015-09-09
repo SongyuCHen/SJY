@@ -15,7 +15,7 @@ $(document).ready(function(){
 	$("#nf").val(curYear);
 	$("#jd").val(curQuarter);
 	
-	$("#operationBtn").attr("disabled","disabled");
+	$("#operationBtn").hide();
 	
 	$("#searchForm").on("submit", function(e){
 		e.preventDefault();
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		$("#loading-indicator").show();
 		//禁用查询和操作按钮
 		$("#searchBtn").attr("disabled","disabled");
-		$("#operationBtn").attr("disabled","disabled");
+		//$("#operationBtn").attr("disabled","disabled");
 		
 		var getAllKfxmReq = $.ajax({
 			url: basePath +"/pfkh/scplkh.aj",
@@ -68,7 +68,7 @@ $(document).ready(function(){
 		    
 		    $("#loading-indicator").hide();//隐藏gif
 		    $("#searchBtn").removeAttr("disabled");//解除禁用状态
-		    $("#operationBtn").removeAttr("disabled");
+		    $("#operationBtn").show();
 		});
 	});
 	
