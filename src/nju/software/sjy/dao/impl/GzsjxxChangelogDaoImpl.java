@@ -46,7 +46,7 @@ public class GzsjxxChangelogDaoImpl extends BaseDaoImpl implements
 	@Override
 	public List<TGzsjChangelog> getGzsjxxChangelogByGzsjxx(TGzsjxx gzsjxx) {
 		// TODO Auto-generated method stub
-		String hql = "select sz from TGzsjChangelog where gzsjxx=? ";
+		String hql = "from TGzsjChangelog where gzsjxx=? ";
 		
 		List<TGzsjChangelog> list = (List<TGzsjChangelog>)getHibernateTemplate().find(hql, gzsjxx);
 		
