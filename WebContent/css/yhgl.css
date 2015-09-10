@@ -1,12 +1,14 @@
 @CHARSET "UTF-8";
 
 #yhglTable_length{
-	position:absolute;
-	left:380px;
+	float:left;
+	position:relative;
+	left:-40px;	
 }
 #yhglTable_filter{
-	position:absolute;
-	left:550px;
+	float:left;
+	position:relative;
+	left:320px;
 }
 
 #yhglTable_filter input{
