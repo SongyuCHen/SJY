@@ -42,9 +42,9 @@
     padding:0;
     border:0;
     width:960px;
-    height:650px;
+    height:700px;
     background-image: url(../images/background_white.jpg);
-    
+    background-size: 960px 700px;
 }
 
 #menu_left{

@@ -24,6 +24,7 @@
     padding:0;
     border:0;
     width:960px;
+    height: 1200px;
     background-image: url(../images/background_white.jpg);
     background-repeat:repeat-y;
 }
