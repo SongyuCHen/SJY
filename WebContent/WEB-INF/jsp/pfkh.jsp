@@ -59,7 +59,7 @@
 
 		<div id="content">
 			<div id="table_content">
-				<table class="table table-bordered table-striped">
+				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>规则</th>
