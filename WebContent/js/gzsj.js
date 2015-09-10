@@ -595,7 +595,7 @@ $(document).ready(function(){
 		var editGzsjBh = $("#editModalBh").val();
 		var gzsjxxpzbh = $(this).attr("data-bh");
 		var url = basePath + "/gzsj/viewChangeLog?gzxxpzbh=" + gzsjxxpzbh + "&editGzsjBh=" + editGzsjBh;
-		window.location.href = url;
+		window.open(url);
 	});
 	
 	/**
