@@ -118,7 +118,7 @@ table th{
 	margin-top:-28px;
 	float:left;
 	position:relative;
-	left:-100px;
+	left:-50px;
 	padding-top:0px;
 	padding-bottom:0px;
 	/*color:#337ab7;*/
@@ -137,9 +137,9 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 #logout{
 	margin-top:-28px;
-	float:left;
+	float:right;
 	position:relative;
-	left:-50px;
+	left:-148px;
 	padding-top:0px;
 	padding-bottom:0px;
 	/*color:#337ab7;*/

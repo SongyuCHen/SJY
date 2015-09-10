@@ -18,14 +18,14 @@
 		.15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
-
+   /* height:467px; */ 
 #wrapper{
     margin: 0 auto;
     padding:0;
     border:0;
     width:960px;
-    height:467px;
     background-image: url(../images/background_white.jpg);
+    background-repeat: repeat-y;
 }
 
 
