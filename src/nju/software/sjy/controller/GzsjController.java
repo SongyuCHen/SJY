@@ -16,6 +16,7 @@ import nju.software.sjy.bean.ZtStatusMsg;
 import nju.software.sjy.common.Constants;
 import nju.software.sjy.common.SessionKey;
 import nju.software.sjy.convertor.GzsjConvertor;
+import nju.software.sjy.mapper.MChangeLog;
 import nju.software.sjy.mapper.MGypz;
 import nju.software.sjy.mapper.MGzsj;
 import nju.software.sjy.model.xy.TBm;
@@ -37,6 +38,7 @@ import nju.software.sjy.service.SplcService;
 import nju.software.sjy.service.UserService;
 import nju.software.sjy.service.ViewGztbService;
 import nju.software.sjy.service.ViewService;
+import nju.software.sjy.util.DateUtil;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -136,7 +138,19 @@ public class GzsjController
 		
 		TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
 		List<TGzsjChangelog> changeLogList = changelogService.getGzsjxxChangelogByGzsjxx(gzsjxx);
-		mav.addObject("changeLogList", changeLogList);
+		List<MChangeLog> mChangeLogList = new ArrayList<MChangeLog>();
+		for(TGzsjChangelog log:changeLogList){
+			MChangeLog mLog = new MChangeLog();
+			mLog.setBh(log.getBh());
+			mLog.setGzsjxxbh(log.getGzsjxx().getBh());
+			mLog.setSz1(log.getSz1());
+			mLog.setSz2(log.getSz2());
+			mLog.setXgr(log.getXgr());
+			mLog.setXgrq(DateUtil.getFormatStr(log.getXgrq()));
+			mLog.setXgyy(log.getXgyy());
+			mChangeLogList.add(mLog);
+		}
+		mav.addObject("changeLogList", mChangeLogList);
 		
 		mav.setViewName("gzsjChangelog");
 		
