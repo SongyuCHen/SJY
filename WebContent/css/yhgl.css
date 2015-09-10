@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+
+#yhglTable_filter input{
+	width : 120px;
+}
 .select-control{
 	height: 34px;
 	padding: 6px 12px;
