@@ -19,7 +19,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapper">
+	<div id="wrapperouter">
+	<div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal"
 				action="${pageContext.request.contextPath}/pfkh/scplkh">
@@ -82,7 +83,7 @@
 			<input type="hidden" id="curQuarter" name="curQuarter" value="${curQuarter }" />
 		</div>
 	</div>
-	
+	</div>
 	<!-- the modal for showing the detail pfkh -->
 	<div id="showDetailModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog">

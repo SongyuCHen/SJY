@@ -19,14 +19,19 @@
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-#wrapper{
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+	background-repeat: repeat-y;
+}
+
+#wrapperinner{
     margin: 0 auto;
     padding:0;
     border:0;
     width:960px;
-    height:467px;
-    background-image: url(../images/background07.jpg);
+    height:480px;
 }
+
 
 #bm {
 	width:150px;	

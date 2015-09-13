@@ -23,15 +23,19 @@
 	width:150px;	
 }
 
-#wrapper{
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+	background-repeat: repeat-y;
+}
+
+#wrapperinner{
     margin: 0 auto;
     padding:0;
     border:0;
     width:960px;
-    height: 600px;
-    background-image: url(../images/background07.jpg);
-    background-repeat: repeat-y;
+    height:480px;
 }
+
 
 #menu_left{
     width:100px;

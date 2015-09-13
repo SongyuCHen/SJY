@@ -26,7 +26,8 @@
 	
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapper">
+	<div id="wrapperouter">
+		<div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/jfqx/cx">
 				<div id="menu_left">
@@ -159,7 +160,7 @@
 			</div>
 		</div>
 	</div>
-	
+	</div>
 	<div id="hiddenValue">
 		<input type="text" id="curBmbh" value="${curBmbh}" />
 		<input type="text" id="curStartDate" value="${startDate}" />
