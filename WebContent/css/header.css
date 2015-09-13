@@ -8,7 +8,6 @@ body{
 /*menu*/
 #wrapper{
     margin: 0 auto;
-    
     padding:0 15px;
     border:0;
     width:960px;
@@ -99,7 +98,7 @@ table th{
 }*/
 
 #navWrapper{
-	width: 900px;
+	width: 960px;
 	margin: 0 auto;
 }
 

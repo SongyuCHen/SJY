@@ -68,7 +68,7 @@
 		<div id="footer">
 			<div id="footContent" class="inline">
 				<!-- <p>©版权所有：徐州市中级人民法院。</p> -->
-				<p  style="font-size: 17px">©2015 版权所有：南京铉盈网络科技有限公司</p>
+				<p class="copyright">©2015 版权所有：南京铉盈网络科技有限公司</p>
 			</div>
 			<%-- <div id="footImg" class="inline">
 				<img id="logo" src="${pageContext.request.contextPath}/images/XuanYingLogo.jpg" />

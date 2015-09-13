@@ -14,6 +14,10 @@
 			<div id="navWrapper">
 				<div id="btnGroup">
 				<ul class="nav nav-pills">
+					<li id="" class="">
+						<a href="${pageContext.request.contextPath}/user/fhsy">首页</a>
+					</li>
+					
 					<c:forEach items="${mResList }" var="mres">
 						<c:choose>
 							<c:when test="${fun:length(mres.childrenList) > 0 }">
@@ -35,25 +39,24 @@
 						</c:choose>
 					</c:forEach>
 					<li id="" class="dropdown">
-					<a href="javascript:void(0)" onclick="modifyPwd()">修改密码</a>
+						<a href="javascript:void(0)" onclick="modifyPwd()">修改密码</a>
+					</li>
+					<li>
+						<a href="${pageContext.request.contextPath}/user/tcdl">退出</a>
 					</li>
 				</ul>
 				</div>
 				
-				 <div id="userInfo">
-					<%-- <span>欢迎您！</span>
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${USER.xm } --%>
+				 <%-- <div id="userInfo">
 					<span id="logoutSpan">
-						<%-- <a href="${pageContext.request.contextPath}/user/tcdl">[退出]</a> --%>
 						<a href="${pageContext.request.contextPath}/user/fhsy">[首页]</a>
-						<!-- <a href="javascript:void(0)" onclick="modifyPwd()">[修改密码]</a> -->
 					</span>
 				</div> 
 				<div id="logout">
 					<span id="logoutSpan">
 						<a href="${pageContext.request.contextPath}/user/tcdl">[退出]</a>
 					</span>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 		<!-- 修改密码的modal -->
