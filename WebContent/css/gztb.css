@@ -14,7 +14,6 @@ body{
 	margin-right:auto;
 	margin-top:0px;
 	overflow:hidden;
-
 }
 
 #content{
@@ -61,7 +60,8 @@ button{
 	/* width:80px; */
 	position: relative;
 	padding: 10px 0 0 0;
-	margin-right:30px;
+	margin-left: 10px;
+	margin-right:20px;
 	border-bottom: 2px solid #ddd;
 	/* margin-top:40px; */
 	/* float:left; */
@@ -105,8 +105,8 @@ button{
 	border-radius:5px;
 	margin-top:8px; 
 	margin-bottom:6px;
-	margin-left:6px; 
-	margin-right:6px;
+	/* margin-left:6px; 
+	margin-right:6px; */
 	/* background: white; */
 }
 

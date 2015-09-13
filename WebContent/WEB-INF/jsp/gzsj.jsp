@@ -23,137 +23,139 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-
-	<div id="wrapper">
-		<div id="menu">
-			<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/gzsj/cx">
-				<div id="menu_left">
-					<div id="ok"></div>
-					<div id="word">
-						<label class="label-control">工作实绩</label>
-					</div>
-				</div>
-				<div id="menu_right">
-					<div id="bmDiv">
-						<div class="float-control" id="bmLabelDiv">
-							<label class="label-control" id="bmLabel">部门：</label>
-						</div>
-						<div  class="float-control">
-							<select class="select-control" name="bm" id="bm">
-								<c:forEach items="${bmList }" var="bm">
-									<option>${bm.bmmc }</option>
-								</c:forEach>
-							</select>
+	
+	<div id="wrapperouter">
+		<div id="wrapperinner">
+			<div id="menu">
+				<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/gzsj/cx">
+					<div id="menu_left">
+						<div id="ok"></div>
+						<div id="word">
+							<label class="label-control">工作实绩</label>
 						</div>
 					</div>
-					
-					<div id="ksrqDiv">
-						<div class="float-control" id="ksrqLabelDiv">
-							<label class="label-control" id="ksrqLabel">开始日期：</label>
-						</div>
-						<div class="float-control">
-							<div class="input-group date form_date" id="ksrqInputDiv">
-								<input type="text" class="form-control" name="startDate" id="startDate" readonly />
-								<span class="input-group-addon" id="addSpan">
-									<span class="glyphicon glyphicon-calendar"></span>
-								</span>
+					<div id="menu_right">
+						<div id="bmDiv">
+							<div class="float-control" id="bmLabelDiv">
+								<label class="label-control" id="bmLabel">部门：</label>
+							</div>
+							<div  class="float-control">
+								<select class="select-control" name="bm" id="bm">
+									<c:forEach items="${bmList }" var="bm">
+										<option>${bm.bmmc }</option>
+									</c:forEach>
+								</select>
 							</div>
 						</div>
-					</div>
-
-					<div id="jsrqDiv">
-						<div class="float-control" id="jsrqLabelDiv">
-							<label class="label-control" id="jsrqLabel">结束日期：</label>
-						</div>
-						<div class="float-control">
-							<div class="input-group date form_date" id="jsrqInputDiv">
-								<input type="text" class="form-control" name="endDate" id="endDate" readonly />
-								<span class="input-group-addon" id="addSpan">
-									<span class="glyphicon glyphicon-calendar"></span>
-								</span>
+						
+						<div id="ksrqDiv">
+							<div class="float-control" id="ksrqLabelDiv">
+								<label class="label-control" id="ksrqLabel">开始日期：</label>
+							</div>
+							<div class="float-control">
+								<div class="input-group date form_date" id="ksrqInputDiv">
+									<input type="text" class="form-control" name="startDate" id="startDate" readonly />
+									<span class="input-group-addon" id="addSpan">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
 							</div>
 						</div>
+	
+						<div id="jsrqDiv">
+							<div class="float-control" id="jsrqLabelDiv">
+								<label class="label-control" id="jsrqLabel">结束日期：</label>
+							</div>
+							<div class="float-control">
+								<div class="input-group date form_date" id="jsrqInputDiv">
+									<input type="text" class="form-control" name="endDate" id="endDate" readonly />
+									<span class="input-group-addon" id="addSpan">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<div id="btnDiv">
+							<button type="submit" class="btn btn-primary" id="searchBtn">
+								<span class="glyphicon glyphicon-search"></span> 查 询
+							</button>
+						</div>
 					</div>
-					
-					<div id="btnDiv">
-						<button type="submit" class="btn btn-primary" id="searchBtn">
-							<span class="glyphicon glyphicon-search"></span> 查 询
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-
-		<div id="operationDiv" class="btn-group">
-			<button class="btn btn-primary" id="selectAllBtn">全  选</button>
-			<div class="btn-group">
-				<button data-toggle="dropdown" class="btn btn-success dropdown-toggle">
-					操  作 <span class="caret"></span>
-				</button>			
-				<ul class="dropdown-menu">
-					<c:forEach items="${operationList }" var="operation">
-						<li><a href="javascript:void(0)" class="operationLi" id="${operation.alias }">${operation.name }</a></li>
-					</c:forEach>
-				</ul>
+				</form>
 			</div>
-		</div>
-
-		<div id="content">
-			<div id="table_content">
-				<table id="gzsjTable" class="table table-bordered">
-					<colgroup>
-						<col class="con0 no-print" style="align: center; width: 4%">
-						<col class="con1">
-						<col class="con0">
-						<col class="con1">
-						<c:forEach var="x" begin="1" end="${pzSize }">
-							<col class="con${(x + 1)%2 }">
+	
+			<div id="operationDiv" class="btn-group">
+				<button class="btn btn-primary" id="selectAllBtn">全  选</button>
+				<div class="btn-group">
+					<button data-toggle="dropdown" class="btn btn-success dropdown-toggle">
+						操  作 <span class="caret"></span>
+					</button>			
+					<ul class="dropdown-menu">
+						<c:forEach items="${operationList }" var="operation">
+							<li><a href="javascript:void(0)" class="operationLi" id="${operation.alias }">${operation.name }</a></li>
 						</c:forEach>
-						<col class="con${(pzSize + 1)%2 }">
-					</colgroup>
-					<thead>
-						<tr>
-							<th class="no-print">
-								<!-- <input type="checkbox" name="gzsjBh" id="gzsjBhAll" /> -->
-							</th>
-							<th class="no-wrap">姓名</th>
-							<th class="no-wrap">部门</th>
-							<th class="no-wrap">日期</th>
-							<c:forEach items="${pzList }" var="pz">
-								<th class="no-wrap">${pz.mc }</th>
+					</ul>
+				</div>
+			</div>
+	
+			<div id="content">
+				<div id="table_content">
+					<table id="gzsjTable" class="table table-bordered">
+						<colgroup>
+							<col class="con0 no-print" style="align: center; width: 4%">
+							<col class="con1">
+							<col class="con0">
+							<col class="con1">
+							<c:forEach var="x" begin="1" end="${pzSize }">
+								<col class="con${(x + 1)%2 }">
 							</c:forEach>
-							<th class="no-wrap">状态</th>
-							<th class="no-warp">操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${mlist }" var="mgzsj">
+							<col class="con${(pzSize + 1)%2 }">
+						</colgroup>
+						<thead>
 							<tr>
-								<td class="no-print">
-									<input type="checkbox" class="gzsjCheckbox" name="gzsjBh" id="gzsjBh" value="${mgzsj.bh }">
-								</td>
-								<td class="no-wrap">${mgzsj.xm }</td>
-								<td class="no-wrap">${mgzsj.bmmc }</td>
-								<td class="no-wrap">${mgzsj.rq }</td>
-								<c:forEach items="${mgzsj.szList }" var="sz" varStatus="status">
-									<%-- <td class="no-wrap">${sz }</td> --%>
-									<td class="no-wrap">
-										<a href="javascript:void(0)" class="szHref">${sz }</a>
-										<%-- <a type="hidden">${mgzsj.szList2[status.index] }</a> --%>
-										<input type="hidden" value="${mgzsj.szList2[status.index] }" />
-									</td>
+								<th class="no-print">
+									<!-- <input type="checkbox" name="gzsjBh" id="gzsjBhAll" /> -->
+								</th>
+								<th class="no-wrap">姓名</th>
+								<th class="no-wrap">部门</th>
+								<th class="no-wrap">日期</th>
+								<c:forEach items="${pzList }" var="pz">
+									<th class="no-wrap">${pz.mc }</th>
 								</c:forEach>
-								
-								<td class="no-wrap">${mgzsj.zt }</td>
-								<td class="no-warp">
-									<a href="javascript:void(0)" class="czHref">
-										<img src="${pageContext.request.contextPath}/images/book_search.png" />
-									</a>
-								</td>
+								<th class="no-wrap">状态</th>
+								<th class="no-warp">操作</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach items="${mlist }" var="mgzsj">
+								<tr>
+									<td class="no-print">
+										<input type="checkbox" class="gzsjCheckbox" name="gzsjBh" id="gzsjBh" value="${mgzsj.bh }">
+									</td>
+									<td class="no-wrap">${mgzsj.xm }</td>
+									<td class="no-wrap">${mgzsj.bmmc }</td>
+									<td class="no-wrap">${mgzsj.rq }</td>
+									<c:forEach items="${mgzsj.szList }" var="sz" varStatus="status">
+										<%-- <td class="no-wrap">${sz }</td> --%>
+										<td class="no-wrap">
+											<a href="javascript:void(0)" class="szHref">${sz }</a>
+											<%-- <a type="hidden">${mgzsj.szList2[status.index] }</a> --%>
+											<input type="hidden" value="${mgzsj.szList2[status.index] }" />
+										</td>
+									</c:forEach>
+									
+									<td class="no-wrap">${mgzsj.zt }</td>
+									<td class="no-warp">
+										<a href="javascript:void(0)" class="czHref">
+											<img src="${pageContext.request.contextPath}/images/book_search.png" />
+										</a>
+									</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

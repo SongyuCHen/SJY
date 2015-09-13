@@ -2,7 +2,7 @@ var basePath = getRootPath();
 
 $(function() {
 	
-	$(".floatDiv").eq(1).css("margin-left","138px");
+	$(".floatDiv").eq(1).css("margin-left","124px");
 //	/*鼠标进入链接*/
 //    $(document).on('mouseenter.collapse', '[data-toggle=collapse]', function(e) {
 //        var $this = $(this);
