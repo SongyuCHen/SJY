@@ -12,7 +12,8 @@
 <body>
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapper">
+	<div id="wrapperouter">
+	<div id="wrapperinner">
 		<div id="menu">
 			<div id="menu_left">
 				<div id="ok"></div>
@@ -67,6 +68,7 @@
 				</form>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

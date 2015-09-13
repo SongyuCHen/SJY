@@ -26,6 +26,7 @@
 	<jsp:include page="header.jsp" />
 
 	<div id="wrapper">
+
 		<div id="menu">
 			<div id="menu_left">
 				<div id="ok"></div>
@@ -87,7 +88,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="addRoleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<form action="${pageContext.request.contextPath}/role/addRole" id="addRoleForm"

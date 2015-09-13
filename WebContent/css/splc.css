@@ -8,7 +8,17 @@
     height:550px;
     background-image: url(../images/background07.jpg);
 }
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+}
 
+#wrapperinner{
+    margin: 0 auto;
+    padding:0;
+    border:0;
+    width:960px;
+    height:550px;
+}
 #menu_left{
     width:100px;
     height:25px;

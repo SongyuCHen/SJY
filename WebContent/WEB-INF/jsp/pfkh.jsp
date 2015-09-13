@@ -12,8 +12,8 @@
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-
-	<div id="wrapper">
+	<div id="wrapperouter">
+	<div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal"
 				action="${pageContext.request.contextPath}/pfkh/cx">
@@ -113,7 +113,7 @@
 			</div>
 		</div>
 	</div>
-	
+	</div>
 	<div id="hiddenValue">
 		<input type="text" id="curBm" value="${mpfkh.bmmc }" />
 		<input type="text" id="curXm" value="${mpfkh.ryxm }" />

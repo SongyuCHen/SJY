@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -98,23 +98,28 @@ $(function(){
    				        {
    				            name:'人数',
    				            type:'bar',
-   				        	itemStyle: {
+   				            itemStyle: {
    	   				    		normal: {
-   	   				    		color: function(params) {
-   	   	                        // build a color map as your need.
-   	   	                        var colorList = [
-									'#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
-									'#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
-									'#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0',
-									'#9ACD32','#FF7256','#87CEFA','#EEAD0E','#CD69C9'
-   	   	                        ];
-   	   	                        return colorList[params.dataIndex]
-   	   	                    },
    	   				    			label :{
    	   				    				show : true,
    	   				    				position : 'inside'
    	   				    			},
-   	   				    			color : '#33a3dc'
+   	   				    			color: function(params) {
+                        						//return "#"+("00000"+((1000000*params.dataIndex%16777215+0.5)>>0).toString(16)).slice(-6); 
+									 var colorList = [
+                         							 '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                          							 '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                           							'#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0',
+                          							 '#9ACD32','#FF7256','#87CEFA','#EEAD0E','#CD69C9',
+                          							'#ADFF2F','#EEEE00','#9AC0CD','#CD3278','#B23AEE',
+                          							'#AEEEEE','#7CCD7C','#DAA520','#EE0000','#EE7621',
+                          							'#9F79EE','#9AFF9A','#CD6600','#C0FF3E','#FFD700',
+                         							 '#EE7AE9','#ADD8E6','#EE8262','#F08080','#8FBC8F',
+                         							'#00EE00','#87CEFA','#EE9A00','#EED5D2','#FF7256',
+                          							'#FF00FF','#8DEEEE','#71C671','#B3EE3A','#EE2C2C'
+                        							];
+                        						return colorList[params.dataIndex]
+                    						}
    	   				    		}
    	   				 		},
    				            data:data.nums,
@@ -213,7 +218,22 @@ $(function(){
 	   				    				show : true,
 	   				    				position : 'inside'
 	   				    			},
-	   				    			color : '#33a3dc'
+	   				    			color: function(params) {
+                        						//return "#"+("00000"+((1000000*params.dataIndex%16777215+0.5)>>0).toString(16)).slice(-6); 
+									 var colorList = [
+                         							 '#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+                          							 '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+                           							'#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0',
+                          							 '#9ACD32','#FF7256','#87CEFA','#EEAD0E','#CD69C9',
+                          							'#ADFF2F','#EEEE00','#9AC0CD','#CD3278','#B23AEE',
+                          							'#AEEEEE','#7CCD7C','#DAA520','#EE0000','#EE7621',
+                          							'#9F79EE','#9AFF9A','#CD6600','#C0FF3E','#FFD700',
+                         							 '#EE7AE9','#ADD8E6','#EE8262','#F08080','#8FBC8F',
+                         							'#00EE00','#87CEFA','#EE9A00','#EED5D2','#FF7256',
+                          							'#FF00FF','#8DEEEE','#71C671','#B3EE3A','#EE2C2C'
+                        							];
+                        						return colorList[params.dataIndex]
+                    						}
 	   				    		}
 	   				 		},
    				            data:data.scores,
@@ -317,8 +337,8 @@ $(function(){
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-	
-	<div id="wrapper">
+	<div id="wrapperouter">
+	<div id="wrapperinner">
 		<div id="menu">
 			<div id="menu_left">
 				<div id="ok"></div>
@@ -390,7 +410,7 @@ $(function(){
 			<div id="bmpjf" style="height:450px;"></div>
 		</div>
 	</div>
-	
+	</div>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/jquery.dataTables.min.js"></script>
 	<!-- dataTables针对bootstrap的表格风格 -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/dataTables.bootstrap.js"></script>

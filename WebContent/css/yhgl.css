@@ -42,7 +42,17 @@
     background-image: url(../images/background07.jpg);
     background-repeat: repeat-y;
 }
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+}
 
+#wrapperinner{
+    margin: 0 auto;
+    padding:0;
+    border:0;
+    width:960px;
+    height:600px;
+}
 
 #menu_left{
     width:100px;

@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+}
 
+#wrapperinner{
+    margin: 0 auto;
+    padding:0;
+    border:0;
+    width:960px;
+    height:560px;
+}
 #wrapper {
 	margin: 0 auto;
 	padding: 0;

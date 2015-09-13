@@ -18,7 +18,17 @@
 		.15s;
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+#wrapperouter{
+	background-image: url(../images/background07.jpg);
+}
 
+#wrapperinner{
+    margin: 0 auto;
+    padding:0;
+    border:0;
+    width:960px;
+    height:480px;
+}
 #wrapper{
     margin: 0 auto;
     padding:0;
