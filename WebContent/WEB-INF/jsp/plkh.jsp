@@ -16,10 +16,10 @@
 
 <title>批量考评</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+
 	<div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal"
@@ -83,7 +83,7 @@
 			<input type="hidden" id="curQuarter" name="curQuarter" value="${curQuarter }" />
 		</div>
 	</div>
-	</div>
+
 	<!-- the modal for showing the detail pfkh -->
 	<div id="showDetailModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
 		<div class="modal-dialog">

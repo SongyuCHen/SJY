@@ -17,10 +17,10 @@
 
 <title>考核排名</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">>
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+
 	  <div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/khpm/cx">
@@ -87,7 +87,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+	
 	<div id="hiddenValue">
 		<input type="hidden" id="curKhzbmc" name="curKhzbmc" value="${curKhzbmc }" />
 		<input type="hidden" id="curBmlxmc" name="curBmlxmc" value="${curBmlxmc }" />

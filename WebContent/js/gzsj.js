@@ -584,7 +584,7 @@ $(document).ready(function(){
 		$("#gzsjxxEditReason").val("");
 		var bh = $(this).attr("data-bh");
 		$("#curGzsjxxBh").val(bh);
-		console.log(bh);
+
 		$(".reason").css({"display":"block"});
 	});
 	

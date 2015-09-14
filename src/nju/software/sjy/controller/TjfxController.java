@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 import nju.software.sjy.common.Constants;
 import nju.software.sjy.model.xy.TBm;
+import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TPfkh;
 import nju.software.sjy.model.xy.TRole;
 import nju.software.sjy.model.xy.TUser;
 import nju.software.sjy.service.BmService;
+import nju.software.sjy.service.GypzService;
 import nju.software.sjy.service.PfkhService;
 import nju.software.sjy.service.RoleService;
 import nju.software.sjy.service.UserService;
@@ -47,6 +49,9 @@ public class TjfxController {
 	
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private GypzService gypzService;
 	//@RequestMapping("/index")
 	public ModelAndView tjfx()
 	{
@@ -134,7 +139,8 @@ public class TjfxController {
 		int year = Integer.valueOf(request.getParameter("year"));
 		int quarter = Integer.valueOf(request.getParameter("quarter"));
 		int top_num = Constants.TOP_NUM;
-		List<TBm> bmList = bmService.getAllBm();
+		TGypz qtlx = gypzService.getGypzByLxMc(Constants.BMLX, Constants.QT);
+		List<TBm> bmList = bmService.getBmExcludeBmlx(qtlx);
 		int[] ryArr = new int[bmList.size()];
 		List<Integer> ryNum = new ArrayList<Integer>();
 		int index = 0;
@@ -175,7 +181,8 @@ public class TjfxController {
 		log.info("come to the yzjc page");
 		int year = Integer.valueOf(request.getParameter("year"));
 		int quarter = Integer.valueOf(request.getParameter("quarter"));
-		List<TBm> bmList = bmService.getAllBm();
+		TGypz qtlx = gypzService.getGypzByLxMc(Constants.BMLX, Constants.QT);
+		List<TBm> bmList = bmService.getBmExcludeBmlx(qtlx);
 		int[] allRyArr = new int[bmList.size()];
 		double[] scoreArr = new double[bmList.size()];
 		List<Double> averScore = new ArrayList<Double>();

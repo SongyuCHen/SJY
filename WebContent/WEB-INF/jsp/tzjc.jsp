@@ -377,9 +377,9 @@ $(function(){
 </script>
 <title>庭长决策</title>
 </head>
-<body>
+<body 	style="background-image:url(../images/background06.jpg); background-size:100%;">
 	<jsp:include page="header.jsp" />
-	<div id="wrapperouter">
+
 	<div id="wrapperinner">
 
 		<div id="menu">
@@ -494,7 +494,7 @@ $(function(){
 			<div id="fsbh" style="height:450px;"></div>
 		</div>
 	</div>
-	</div>
+	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/jquery.dataTables.min.js"></script>
 	<!-- dataTables针对bootstrap的表格风格 -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/dataTables.bootstrap.js"></script>

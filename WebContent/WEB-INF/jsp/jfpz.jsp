@@ -9,7 +9,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jfpz.js"></script>
 <title>加分配置</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	
 	<div id="wrapper">

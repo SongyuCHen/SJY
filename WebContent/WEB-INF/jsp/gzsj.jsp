@@ -21,10 +21,10 @@
 
 <title>工作实绩</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+	
 		<div id="wrapperinner">
 			<div id="menu">
 				<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/gzsj/cx">
@@ -158,7 +158,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 	
 	<div id="hiddenValue">
 		<input type="text" id="curBmmc" name="curBmmc" value="${curBmmc }" />
@@ -508,7 +508,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/jquery.dataTables.min.js"></script>
 	<!-- dataTables针对bootstrap的表格风格 -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/vendor/dataTables/js/dataTables.bootstrap.js"></script>

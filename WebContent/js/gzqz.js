@@ -165,10 +165,10 @@ $(document).ready(function(){
 	editGzsjGzqz = function(){
 		var tr = $("#gzsjConfigBtn").closest("tr");
 		var gzsjVal = tr.children("td:eq(3)").html();
-		console.log(gzsjVal);
+
 		$("#gzsjTotal").html(gzsjVal);
 		$("#editGzsjGzqz").modal('show');
-		console.log(gzxxLen);
+		
 	}
 	
 	/**
@@ -180,13 +180,13 @@ $(document).ready(function(){
 		var totalVal = 0;
 		for(var i=0;i<gzxxLen;i++){
 			var gzxxVal = $("#gzxx" + i).val();
-			console.log(gzxxVal);
+
 			totalVal += parseInt(gzxxVal, 10);
 		}
 		
 		gzsjVal = parseInt(gzsjVal, 10);
 		$("#editGzsjGzqz").modal('show');
-		console.log(gzxxLen);
+
 	}
 	
 	/**
@@ -198,7 +198,7 @@ $(document).ready(function(){
 		var totalVal = 0;
 		for(var i=0;i<gzxxLen;i++){
 			var gzxxVal = $("#gzxx" + i).val();
-			console.log(gzxxVal);
+
 			totalVal += parseInt(gzxxVal, 10);
 		}
 		

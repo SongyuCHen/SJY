@@ -18,10 +18,10 @@
 
 <title>规则类别</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+
 	   <div id="wrapperinner">
 		<div id="menu">
 			<div id="menu_left">
@@ -79,7 +79,7 @@
 			</div>
 		</div>
 	</div>	
-	</div>
+
 	
 	<!-- 增加规则 -->
 	<div id="addGzlbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">

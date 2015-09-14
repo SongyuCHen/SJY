@@ -20,8 +20,10 @@
 }
 
 #wrapperouter{
-	background-image: url(../images/background07.jpg);
-	background-repeat: repeat-y;
+	
+	/* background-image: url(../images/background07.jpg); 
+	height:680px;*/
+	float:inherit;
 }
 
 #wrapperinner{

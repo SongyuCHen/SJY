@@ -21,7 +21,7 @@
 
 <title>工作量对接</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	<div id="wrapperouter">
 	<div id="wrapperinner">

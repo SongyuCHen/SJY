@@ -16,10 +16,10 @@
 
 <title>规则权重</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+
 	  <div id="wrapperinner">
 		<div id="menu">
 			<div id="menu_left">
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 		</div>
-	</div>
+
 	
 	<input type="hidden" id="gzxxLen" value="${gzxxLen }" />
 	

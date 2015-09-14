@@ -22,7 +22,7 @@
 
 <title>权限管理</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
 
 	<div id="wrapper">

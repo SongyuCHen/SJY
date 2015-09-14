@@ -22,11 +22,11 @@
 
 <title>加分情形</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">>
 	
 	<jsp:include page="header.jsp" />
 	
-	<div id="wrapperouter">
+
 		<div id="wrapperinner">
 		<div id="menu">
 			<form id="searchForm" method="post" class="form-horizontal" action="${pageContext.request.contextPath}/jfqx/cx">
@@ -160,7 +160,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+	
 	<div id="hiddenValue">
 		<input type="text" id="curBmbh" value="${curBmbh}" />
 		<input type="text" id="curStartDate" value="${startDate}" />

@@ -6,6 +6,7 @@ body{
 
 #wrapperouter{
 	background-image: url('../images/background07.jpg') ;
+	 background-size:125%;
 }
 #wrappergztb{
 	width:960px;

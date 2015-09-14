@@ -11,9 +11,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/gztb.js"></script>
 <title>工作填报</title>
 </head>
-<body>
+<body style="background-image:url(../images/background07.jpg); background-size:105%;">
 	<jsp:include page="header.jsp" />
-	<div id="wrapperouter">
+
 	<div id="wrappergztb">
 		<c:forEach items="${mResList }" var="mres" varStatus="loop">
 			<c:choose>
@@ -57,7 +57,7 @@
 		</c:forEach>
 		
 	</div>
-	</div>
+
 	<div class="bottom_pic">
 	   <span>欢迎您！${USER.xm }</span>
 	</div>
