@@ -25,7 +25,7 @@
 		
 		<div id="content">
 			<div class="leftDesc">
-				<div class="jumbotron">
+				<div class="jumbotron" style="background-color: rgba(238, 238, 238, 0);">
 					<h1>方法说明</h1>
 					<p>工作量按照每个分项值计算</p>
 					<p>分项值最高为${maxScore }分，最低为${minScore }分</p>
