@@ -7,6 +7,7 @@ import nju.software.sjy.mapper.MGzs;
 import nju.software.sjy.mapper.MKtjl;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -62,27 +63,27 @@ public class SjygzlKtxqDaoImpl extends SjygzlBaseDaoImpl implements
 		String ksSplit[],jsSplit[];
 		for(Object o:ktjlList){
 			Object[] i = (Object[]) o;
-			ks = i[0].toString();
-			js = i[1].toString();
+			ks = i[0].toString().replace("：", ":");
+			js = i[1].toString().replace("：", ":");
 			if(!ks.trim().equals("") && !js.trim().equals("")){
 				ksSplit = ks.split(":");
 				jsSplit = js.split(":");
-				if(ksSplit[0].trim().equals(""))
+				if(ksSplit[0]==null || ksSplit[0].trim().equals("") || !StringUtils.isNumeric(ksSplit[0].trim()))
 					ksHour = 0;
 				else
 					ksHour = Integer.valueOf(ksSplit[0]);
 				
-				if(jsSplit[0].trim().equals(""))
+				if(jsSplit[0]==null || jsSplit[0].trim().equals("") || !StringUtils.isNumeric(jsSplit[0].trim()))
 					jsHour = 0;
 				else
 					jsHour = Integer.valueOf(jsSplit[0]);
 				
-				if(ksSplit[1].trim().equals(""))
+				if(ksSplit.length<2 || ksSplit[1].trim().equals("") || !StringUtils.isNumeric(ksSplit[1].trim()))
 					ksMin = 0;
 				else
 					ksMin = Integer.valueOf(ksSplit[1]);
 				
-				if(jsSplit[1].trim().equals(""))
+				if(jsSplit.length<2 || jsSplit[1].trim().equals("") || !StringUtils.isNumeric(jsSplit[1].trim()))
 					jsMin = 0;
 				else
 					jsMin = Integer.valueOf(jsSplit[1]);

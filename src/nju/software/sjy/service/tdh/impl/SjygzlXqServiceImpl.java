@@ -35,6 +35,7 @@ import nju.software.sjy.service.RoleService;
 import nju.software.sjy.service.UserService;
 import nju.software.sjy.service.tdh.SjygzlXqService;
 import nju.software.sjy.util.DateUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -256,11 +257,15 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		if(TODAY.compareTo(JSSJ)>0) TODAY=JSSJ;
 		TRole sjy = roleService.getRoleByRolename(Constants.SJY);
 		List<TUser> useList = userService.getUserByRole(sjy);
+		sjy = roleService.getRoleByRolename(Constants.SJY_NOTKH);//不参加考核的书记员页获取工作量
+		useList.addAll(userService.getUserByRole(sjy));
 		List<TGypz> gypzs = gypzService.getGypzByLx(Constants.GZSJ);
 		TGzsj gzsj;
 		MGzs mgzs;
 		for(TUser user:useList){
 			gzsj = new TGzsj();
+			if(user.getXm().equals("袁飞"))
+				System.out.println(user.getXm());
 			YHDM = user.getUserid();
 			TGzsj oldGzsj = gzsjService.getGzsjByUserDate(user, yearMonth);
 			Map<String, Integer> value = new HashMap<String, Integer>();

@@ -18,6 +18,7 @@ import nju.software.sjy.convertor.UserConvertor;
 import nju.software.sjy.mapper.MResource;
 import nju.software.sjy.mapper.MUser;
 import nju.software.sjy.model.xy.TBm;
+import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TResource;
 import nju.software.sjy.model.xy.TRole;
 import nju.software.sjy.model.xy.TUser;
@@ -351,14 +352,21 @@ public class UserController
 		String rolename = request.getParameter("addRole");
 		String username = request.getParameter("addUsername");
 		String password = request.getParameter("addPassword");
-		
+		List<TGypz> pzList = gypzService.getGypzByLx("法院代码");
+		String fydm="";
+		if(pzList!=null && pzList.size()>0){
+			TGypz gypz = pzList.get(0);
+			fydm = gypz.getMc();
+		}
+			
+		String userid = fydm.concat(username);
 		TBm bm = bmService.getBmByBmmc(bmmc);
 		TRole role = roleService.getRoleByRolename(rolename);
 		
 		synchronized(sync)
 		{
 			int bh = userService.getMaxBh() + 1;
-			TUser user = new TUser(bh, xm, bm, username, password, "", role);
+			TUser user = new TUser(bh, xm, bm, username, password, "", role, userid);
 			
 			userService.save(user);
 		}

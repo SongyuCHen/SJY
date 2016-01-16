@@ -102,6 +102,8 @@ public class Constants
 	
 	public final static String SJY = "书记员";
 	
+	public final static String SJY_NOTKH = "书记员（不参加考核）";
+	
 	public final static String SYJS = "所有角色";
 	
 	public final static String FYDM = "法院代码";

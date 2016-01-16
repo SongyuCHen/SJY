@@ -41,6 +41,20 @@ public class TUser implements java.io.Serializable
 		this.yhsf = yhsf;
 		this.role = role;
 	}
+	
+
+	public TUser(int rybh, String xm, TBm bm, String username, String password,
+			String yhsf, TRole role, String userid) {
+		super();
+		this.rybh = rybh;
+		this.xm = xm;
+		this.bm = bm;
+		this.username = username;
+		this.password = password;
+		this.yhsf = yhsf;
+		this.role = role;
+		this.userid = userid;
+	}
 
 	public int getRybh()
 	{

@@ -16,11 +16,71 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/aspectjweaver-1.8.5.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-core-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-bindings-soap-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-bindings-xml-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-databinding-jaxb-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-frontend-jaxws-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-frontend-simple-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-transports-http-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-ws-addr-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-wsdl-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/cxf-rt-ws-policy-3.0.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/ehcache-2.8.5.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/ehcache-core-2.4.3.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/hibernate-commons-annotations-3.2.0.Final.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/hibernate-core-3.6.7.Final.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/hibernate-ehcache-3.6.7.Final.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/javassist-3.12.1.GA.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jaxb-api-2.2.12.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jaxb-core-2.2.11.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jaxb-impl-2.2.11.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jaxb-xjc-2.1.13.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/mail-1.4.3.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/neethi-3.0.3.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/poi-3.7.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-aop-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-beans-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-context-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-context-support-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-core-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-expression-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-jdbc-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-orm-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-security-acl-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-security-config-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-security-core-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-security-taglibs-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-security-web-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-test-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-tx-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-web-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/spring-webmvc-3.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/stax2-api-3.1.4.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/sybase-driver-12.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/woodstox-core-asl-4.4.1.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/wsdl4j-1.6.3.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/xml-resolver-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/新建文件夹 (2)/lib/xmlschema-core-2.2.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

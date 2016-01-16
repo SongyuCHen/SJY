@@ -226,7 +226,7 @@ public class GzsjController
 		
 		gzsjService.updateGzsj(gzsj);
 		
-		
+	
 		
 		/* 3.编辑工作实绩子表 */
 		/* 获取所有的配置项 */
