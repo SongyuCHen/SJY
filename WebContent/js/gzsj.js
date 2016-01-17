@@ -727,6 +727,59 @@ $(document).ready(function(){
 		    validEditTime=true;
 		}
 	});
+	
+//	$("#dbsjy-edit").on('click', function(event){
+//		console.log("dbsjy-edit");
+//	});
+//	
+//	$("#dbsjy-save").on('click', function(event){
+//		console.log("dbsjy-save");
+//	});
+	
+	$(document).on('click', ".dbsjy-edit", function(){
+		console.log("dbsjy-edit");
+		
+		var td = event.target.parentElement;
+		var siblings = td.children;
+		var tr = td.parentElement;
+		
+		var span = siblings[0];
+		var select = siblings[1];
+		var btn_edit = siblings[2];
+		var btn_save = siblings[3];
+		
+		btn_edit.classList.remove('dbsjy-show');
+		btn_edit.classList.add('dbsjy-hide');
+		
+		btn_save.classList.remove('dbsjy-hide');
+		btn_save.classList.add('dbsjy-show');
+		
+		console.log("yyy");
+		
+	});
+	
+	$(document).on('click', ".dbsjy-save", function(){
+		console.log("dbsjy-save");
+		
+		var td = event.target.parentElement;
+		var siblings = td.children;
+		var tr = td.parentElement;
+		
+		var span = siblings[0];
+		var select = siblings[1];
+		var btn_edit = siblings[2];
+		var btn_save = siblings[3];
+		
+		btn_save.classList.remove('dbsjy-show');
+		btn_save.classList.add('dbsjy-hide');
+		
+		btn_edit.classList.remove('dbsjy-hide');
+		btn_edit.classList.add('dbsjy-show');
+		
+		console.log("yyy");
+		
+		
+	});
 });
 
 
