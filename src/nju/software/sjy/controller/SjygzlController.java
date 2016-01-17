@@ -22,17 +22,25 @@ import nju.software.sjy.model.tdh.SjygzlBlxq;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 import nju.software.sjy.model.tdh.SjygzlSdxq;
 import nju.software.sjy.model.xy.LocalBlxq;
+import nju.software.sjy.model.xy.LocalBlxqId;
 import nju.software.sjy.model.xy.LocalKtxq;
+import nju.software.sjy.model.xy.LocalKtxqId;
 import nju.software.sjy.model.xy.LocalSdxq;
+import nju.software.sjy.model.xy.LocalSdxqId;
 import nju.software.sjy.model.xy.LocalZdjz;
 import nju.software.sjy.model.xy.LocalZdjzId;
+import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TGzsj;
+import nju.software.sjy.model.xy.TGzsjxx;
+import nju.software.sjy.model.xy.TUser;
 import nju.software.sjy.service.GypzService;
 import nju.software.sjy.service.GzsjService;
+import nju.software.sjy.service.GzsjxxService;
 import nju.software.sjy.service.UserService;
 import nju.software.sjy.service.tdh.SjygzlXqService;
 import nju.software.sjy.util.DateUtil;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,6 +63,9 @@ public class SjygzlController
 	
 	@Autowired
 	private GzsjService gzsjService;
+	
+	@Autowired
+	private GzsjxxService gzsjxxService;
 	
 	@Autowired
 	private GypzService gypzService;
@@ -185,12 +196,12 @@ public class SjygzlController
 		}
 	}
 	
+	//此处缺少权限设定
 	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	@ResponseBody
 	public void changeSjy(HttpServletRequest request, HttpServletResponse response){
 		String attrname = request.getParameter("attrname");
 		String xzsjy = request.getParameter("xzsjy");
-		String xzsjyname = request.getParameter("xzsjyname");
 		String gzsjbh = request.getParameter("gzsjbh");
 		String fydm = request.getParameter("fydm");
 		String ahdm = request.getParameter("ahdm");
@@ -201,18 +212,143 @@ public class SjygzlController
 			LocalZdjz localZdjz= sjygzlXqService.getLocalZdjzById(id);
 			if(null != localZdjz){
 				localZdjz.setXzsjy(xzsjy);
-				localZdjz.setXzsjymc(xzsjyname);
+				TUser otherSjy = userService.getUserByUserid(xzsjy);
+				localZdjz.setXzsjymc(otherSjy.getXm());
 				sjygzlXqService.updateLocalZdjz(localZdjz);
 				//更新工作实绩细项 若代办书记员和书记员不同，说明工作被代办了
 				if(!localZdjz.getSjy().equals(localZdjz.getXzsjy())){
 					TGzsj gzsj = gzsjService.getGzsjByBh(Integer.valueOf(gzsjbh));
-					
+					TGypz gypz = gypzService.getGypzByLxMc("工作实绩", Constants.ZDJZ);
+					TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+					int sz = gzsjxx.getSz() - localZdjz.getZjys() - localZdjz.getFjys();
+					gzsjxx.setSz(sz);
+					gzsjxxService.update(gzsjxx);					
+					TGzsj otherGzsj = gzsjService.getGzsjByUserDate(otherSjy, gzsj.getRq());
+					TGzsjxx otherGzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(otherGzsj, gypz);
+					sz = otherGzsjxx.getSz() + localZdjz.getZjys() + localZdjz.getFjys();
+					otherGzsjxx.setSz(sz);
+					gzsjxxService.update(otherGzsjxx);
 				}
 			}
 		}
-		
+		else if(attrname.equals(Constants.TSJL) || attrname.equals(Constants.TSLJSJ)){
+			LocalKtxqId id = new LocalKtxqId(fydm,ahdm,attr1,attr2);
+			LocalKtxq localKtxq = sjygzlXqService.getLocalKtxqById(id);
+			if(null != localKtxq){
+				localKtxq.setXzsjy(xzsjy);
+				TUser otherSjy = userService.getUserByUserid(xzsjy);
+				localKtxq.setXzsjymc(otherSjy.getXm());
+				sjygzlXqService.updateLocalKtxq(localKtxq);
+				if(!localKtxq.getSjy().equals(localKtxq.getXzsjy())){
+					TGzsj gzsj = gzsjService.getGzsjByBh(Integer.valueOf(gzsjbh));
+					//更新开庭记录
+					TGypz gypz = gypzService.getGypzByLxMc("工作实绩", Constants.TSJL);
+					TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+					int sz = gzsjxx.getSz() - 1;
+					gzsjxx.setSz(sz);
+					gzsjxxService.update(gzsjxx);					
+					TGzsj otherGzsj = gzsjService.getGzsjByUserDate(otherSjy, gzsj.getRq());
+					TGzsjxx otherGzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(otherGzsj, gypz);
+					sz = otherGzsjxx.getSz() + 1;
+					otherGzsjxx.setSz(sz);
+					gzsjxxService.update(otherGzsjxx);
+					//更新开庭分钟数
+					int fzs = getFzs(localKtxq.getId().getKssj(),localKtxq.getJssj());
+					gypz = gypzService.getGypzByLxMc("工作实绩", Constants.TSLJSJ);
+					gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+					sz = gzsjxx.getSz() - fzs;
+					gzsjxx.setSz(sz);
+					gzsjxxService.update(gzsjxx);
+					otherGzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(otherGzsj, gypz);
+					sz = otherGzsjxx.getSz() + fzs;
+					otherGzsjxx.setSz(sz);
+					gzsjxxService.update(otherGzsjxx);
+				}
+			}
+			
+		}
+		else if(attrname.equals(Constants.SDS)){
+			LocalSdxqId id = new LocalSdxqId(fydm,ahdm,attr1,attr2);
+			LocalSdxq localSdxq = sjygzlXqService.getLocalSdxqById(id);
+			if(null != localSdxq){
+				localSdxq.setXzsjy(xzsjy);
+				TUser otherSjy = userService.getUserByUserid(xzsjy);
+				localSdxq.setXzsjymc(otherSjy.getXm());
+				sjygzlXqService.updateLocalSdxq(localSdxq);
+				if(!localSdxq.getSjy().equals(localSdxq.getXzsjy())){
+					TGzsj gzsj = gzsjService.getGzsjByBh(Integer.valueOf(gzsjbh));
+					TGypz gypz = gypzService.getGypzByLxMc("工作实绩", Constants.SDS);
+					TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+					int sz = gzsjxx.getSz() - 1;
+					gzsjxx.setSz(sz);
+					gzsjxxService.update(gzsjxx);					
+					TGzsj otherGzsj = gzsjService.getGzsjByUserDate(otherSjy, gzsj.getRq());
+					TGzsjxx otherGzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(otherGzsj, gypz);
+					sz = otherGzsjxx.getSz() + 1;
+					otherGzsjxx.setSz(sz);
+					gzsjxxService.update(otherGzsjxx);
+				}
+			}
+		}
+		else if(attrname.equals(Constants.BLZS)){
+			LocalBlxqId id = new LocalBlxqId(fydm,ahdm,attr1);
+			LocalBlxq localBlxq = sjygzlXqService.getLocalBlxqById(id);
+			if(null != localBlxq){
+				localBlxq.setXzsjy(xzsjy);
+				TUser otherSjy = userService.getUserByUserid(xzsjy);
+				localBlxq.setXzsjymc(otherSjy.getXm());
+				sjygzlXqService.updateLocalBlxq(localBlxq);
+				if(!localBlxq.getSjy().equals(localBlxq.getXzsjy())){
+					TGzsj gzsj = gzsjService.getGzsjByBh(Integer.valueOf(gzsjbh));
+					TGypz gypz = gypzService.getGypzByLxMc("工作实绩", Constants.BLZS);
+					TGzsjxx gzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(gzsj, gypz);
+					int sz = gzsjxx.getSz() - localBlxq.getWjzs();
+					gzsjxx.setSz(sz);
+					gzsjxxService.update(gzsjxx);					
+					TGzsj otherGzsj = gzsjService.getGzsjByUserDate(otherSjy, gzsj.getRq());
+					TGzsjxx otherGzsjxx = gzsjxxService.getGzsjxxByGzsjGzxx(otherGzsj, gypz);
+					sz = otherGzsjxx.getSz() + localBlxq.getWjzs();
+					otherGzsjxx.setSz(sz);
+					gzsjxxService.update(otherGzsjxx);
+				}
+
+			}
+		}
 	}
 	
+	public int getFzs(String kssj,String jssj){
+		String ks="",js="";
+		int fzs = 0,ksHour,ksMin,jsHour,jsMin;
+		ks = kssj.toString().replace("：", ":");
+		js = jssj.toString().replace("：", ":");
+		String ksSplit[],jsSplit[];
+		if(!ks.trim().equals("") && !js.trim().equals("")){
+			ksSplit = ks.split(":");
+			jsSplit = js.split(":");
+			if(ksSplit[0]==null || ksSplit[0].trim().equals("") || !StringUtils.isNumeric(ksSplit[0].trim()))
+				ksHour = 0;
+			else
+				ksHour = Integer.valueOf(ksSplit[0]);
+			
+			if(jsSplit[0]==null || jsSplit[0].trim().equals("") || !StringUtils.isNumeric(jsSplit[0].trim()))
+				jsHour = 0;
+			else
+				jsHour = Integer.valueOf(jsSplit[0]);
+			
+			if(ksSplit.length<2 || ksSplit[1].trim().equals("") || !StringUtils.isNumeric(ksSplit[1].trim()))
+				ksMin = 0;
+			else
+				ksMin = Integer.valueOf(ksSplit[1]);
+			
+			if(jsSplit.length<2 || jsSplit[1].trim().equals("") || !StringUtils.isNumeric(jsSplit[1].trim()))
+				jsMin = 0;
+			else
+				jsMin = Integer.valueOf(jsSplit[1]);
+
+			fzs += (jsHour-ksHour) * 60 + (jsMin - ksMin);
+		}
+		return fzs;
+	}
 	
 	@RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
 	public ModelAndView downloadExcel() throws UnsupportedEncodingException
