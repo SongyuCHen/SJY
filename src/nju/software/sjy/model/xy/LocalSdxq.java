@@ -16,7 +16,7 @@ public class LocalSdxq implements java.io.Serializable {
 	private String xzsjy;
 	private String xzsjymc;
 	private String sddz;
-
+	private String ysdrq;
 	public LocalSdxq() {
 	}
 
@@ -107,6 +107,14 @@ public class LocalSdxq implements java.io.Serializable {
 
 	public void setSddz(String sddz) {
 		this.sddz = sddz;
+	}
+
+	public String getYsdrq() {
+		return ysdrq;
+	}
+
+	public void setYsdrq(String ysdrq) {
+		this.ysdrq = ysdrq;
 	}
 
 }

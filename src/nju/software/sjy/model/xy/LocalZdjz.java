@@ -1,5 +1,7 @@
 package nju.software.sjy.model.xy;
 
+import java.util.Date;
+
 public class LocalZdjz implements java.io.Serializable{
 
 	/**
@@ -15,6 +17,7 @@ public class LocalZdjz implements java.io.Serializable{
 	private String xzsjymc;
 	private Integer zjys;
 	private Integer fjys;
+	private String zzsj;
 	public LocalZdjz(){
 		
 	}
@@ -84,5 +87,14 @@ public class LocalZdjz implements java.io.Serializable{
 	public void setFjys(Integer fjys) {
 		this.fjys = fjys;
 	}
+
+	public String getZzsj() {
+		return zzsj;
+	}
+
+	public void setZzsj(String zzsj) {
+		this.zzsj = zzsj;
+	}
+
 	
 }

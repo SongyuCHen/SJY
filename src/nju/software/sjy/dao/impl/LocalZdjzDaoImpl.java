@@ -37,4 +37,16 @@ public class LocalZdjzDaoImpl extends BaseDaoImpl implements LocalZdjzDao {
 			return list.get(0);
 	}
 
+	@Override
+	public List<LocalZdjz> getLocalZdjzByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		DetachedCriteria c = DetachedCriteria.forClass(LocalZdjz.class);
+		c.add(Restrictions.eq("id.fydm", fjm));
+		c.add(Restrictions.or(Restrictions.eq("sjy", yhdm), Restrictions.eq("xzsjy", yhdm)));
+		c.add(Restrictions.ge("zzsj", kssj));
+		c.add(Restrictions.le("zzsj", jssj));
+		return getHibernateTemplate().findByCriteria(c);
+	}
+
 }

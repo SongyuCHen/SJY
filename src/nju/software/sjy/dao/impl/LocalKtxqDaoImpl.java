@@ -40,4 +40,17 @@ public class LocalKtxqDaoImpl extends BaseDaoImpl implements LocalKtxqDao {
 		getHibernateTemplate().save(localKtxq);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<LocalKtxq> getLocalKtxqByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		DetachedCriteria c = DetachedCriteria.forClass(LocalKtxq.class);
+		c.add(Restrictions.eq("id.fydm", fjm));
+		c.add(Restrictions.or(Restrictions.eq("sjy", yhdm), Restrictions.eq("xzsjy", yhdm)));
+		c.add(Restrictions.ge("id.ktrq", kssj));
+		c.add(Restrictions.le("id.ktrq", jssj));
+		return getHibernateTemplate().findByCriteria(c);
+	}
+
 }

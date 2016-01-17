@@ -42,5 +42,8 @@
         <property name="sddz" type="string">
             <column name="SDDZ" />
         </property>
+        <property name="ysdrq" type="string">
+            <column name="YSDRQ" length="50"  />
+        </property>
     </class>
 </hibernate-mapping>

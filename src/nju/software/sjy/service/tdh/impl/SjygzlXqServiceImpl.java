@@ -250,6 +250,7 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 				localSdxq.setSjymc(user.getXm());
 				localSdxq.setXzsjy(yhdm);
 				localSdxq.setXzsjymc(user.getXm());
+				localSdxq.setYsdrq(sdxq.getYsdrq());
 				localSdxqDao.save(localSdxq);
 			}
 		}
@@ -304,6 +305,7 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 						localZdjz.setXzsjymc(user.getXm());
 						localZdjz.setZjys(da.getZjys());
 						localZdjz.setFjys(da.getFjys());
+						localZdjz.setZzsj(ajxx.getGdjsrq());
 						localZdjzDao.save(localZdjz);
 					}else if(localZdjz.getZjys()!=da.getZjys() || localZdjz.getFjys()!=da.getFjys()){
 						localZdjz.setZjys(da.getZjys());
@@ -399,7 +401,7 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 			value.put("装订卷宗", mgzs.getGzs());			
 			mgzs = getSdsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);     
 			value.put("送达数", mgzs.getGzs());
-			updateLocalSdxq(FYDM.getMc(),YHDM,KSSJ,TODAY);             //更新本地庭审记录
+			updateLocalSdxq(FYDM.getMc(),YHDM,KSSJ,TODAY);             //更新本地送达记录
 			mgzs = getBlsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);     //在获取笔录的时候更新本地
 			value.put("笔录字数", mgzs.getGzs());
 			mgzs = getKtljsjByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,TODAY);
@@ -462,5 +464,29 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		
 		return gzsjList;
 		
+	}
+	@Override
+	public List<LocalBlxq> getLocalBlxqByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		return localBlxqDao.getLocalBlxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+	}
+	@Override
+	public List<LocalKtxq> getLocalKtxqByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		return localKtxqDao.getLocalKtxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+	}
+	@Override
+	public List<LocalSdxq> getLocalSdxqByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		return localSdxqDao.getLocalSdxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+	}
+	@Override
+	public List<LocalZdjz> getLocalZdjzByFyAndYhdm(String fjm, String yhdm,
+			String kssj, String jssj) {
+		// TODO Auto-generated method stub
+		return localZdjzDao.getLocalZdjzByFyAndYhdm(fjm, yhdm, kssj, jssj);
 	}
 }
