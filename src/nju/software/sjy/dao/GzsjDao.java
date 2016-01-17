@@ -25,6 +25,8 @@ public interface GzsjDao
 	
 	List<TGzsj> getGzsjByBhArr(Integer[] bhArr);
 	
+	TGzsj getGzsjByUserNfYf(TUser user, int nf, int yf);
+	
 	List<TGzsj> getGzsjByUyUserNfJdZt(TUser user, int year, int startMonth, int endMonth, TGypz zt);
 	
 	List<TGzsj> getGzsjByUserBmDateRange(TUser user, TBm bm, String startDate, String endDate);

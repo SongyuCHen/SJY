@@ -6,6 +6,7 @@ public class MSjygzl implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	private MSjygzlId id;
+	
 	private String attr1;
 	
 	private String attr2;

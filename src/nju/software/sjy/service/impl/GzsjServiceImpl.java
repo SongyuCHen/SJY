@@ -104,4 +104,10 @@ public class GzsjServiceImpl implements GzsjService
 		return gzsjDao.getGzsjByUserDate(user, date);
 	}
 
+	@Override
+	public TGzsj getGzsjByUserNfYf(TUser user, int nf, int yf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

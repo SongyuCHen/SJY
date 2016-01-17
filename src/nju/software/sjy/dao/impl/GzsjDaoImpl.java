@@ -170,6 +170,12 @@ public class GzsjDaoImpl extends BaseDaoImpl implements GzsjDao
 		return list;
 	}
 
+	@Override
+	public TGzsj getGzsjByUserNfYf(TUser user, int nf, int yf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	
