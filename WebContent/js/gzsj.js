@@ -757,7 +757,7 @@ $(document).ready(function(){
 		// 初始化select下拉框
 		for(var i=0;i<dbsjyArray.length;i++){
 			var obj = dbsjyArray[i];
-			var option = "<option>" + obj.xm + "</option>";
+			var option = "<option id='" + obj.id + "'>" + obj.xm + "</option>";
 			
 			$(select).append(option);
 		}
@@ -789,6 +789,19 @@ $(document).ready(function(){
 		var select = siblings[1];
 		var btn_edit = siblings[2];
 		var btn_save = siblings[3];
+		var fydm_span = siblings[4];
+		var ahdm_span = siblings[5];
+		var attr1_span = siblings[6];
+		var attr2_span = siblings[7];
+		
+		var fydm = $(fydm_span).text();
+		var ahdm = $(ahdm_span).text();
+		var attr1 = $(attr1_span).text();
+		var attr2 = $(attr2_span).text();
+		
+		var attrname = $("#sjygzlTitle").text();
+		var xzsjy = $(select.selectedOptions).attr("id");// dbsjy id
+		var gzsjbh = $("#sjygzlGzsjbh").val();
 		
 		var dbsjy = $(select).val();
 		$(span).text(dbsjy);
@@ -807,7 +820,28 @@ $(document).ready(function(){
 		
 		console.log("yyy");
 		
-		
+		$.ajax({
+			cache:false,
+			type:"POST",
+			url:basePath + "/sjygzl/edit",
+			data:{
+				attrname: attrname,
+				xzsjy: xzsjy,
+				gzsjbh: gzsjbh,
+				fydm: fydm,
+				ahdm: ahdm,
+				attr1: attr1,
+				attr2: attr2
+			},
+			dataType:'json',
+			async:false,
+			success:function(data){
+				console.log("success");
+				
+			},
+			error:function(request){
+			}
+		});
 	});
 });
 

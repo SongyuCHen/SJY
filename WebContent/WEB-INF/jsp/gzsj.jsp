@@ -552,6 +552,10 @@
 							</select>
 							<button type="button" class="btn btn-success btn-sm dbsjy-show dbsjy-edit">编辑</button>
 							<button type="button" class="btn btn-success btn-sm dbsjy-hide dbsjy-save">保存</button>
+							<span class="dbsjy-hide">{{id.fydm}}</span>
+							<span class="dbsjy-hide">{{id.ahdm}}</span>
+							<span class="dbsjy-hide">{{id.attr1}}</span>
+							<span class="dbsjy-hide">{{id.attr2}}</span>
 						</td>
 					</tr>
 				{{/sjygzlList}}
