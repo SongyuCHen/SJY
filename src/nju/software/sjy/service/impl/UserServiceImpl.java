@@ -1,5 +1,6 @@
 package nju.software.sjy.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,10 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import nju.software.sjy.common.Constants;
+import nju.software.sjy.dao.RoleDao;
 import nju.software.sjy.dao.UserDao;
+import nju.software.sjy.mapper.MSjy;
 import nju.software.sjy.model.xy.TBm;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TRole;
@@ -19,7 +23,10 @@ public class UserServiceImpl implements UserService
 {
 	@Autowired
 	private UserDao userDao;
-
+	
+	@Autowired
+	private RoleDao roleDao;
+	
 	@Cacheable(value="sjyCache")
 	public TUser signIn(TUser user)
 	{
@@ -150,5 +157,27 @@ public class UserServiceImpl implements UserService
 	public TUser getUserByUserid(String userid)
 	{
 		return userDao.getUserByUserid(userid);
+	}
+
+	@Override
+	public List<MSjy> getAllSjy() {
+		// TODO Auto-generated method stub
+		TRole sjy = roleDao.getRoleByRolename(Constants.SJY);
+		List<TUser> useList = userDao.getUserByRole(sjy);
+		sjy = roleDao.getRoleByRolename(Constants.SJY_NOTKH);//不参加考核的书记员页获取工作量
+		useList.addAll(userDao.getUserByRole(sjy));
+		List<MSjy> sjyList = convertToSjy(useList);
+		return sjyList;
+	}
+	
+	public List<MSjy> convertToSjy(List<TUser> useList){
+		List<MSjy> sjyList = new ArrayList<MSjy>();
+		for(TUser user:useList){
+			MSjy sjy = new MSjy();
+			sjy.setId(user.getUserid());
+			sjy.setXm(user.getXm());
+			sjyList.add(sjy);
+		}
+		return sjyList;
 	}
 }

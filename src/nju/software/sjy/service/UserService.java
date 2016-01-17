@@ -2,6 +2,7 @@ package nju.software.sjy.service;
 
 import java.util.List;
 
+import nju.software.sjy.mapper.MSjy;
 import nju.software.sjy.model.xy.TBm;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TRole;
@@ -53,4 +54,6 @@ public interface UserService
 	List<TUser> getUserByRolelistExcludeQtbmlx(List<TRole> roleList, TGypz qtbmlx);
 	
 	TUser getUserByUserid(String userid);
+	
+	List<MSjy> getAllSjy();
 }

@@ -391,6 +391,9 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 			gzsj = new TGzsj();
 			YHDM = user.getUserid();
 			TGzsj oldGzsj = gzsjService.getGzsjByUserDate(user, yearMonth);
+			//假如用户已经确认，则工作量不再提取 状态处于用户已提交和记录未被退回之间
+			if(oldGzsj != null && oldGzsj.getZt().getPzbh()>0 && oldGzsj.getZt().getPzbh()<5)
+				continue;
 			Map<String, Integer> value = new HashMap<String, Integer>();
 			mgzs = getAjsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);      //案件量太多，且案件的书记员不会产生变化
 			value.put("案件数", mgzs.getGzs());				

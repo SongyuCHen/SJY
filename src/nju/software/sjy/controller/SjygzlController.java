@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 import nju.software.sjy.common.Constants;
 import nju.software.sjy.common.SjygzlTools;
 import nju.software.sjy.convertor.SjygzlConvertor;
+import nju.software.sjy.mapper.MSjy;
 import nju.software.sjy.mapper.MSjygzl;
 import nju.software.sjy.model.da.ViewDajgSsfzxx;
 import nju.software.sjy.model.tdh.SjygzlAjxx;
@@ -27,6 +28,7 @@ import nju.software.sjy.model.xy.LocalZdjz;
 import nju.software.sjy.model.xy.TGzsj;
 import nju.software.sjy.service.GypzService;
 import nju.software.sjy.service.GzsjService;
+import nju.software.sjy.service.UserService;
 import nju.software.sjy.service.tdh.SjygzlXqService;
 import nju.software.sjy.util.DateUtil;
 
@@ -55,6 +57,9 @@ public class SjygzlController
 	
 	@Autowired
 	private GypzService gypzService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(value="/detail", method=RequestMethod.POST)
 	@ResponseBody
@@ -159,12 +164,13 @@ public class SjygzlController
 			List<LocalBlxq> blxqList = sjygzlXqService.getLocalBlxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
 			sjygzlList = SjygzlConvertor.convertLocalBlxq(blxqList);
 		}
-		
+		List<MSjy> sjyList = userService.getAllSjy();
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("attrname", attrname);
 		jsonObj.put("gzsjbh", gzsjbh);
 		jsonObj.put("attrList", attrList);
 		jsonObj.put("sjygzlList", sjygzlList);
+		jsonObj.put("sjyLisy", sjyList);
 		
 		try 
 		{
@@ -177,6 +183,18 @@ public class SjygzlController
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	@ResponseBody
+	public void changeSjy(HttpServletRequest request, HttpServletResponse response){
+		String attrname = request.getParameter("attrname");
+		String xzsjy = request.getParameter("xzsjy");
+		String xzsjyname = request.getParameter("xzsjyname");
+		String nf = request.getParameter("nf");
+		String yf = request.getParameter("yf");
+		
+	}
+	
 	
 	@RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
 	public ModelAndView downloadExcel() throws UnsupportedEncodingException

@@ -2,6 +2,7 @@ package nju.software.sjy.dao;
 
 import java.util.List;
 
+
 import nju.software.sjy.model.xy.TBm;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TRole;
@@ -64,4 +65,5 @@ public interface UserDao
 	List<TUser> getUserByRolelistExcludeQtbmlx(List<TRole> roleList, TGypz qtbmlx);
 	
 	TUser getUserByUserid(String userid);
+
 }

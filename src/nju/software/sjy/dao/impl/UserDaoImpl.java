@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import nju.software.sjy.dao.UserDao;
+
 import nju.software.sjy.model.xy.TBm;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TRole;
@@ -351,5 +352,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao
 		
 		return null;
 	}
-	
+
+
 }
