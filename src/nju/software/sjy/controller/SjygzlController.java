@@ -190,8 +190,10 @@ public class SjygzlController
 		String attrname = request.getParameter("attrname");
 		String xzsjy = request.getParameter("xzsjy");
 		String xzsjyname = request.getParameter("xzsjyname");
-		String nf = request.getParameter("nf");
-		String yf = request.getParameter("yf");
+		String gzsjbh = request.getParameter("gzsjbh");
+		if(attrname.equals(Constants.ZDJZ)){
+			
+		}
 		
 	}
 	

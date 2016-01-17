@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MSjygzl implements Serializable
 {
 	private static final long serialVersionUID = 1L;
-
+	private MSjygzlId id;
 	private String attr1;
 	
 	private String attr2;
@@ -34,6 +34,18 @@ public class MSjygzl implements Serializable
 		this.attr4 = attr4;
 		this.attr5 = attr5;
 		this.attr6 = attr6;
+	}
+
+
+
+	public MSjygzlId getId() {
+		return id;
+	}
+
+
+
+	public void setId(MSjygzlId id) {
+		this.id = id;
 	}
 
 

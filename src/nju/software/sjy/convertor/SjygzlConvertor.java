@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nju.software.sjy.mapper.MSjygzl;
+import nju.software.sjy.mapper.MSjygzlId;
 import nju.software.sjy.model.da.ViewDajgSsfzxx;
 import nju.software.sjy.model.tdh.SjygzlAjxx;
 import nju.software.sjy.model.tdh.SjygzlBlxq;
@@ -65,7 +66,12 @@ public class SjygzlConvertor
 	public static MSjygzl convertLocalBlxq(LocalBlxq blxq)
 	{
 		MSjygzl ms = new MSjygzl();
+		MSjygzlId id = new MSjygzlId();
 		if(blxq!=null){
+			id.setAhdm(blxq.getId().getAhdm());
+			id.setFydm(blxq.getId().getFydm());
+			id.setAttr1(blxq.getId().getXh());
+			ms.setId(id);
 			ms.setAttr1(blxq.getAh());
 			ms.setAttr2(blxq.getBlmc());
 			ms.setAttr3(blxq.getWjzs().toString());
@@ -95,7 +101,13 @@ public class SjygzlConvertor
 	
 	public static MSjygzl convertLocalKtxq(LocalKtxq ktxq){
 		MSjygzl ms = new MSjygzl();
+		MSjygzlId id = new MSjygzlId();
 		if(ktxq!=null){
+			id.setAhdm(ktxq.getId().getAhdm());
+			id.setFydm(ktxq.getId().getFydm());
+			id.setAttr1(ktxq.getId().getKtrq());
+			id.setAttr2(ktxq.getId().getKssj());
+			ms.setId(id);
 			ms.setAttr1(ktxq.getAh());
 			ms.setAttr2(ktxq.getDd());
 			ms.setAttr3(ktxq.getId().getKtrq());
@@ -128,7 +140,13 @@ public class SjygzlConvertor
 	public static MSjygzl convertLocalSdxq(LocalSdxq sdxq)
 	{
 		MSjygzl ms = new MSjygzl();
+		MSjygzlId id = new MSjygzlId();
 		if(sdxq!=null){
+			id.setAhdm(sdxq.getId().getAhdm());
+			id.setFydm(sdxq.getId().getFydm());
+			id.setAttr1(sdxq.getId().getSdrq());
+			id.setAttr2(sdxq.getId().getSddsr());
+			ms.setId(id);
 			ms.setAttr1(sdxq.getAh());
 			ms.setAttr2(sdxq.getId().getSddsr());
 			ms.setAttr3(sdxq.getSddz());
@@ -146,7 +164,11 @@ public class SjygzlConvertor
 	public static MSjygzl convertLocalZdjz(LocalZdjz zdjz)
 	{
 		MSjygzl ms = new MSjygzl();
+		MSjygzlId id = new MSjygzlId();
 		if(zdjz!=null){
+			id.setAhdm(zdjz.getId().getAhdm());
+			id.setFydm(zdjz.getId().getFydm());
+			ms.setId(id);
 			ms.setAttr1(zdjz.getAh());
 			if(zdjz.getZjys()!=null)
 				ms.setAttr2(zdjz.getZjys().toString());
