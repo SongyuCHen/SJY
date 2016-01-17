@@ -4,6 +4,9 @@
 var basePath = getRootPath();
 
 $(document).ready(function(){
+	
+	var dbsjyArray = [];
+	
 	//查看
 	$(".gzsjxxViewBtn").on('click',function(){
 		//天尊这边调用
@@ -511,6 +514,9 @@ $(document).ready(function(){
 			dataType:'json',
 			async:false,
 			success:function(data){
+				
+				dbsjyArray = data.sjyLisy;
+				
 				var title = data.attrname;
 				$("#sjygzlTitle").html(title);
 				
@@ -726,6 +732,82 @@ $(document).ready(function(){
 		    $("#validateEditSj").append('<label class="control-label"><span class="glyphicon glyphicon-ok validateSuc"></span></label>');
 		    validEditTime=true;
 		}
+	});
+	
+//	$("#dbsjy-edit").on('click', function(event){
+//		console.log("dbsjy-edit");
+//	});
+//	
+//	$("#dbsjy-save").on('click', function(event){
+//		console.log("dbsjy-save");
+//	});
+	
+	$(document).on('click', ".dbsjy-edit", function(){
+		console.log("dbsjy-edit");
+		
+		var td = event.target.parentElement;
+		var siblings = td.children;
+		var tr = td.parentElement;
+		
+		var span = siblings[0];
+		var select = siblings[1];
+		var btn_edit = siblings[2];
+		var btn_save = siblings[3];
+		
+		// 初始化select下拉框
+		for(var i=0;i<dbsjyArray.length;i++){
+			var obj = dbsjyArray[i];
+			var option = "<option>" + obj.xm + "</option>";
+			
+			$(select).append(option);
+		}
+		
+		span.classList.remove('dbsjy-show');
+		span.classList.add('dbsjy-hide');
+		
+		select.classList.remove('dbsjy-hide');
+		select.classList.add('dbsjy-show');
+		
+		btn_edit.classList.remove('dbsjy-show');
+		btn_edit.classList.add('dbsjy-hide');
+		
+		btn_save.classList.remove('dbsjy-hide');
+		btn_save.classList.add('dbsjy-show');
+		
+		console.log("yyy");
+		
+	});
+	
+	$(document).on('click', ".dbsjy-save", function(){
+		console.log("dbsjy-save");
+		
+		var td = event.target.parentElement;
+		var siblings = td.children;
+		var tr = td.parentElement;
+		
+		var span = siblings[0];
+		var select = siblings[1];
+		var btn_edit = siblings[2];
+		var btn_save = siblings[3];
+		
+		var dbsjy = $(select).val();
+		$(span).text(dbsjy);
+		
+		select.classList.remove('dbsjy-show');
+		select.classList.add('dbsjy-hide');
+		
+		span.classList.remove('dbsjy-hide');
+		span.classList.add('dbsjy-show');
+		
+		btn_save.classList.remove('dbsjy-show');
+		btn_save.classList.add('dbsjy-hide');
+		
+		btn_edit.classList.remove('dbsjy-hide');
+		btn_edit.classList.add('dbsjy-show');
+		
+		console.log("yyy");
+		
+		
 	});
 });
 

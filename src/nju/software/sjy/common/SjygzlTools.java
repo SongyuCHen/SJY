@@ -25,6 +25,10 @@ public class SjygzlTools
 	
 	public final static String GDRQ = "归档日期";
 	
+	public final static String SJY = "书记员";
+	
+	public final static String DBSJY = "代办书记员";
+	
 	public final static String BLWJM = "笔录文件名";
 	
 	public final static String BLZS = "笔录字数";
@@ -59,21 +63,29 @@ public class SjygzlTools
 		ZDJZ_ATTR_LIST.add(AJH);
 		ZDJZ_ATTR_LIST.add(YS);
 		ZDJZ_ATTR_LIST.add(GDRQ);
+		ZDJZ_ATTR_LIST.add(SJY);
+		ZDJZ_ATTR_LIST.add(DBSJY);
 		
 		BLXQ_ATTR_LIST.add(AH);
 		BLXQ_ATTR_LIST.add(BLWJM);
 		BLXQ_ATTR_LIST.add(BLZS);
 		BLXQ_ATTR_LIST.add(BLTJSJ);
+		BLXQ_ATTR_LIST.add(SJY);
+		BLXQ_ATTR_LIST.add(DBSJY);
 		
 		KTXQ_ATTR_LIST.add(AH);
 		KTXQ_ATTR_LIST.add(KTDD);
 		KTXQ_ATTR_LIST.add(KTRQ);
 		KTXQ_ATTR_LIST.add(KSSJ_JSSJ);
+		KTXQ_ATTR_LIST.add(SJY);
+		KTXQ_ATTR_LIST.add(DBSJY);
 		
 		SDXQ_ATTR_LIST.add(AH);
 		SDXQ_ATTR_LIST.add(SDDSR);
 		SDXQ_ATTR_LIST.add(SDDZ);
 		SDXQ_ATTR_LIST.add(SDRQ);
+		SDXQ_ATTR_LIST.add(SJY);
+		SDXQ_ATTR_LIST.add(DBSJY);
 		
 		SJYGZL_MAP.put(ZDJZ, ZDJZ_ATTR_LIST);
 		SJYGZL_MAP.put(BLZS, BLXQ_ATTR_LIST);
