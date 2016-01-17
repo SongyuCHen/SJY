@@ -9,6 +9,10 @@ import nju.software.sjy.model.tdh.SjygzlAjxx;
 import nju.software.sjy.model.tdh.SjygzlBlxq;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 import nju.software.sjy.model.tdh.SjygzlSdxq;
+import nju.software.sjy.model.xy.LocalBlxq;
+import nju.software.sjy.model.xy.LocalKtxq;
+import nju.software.sjy.model.xy.LocalSdxq;
+import nju.software.sjy.model.xy.LocalZdjz;
 import nju.software.sjy.util.DateUtil;
 
 public class SjygzlConvertor
@@ -58,6 +62,22 @@ public class SjygzlConvertor
 		return ms;
 	}
 	
+	public static MSjygzl convertLocalBlxq(LocalBlxq blxq)
+	{
+		MSjygzl ms = new MSjygzl();
+		if(blxq!=null){
+			ms.setAttr1(blxq.getAh());
+			ms.setAttr2(blxq.getBlmc());
+			ms.setAttr3(blxq.getWjzs().toString());
+			String rq = DateUtil.getFormatStr(blxq.getZzrq());
+			ms.setAttr4(rq);
+			ms.setAttr5(blxq.getSjymc());
+			ms.setAttr6(blxq.getXzsjymc());
+		}
+		
+		return ms;
+	}
+	
 	public static MSjygzl convertKtxq(SjygzlKtxq ktxq)
 	{
 		MSjygzl ms = new MSjygzl();
@@ -68,6 +88,22 @@ public class SjygzlConvertor
 			ms.setAttr4(ktxq.getId().getKssj());
 			String dateRange = ktxq.getId().getKssj() + "-" + ktxq.getJssj();
 			ms.setAttr4(dateRange);
+		}
+		
+		return ms;
+	}
+	
+	public static MSjygzl convertLocalKtxq(LocalKtxq ktxq){
+		MSjygzl ms = new MSjygzl();
+		if(ktxq!=null){
+			ms.setAttr1(ktxq.getAh());
+			ms.setAttr2(ktxq.getDd());
+			ms.setAttr3(ktxq.getId().getKtrq());
+			ms.setAttr4(ktxq.getId().getKssj());
+			String dateRange = ktxq.getId().getKssj() + "-" + ktxq.getJssj();
+			ms.setAttr4(dateRange);
+			ms.setAttr5(ktxq.getSjymc());
+			ms.setAttr6(ktxq.getXzsjymc());
 		}
 		
 		return ms;
@@ -89,6 +125,44 @@ public class SjygzlConvertor
 		return ms;
 	}
 	
+	public static MSjygzl convertLocalSdxq(LocalSdxq sdxq)
+	{
+		MSjygzl ms = new MSjygzl();
+		if(sdxq!=null){
+			ms.setAttr1(sdxq.getAh());
+			ms.setAttr2(sdxq.getId().getSddsr());
+			ms.setAttr3(sdxq.getSddz());
+			if(sdxq.getId().getSdrq().trim().equals("") ||sdxq.getId().getSdrq() == null)
+				ms.setAttr4(sdxq.getYsdrq());
+			else
+				ms.setAttr4(sdxq.getId().getSdrq());
+			ms.setAttr5(sdxq.getSjymc());
+			ms.setAttr6(sdxq.getXzsjymc());
+		}
+		
+		return ms;
+	}
+	
+	public static MSjygzl convertLocalZdjz(LocalZdjz zdjz)
+	{
+		MSjygzl ms = new MSjygzl();
+		if(zdjz!=null){
+			ms.setAttr1(zdjz.getAh());
+			if(zdjz.getZjys()!=null)
+				ms.setAttr2(zdjz.getZjys().toString());
+			else
+				ms.setAttr2("0");
+			if(zdjz.getFjys()!=null)
+				ms.setAttr3(zdjz.getFjys().toString());
+			else
+				ms.setAttr3("0");
+			ms.setAttr4(zdjz.getZzsj());
+			ms.setAttr5(zdjz.getSjymc());
+			ms.setAttr6(zdjz.getXzsjymc());
+		}
+		
+		return ms;
+	}
 	public static List<MSjygzl> convertBlxq(List<SjygzlBlxq> blxqList)
 	{
 		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
@@ -97,6 +171,21 @@ public class SjygzlConvertor
 			for(SjygzlBlxq blxq : blxqList)
 			{
 				MSjygzl ms = convertBlxq(blxq);
+				mlist.add(ms);
+			}
+		}
+		
+		return mlist;
+	}
+	
+	public static List<MSjygzl> convertLocalBlxq(List<LocalBlxq> blxqList)
+	{
+		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
+		if(blxqList != null)
+		{
+			for(LocalBlxq blxq : blxqList)
+			{
+				MSjygzl ms = convertLocalBlxq(blxq);
 				mlist.add(ms);
 			}
 		}
@@ -119,6 +208,21 @@ public class SjygzlConvertor
 		return mlist;
 	}
 	
+	public static List<MSjygzl> convertLocalKtxq(List<LocalKtxq> ktxqList)
+	{
+		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
+		if(ktxqList != null)
+		{
+			for(LocalKtxq ktxq : ktxqList)
+			{
+				MSjygzl ms = convertLocalKtxq(ktxq);
+				mlist.add(ms);
+			}
+		}
+		
+		return mlist;
+	}
+	
 	public static List<MSjygzl> convertSdxq(List<SjygzlSdxq> sdxqList)
 	{
 		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
@@ -127,6 +231,36 @@ public class SjygzlConvertor
 			for(SjygzlSdxq sdxq : sdxqList)
 			{
 				MSjygzl ms = convertSdxq(sdxq);
+				mlist.add(ms);
+			}
+		}
+		
+		return mlist;
+	}
+	
+	public static List<MSjygzl> convertLocalSdxq(List<LocalSdxq> sdxqList)
+	{
+		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
+		if(sdxqList != null)
+		{
+			for(LocalSdxq sdxq : sdxqList)
+			{
+				MSjygzl ms = convertLocalSdxq(sdxq);
+				mlist.add(ms);
+			}
+		}
+		
+		return mlist;
+	}
+	
+	public static List<MSjygzl> convertLocalZdjz(List<LocalZdjz> zdjzList)
+	{
+		List<MSjygzl> mlist = new ArrayList<MSjygzl>();
+		if(zdjzList != null)
+		{
+			for(LocalZdjz sdxq : zdjzList)
+			{
+				MSjygzl ms = convertLocalZdjz(sdxq);
 				mlist.add(ms);
 			}
 		}

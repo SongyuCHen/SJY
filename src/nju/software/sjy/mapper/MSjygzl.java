@@ -14,18 +14,29 @@ public class MSjygzl implements Serializable
 	
 	private String attr4;
 	
+	private String attr5;
+	
+	private String attr6;
+	
 	public MSjygzl()
 	{
 		
 	}
 	
-	public MSjygzl(String attr1, String attr2, String attr3, String attr4)
-	{
+	
+
+	public MSjygzl(String attr1, String attr2, String attr3, String attr4,
+			String attr5, String attr6) {
+		super();
 		this.attr1 = attr1;
 		this.attr2 = attr2;
 		this.attr3 = attr3;
 		this.attr4 = attr4;
+		this.attr5 = attr5;
+		this.attr6 = attr6;
 	}
+
+
 
 	public String getAttr1()
 	{
@@ -65,6 +76,30 @@ public class MSjygzl implements Serializable
 	public void setAttr4(String attr4)
 	{
 		this.attr4 = attr4;
+	}
+
+
+
+	public String getAttr5() {
+		return attr5;
+	}
+
+
+
+	public void setAttr5(String attr5) {
+		this.attr5 = attr5;
+	}
+
+
+
+	public String getAttr6() {
+		return attr6;
+	}
+
+
+
+	public void setAttr6(String attr6) {
+		this.attr6 = attr6;
 	}
 	
 }

@@ -20,6 +20,10 @@ import nju.software.sjy.model.tdh.SjygzlAjxx;
 import nju.software.sjy.model.tdh.SjygzlBlxq;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 import nju.software.sjy.model.tdh.SjygzlSdxq;
+import nju.software.sjy.model.xy.LocalBlxq;
+import nju.software.sjy.model.xy.LocalKtxq;
+import nju.software.sjy.model.xy.LocalSdxq;
+import nju.software.sjy.model.xy.LocalZdjz;
 import nju.software.sjy.model.xy.TGzsj;
 import nju.software.sjy.service.GypzService;
 import nju.software.sjy.service.GzsjService;
@@ -87,49 +91,74 @@ public class SjygzlController
 		
 		List<MSjygzl> sjygzlList = null;
 		
-		if(attrname.equals(Constants.ZDJZ))
-		{
-			List<SjygzlAjxx> ajxxList = sjygzlXqService.getAjxxByFydmAndGdjsrq(fjm, yhdm, kssj, jssj);
-			if(ajxxList != null)
-			{
-				sjygzlList = new ArrayList<MSjygzl>();
-				for(SjygzlAjxx ajxx : ajxxList)
-				{
-//					VSsjcbmgdWjys vw = sjygzlXqService.getWjysByLSH(ajxx.getId().getAhdm());
-//					if(vw != null){
-//						MSjygzl ms = SjygzlConvertor.convertAjxx(ajxx, vw);
+//		if(attrname.equals(Constants.ZDJZ))
+//		{
+//			List<SjygzlAjxx> ajxxList = sjygzlXqService.getAjxxByFydmAndGdjsrq(fjm, yhdm, kssj, jssj);
+//			if(ajxxList != null)
+//			{
+//				sjygzlList = new ArrayList<MSjygzl>();
+//				for(SjygzlAjxx ajxx : ajxxList)
+//				{
+////					VSsjcbmgdWjys vw = sjygzlXqService.getWjysByLSH(ajxx.getId().getAhdm());
+////					if(vw != null){
+////						MSjygzl ms = SjygzlConvertor.convertAjxx(ajxx, vw);
+////						sjygzlList.add(ms);
+////					}
+//					ViewDajgSsfzxx da = sjygzlXqService.getDaysByAhdm(ajxx.getId().getAhdm());
+//					if(da != null){
+//						MSjygzl ms = SjygzlConvertor.convertAjxx(ajxx, da);
 //						sjygzlList.add(ms);
 //					}
-					ViewDajgSsfzxx da = sjygzlXqService.getDaysByAhdm(ajxx.getId().getAhdm());
-					if(da != null){
-						MSjygzl ms = SjygzlConvertor.convertAjxx(ajxx, da);
-						sjygzlList.add(ms);
-					}
-				}
-			}
+//				}
+//			}
+//			
+//		}
+//		else if(attrname.equals(Constants.TSJL))
+//		{
+//			List<SjygzlKtxq> ktxqList = sjygzlXqService.getKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
+//			sjygzlList = SjygzlConvertor.convertKtxq(ktxqList);
+//		}
+//		else if(attrname.equals(Constants.TSLJSJ))
+//		{
+//			List<SjygzlKtxq> ktxqList = sjygzlXqService.getKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
+//			sjygzlList = SjygzlConvertor.convertKtxq(ktxqList);
+//		}
+//		else if(attrname.equals(Constants.SDS))
+//		{
+//			List<SjygzlSdxq> sdxqList = sjygzlXqService.getSdxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+//			sjygzlList = SjygzlConvertor.convertSdxq(sdxqList);
+//		}
+//		else if(attrname.equals(Constants.BLZS))
+//		{
+//			List<SjygzlBlxq> blxqList = sjygzlXqService.getBlxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+//			sjygzlList = SjygzlConvertor.convertBlxq(blxqList);
+//		}
+		if(attrname.equals(Constants.ZDJZ))
+		{
+			List<LocalZdjz> zdjzList = sjygzlXqService.getLocalZdjzByFyAndYhdm(fjm, yhdm, kssj, jssj);
+			sjygzlList = SjygzlConvertor.convertLocalZdjz(zdjzList);
 			
 		}
 		else if(attrname.equals(Constants.TSJL))
 		{
-			List<SjygzlKtxq> ktxqList = sjygzlXqService.getKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
-			sjygzlList = SjygzlConvertor.convertKtxq(ktxqList);
+			List<LocalKtxq> ktxqList = sjygzlXqService.getLocalKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
+			sjygzlList = SjygzlConvertor.convertLocalKtxq(ktxqList);
 		}
 		else if(attrname.equals(Constants.TSLJSJ))
 		{
-			List<SjygzlKtxq> ktxqList = sjygzlXqService.getKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
-			sjygzlList = SjygzlConvertor.convertKtxq(ktxqList);
+			List<LocalKtxq> ktxqList = sjygzlXqService.getLocalKtxqByFyAndYhdm(fjm, yhdm, kssj, today);
+			sjygzlList = SjygzlConvertor.convertLocalKtxq(ktxqList);
 		}
 		else if(attrname.equals(Constants.SDS))
 		{
-			List<SjygzlSdxq> sdxqList = sjygzlXqService.getSdxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
-			sjygzlList = SjygzlConvertor.convertSdxq(sdxqList);
+			List<LocalSdxq> sdxqList = sjygzlXqService.getLocalSdxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+			sjygzlList = SjygzlConvertor.convertLocalSdxq(sdxqList);
 		}
 		else if(attrname.equals(Constants.BLZS))
 		{
-			List<SjygzlBlxq> blxqList = sjygzlXqService.getBlxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
-			sjygzlList = SjygzlConvertor.convertBlxq(blxqList);
+			List<LocalBlxq> blxqList = sjygzlXqService.getLocalBlxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+			sjygzlList = SjygzlConvertor.convertLocalBlxq(blxqList);
 		}
-
 		
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("attrname", attrname);
