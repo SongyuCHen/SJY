@@ -748,6 +748,12 @@ $(document).ready(function(){
 		var btn_edit = siblings[2];
 		var btn_save = siblings[3];
 		
+		span.classList.remove('dbsjy-show');
+		span.classList.add('dbsjy-hide');
+		
+		select.classList.remove('dbsjy-hide');
+		select.classList.add('dbsjy-show');
+		
 		btn_edit.classList.remove('dbsjy-show');
 		btn_edit.classList.add('dbsjy-hide');
 		
@@ -769,6 +775,12 @@ $(document).ready(function(){
 		var select = siblings[1];
 		var btn_edit = siblings[2];
 		var btn_save = siblings[3];
+		
+		select.classList.remove('dbsjy-show');
+		select.classList.add('dbsjy-hide');
+		
+		span.classList.remove('dbsjy-hide');
+		span.classList.add('dbsjy-show');
 		
 		btn_save.classList.remove('dbsjy-show');
 		btn_save.classList.add('dbsjy-hide');

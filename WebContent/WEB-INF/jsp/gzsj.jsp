@@ -549,7 +549,9 @@
 						<td>
 							<span class="dbsjy-show dbsjy-span">{{attr6}}</span>
 							<select class="hide dbsjy-hide dbsjy-select">
-								
+								{{#sjyLisy}}
+									<option>{{xm}}</option>
+								{{/sjyLisy}}
 							</select>
 							<button type="button" class="btn btn-success btn-sm dbsjy-show dbsjy-edit">编辑</button>
 							<button type="button" class="btn btn-success btn-sm dbsjy-hide dbsjy-save">保存</button>
