@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-9 0:52:07 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="nju.software.sjy.model.xy.LocalZdjz" table="SJYGZL_ZDJZ" schema="dbo" catalog="SJY">
+        <composite-id name="id" class="nju.software.sjy.model.xy.LocalZdjzId">
+            <key-property name="fydm" type="string">
+                <column name="FYDM" length="10" />
+            </key-property>
+            <key-property name="ahdm" type="string">
+                <column name="AHDM" length="20" />
+            </key-property>           
+        </composite-id>
+        <property name="ah" type="string">
+            <column name="AH" length="50" />
+        </property>       
+        <property name="sjy" type="string">
+            <column name="SJY" length="50" />
+        </property>
+        <property name="sjymc" type="string">
+            <column name="SJYMC" length="20" />
+        </property>
+        <property name="xzsjy" type="string">
+            <column name="XZSJY" length="20" />
+        </property>
+        <property name="xzsjymc" type="string">
+            <column name="XZSJYMC" length="20" />
+        </property>
+        <property name="zjys" type="java.lang.Integer">
+            <column name="ZJYS" />
+        </property>
+        <property name="fjys" type="java.lang.Integer">
+            <column name="FJYS" />
+        </property>
+    </class>
+</hibernate-mapping>
