@@ -4,6 +4,9 @@
 var basePath = getRootPath();
 
 $(document).ready(function(){
+	
+	var dbsjyArray = [];
+	
 	//查看
 	$(".gzsjxxViewBtn").on('click',function(){
 		//天尊这边调用
@@ -511,6 +514,9 @@ $(document).ready(function(){
 			dataType:'json',
 			async:false,
 			success:function(data){
+				
+				dbsjyArray = data.sjyLisy;
+				
 				var title = data.attrname;
 				$("#sjygzlTitle").html(title);
 				
@@ -748,6 +754,14 @@ $(document).ready(function(){
 		var btn_edit = siblings[2];
 		var btn_save = siblings[3];
 		
+		// 初始化select下拉框
+		for(var i=0;i<dbsjyArray.length;i++){
+			var obj = dbsjyArray[i];
+			var option = "<option>" + obj.xm + "</option>";
+			
+			$(select).append(option);
+		}
+		
 		span.classList.remove('dbsjy-show');
 		span.classList.add('dbsjy-hide');
 		
@@ -775,6 +789,9 @@ $(document).ready(function(){
 		var select = siblings[1];
 		var btn_edit = siblings[2];
 		var btn_save = siblings[3];
+		
+		var dbsjy = $(select).val();
+		$(span).text(dbsjy);
 		
 		select.classList.remove('dbsjy-show');
 		select.classList.add('dbsjy-hide');
