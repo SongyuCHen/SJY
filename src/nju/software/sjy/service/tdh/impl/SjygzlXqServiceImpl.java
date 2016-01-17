@@ -495,41 +495,54 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 	@Override
 	public LocalBlxq getLocalBlxqById(LocalBlxqId id) {
 		// TODO Auto-generated method stub
-		return null;
+		String fjm = id.getFydm();
+		String ahdm = id.getAhdm();
+		String xh = id.getXh();
+		return localBlxqDao.getBlxqById(fjm, ahdm, xh);
 	}
 	@Override
 	public LocalKtxq getLocalKtxqById(LocalKtxqId id) {
 		// TODO Auto-generated method stub
-		return null;
+		String fjm = id.getFydm();
+		String ahdm = id.getAhdm();
+		String ktrq = id.getKtrq();
+		String kssj = id.getKssj();
+		return localKtxqDao.getLocalKtxqByFydm(fjm, ahdm, ktrq, kssj);
 	}
 	@Override
 	public LocalSdxq getLocalSdxqById(LocalSdxqId id) {
 		// TODO Auto-generated method stub
-		return null;
+		String fjm = id.getFydm();
+		String ahdm = id.getAhdm();
+		String sdrq = id.getSdrq();
+		String sddsr = id.getSddsr();
+		return localSdxqDao.getSdxqById(fjm, ahdm, sdrq, sddsr);
 	}
 	@Override
 	public LocalZdjz getLocalZdjzById(LocalZdjzId id) {
 		// TODO Auto-generated method stub
-		return null;
+		String fjm = id.getFydm();
+		String ahdm = id.getAhdm();
+		return localZdjzDao.getZdjzById(fjm, ahdm);
 	}
 	@Override
 	public void updateLocalBlxq(LocalBlxq localBlxq) {
 		// TODO Auto-generated method stub
-		
+		localBlxqDao.update(localBlxq);
 	}
 	@Override
 	public void updateLocalKtxq(LocalKtxq localKtxq) {
 		// TODO Auto-generated method stub
-		
+		localKtxqDao.updateLocalKtxq(localKtxq);
 	}
 	@Override
 	public void updateLocalSdxq(LocalSdxq localSdxq) {
 		// TODO Auto-generated method stub
-		
+		localSdxqDao.update(localSdxq);
 	}
 	@Override
 	public void updateLocalZdjz(LocalZdjz localZdjz) {
 		// TODO Auto-generated method stub
-		
+		localZdjzDao.update(localZdjz);
 	}
 }
