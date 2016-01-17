@@ -25,6 +25,7 @@ import nju.software.sjy.model.xy.LocalBlxq;
 import nju.software.sjy.model.xy.LocalKtxq;
 import nju.software.sjy.model.xy.LocalSdxq;
 import nju.software.sjy.model.xy.LocalZdjz;
+import nju.software.sjy.model.xy.LocalZdjzId;
 import nju.software.sjy.model.xy.TGzsj;
 import nju.software.sjy.service.GypzService;
 import nju.software.sjy.service.GzsjService;
@@ -191,8 +192,18 @@ public class SjygzlController
 		String xzsjy = request.getParameter("xzsjy");
 		String xzsjyname = request.getParameter("xzsjyname");
 		String gzsjbh = request.getParameter("gzsjbh");
+		String fydm = request.getParameter("fydm");
+		String ahdm = request.getParameter("ahdm");
+		String attr1 = request.getParameter("attr1");
+		String attr2 = request.getParameter("attr2");
 		if(attrname.equals(Constants.ZDJZ)){
-			
+			LocalZdjzId id = new LocalZdjzId(fydm,ahdm);
+			LocalZdjz localZdjz= sjygzlXqService.getLocalZdjzById(id);
+			if(null != localZdjz){
+				localZdjz.setXzsjy(xzsjy);
+				localZdjz.setXzsjymc(xzsjyname);
+				sjygzlXqService.updateLocalZdjz(localZdjz);
+			}
 		}
 		
 	}

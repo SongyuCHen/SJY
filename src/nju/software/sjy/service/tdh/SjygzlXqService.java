@@ -9,9 +9,13 @@ import nju.software.sjy.model.tdh.SjygzlBlxq;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 import nju.software.sjy.model.tdh.SjygzlSdxq;
 import nju.software.sjy.model.xy.LocalBlxq;
+import nju.software.sjy.model.xy.LocalBlxqId;
 import nju.software.sjy.model.xy.LocalKtxq;
+import nju.software.sjy.model.xy.LocalKtxqId;
 import nju.software.sjy.model.xy.LocalSdxq;
+import nju.software.sjy.model.xy.LocalSdxqId;
 import nju.software.sjy.model.xy.LocalZdjz;
+import nju.software.sjy.model.xy.LocalZdjzId;
 import nju.software.sjy.model.xy.TGzsj;
 
 public interface SjygzlXqService
@@ -41,6 +45,22 @@ public interface SjygzlXqService
 	List<LocalSdxq> getLocalSdxqByFyAndYhdm(String fjm, String yhdm, String kssj, String jssj);
 	
 	List<LocalZdjz> getLocalZdjzByFyAndYhdm(String fjm, String yhdm, String kssj, String jssj);
+	
+	LocalBlxq getLocalBlxqById(LocalBlxqId id);
+	
+	LocalKtxq getLocalKtxqById(LocalKtxqId id);
+	
+	LocalSdxq getLocalSdxqById(LocalSdxqId id);
+	
+	LocalZdjz getLocalZdjzById(LocalZdjzId id);
+	
+	void updateLocalBlxq(LocalBlxq localBlxq);
+	
+	void updateLocalKtxq(LocalKtxq localKtxq);
+	
+	void updateLocalSdxq(LocalSdxq localSdxq);
+	
+	void updateLocalZdjz(LocalZdjz localZdjz);
 	
 	ViewDajgSsfzxx getDaysByAhdm(String ahdm);
 	
