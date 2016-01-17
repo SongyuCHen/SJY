@@ -25,6 +25,8 @@ public interface GzsjService
 	
 	List<TGzsj> getGzsjByBhArr(Integer[] bhArr);
 	
+	TGzsj  getGzsjByUserNfYf(TUser user, int nf, int yf);
+	
 	List<TGzsj> getGzsjByUserNfJdZt(TUser user, int nf, int jd, TGypz finalZt);
 	
 	List<TGzsj> getGzsjByUserBmDateRange(TUser user, TBm bm, String startDate, String endDate);

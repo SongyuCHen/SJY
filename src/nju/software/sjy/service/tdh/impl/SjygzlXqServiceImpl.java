@@ -492,4 +492,44 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		// TODO Auto-generated method stub
 		return localZdjzDao.getLocalZdjzByFyAndYhdm(fjm, yhdm, kssj, jssj);
 	}
+	@Override
+	public LocalBlxq getLocalBlxqById(LocalBlxqId id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public LocalKtxq getLocalKtxqById(LocalKtxqId id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public LocalSdxq getLocalSdxqById(LocalSdxqId id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public LocalZdjz getLocalZdjzById(LocalZdjzId id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public void updateLocalBlxq(LocalBlxq localBlxq) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateLocalKtxq(LocalKtxq localKtxq) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateLocalSdxq(LocalSdxq localSdxq) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void updateLocalZdjz(LocalZdjz localZdjz) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -203,6 +203,11 @@ public class SjygzlController
 				localZdjz.setXzsjy(xzsjy);
 				localZdjz.setXzsjymc(xzsjyname);
 				sjygzlXqService.updateLocalZdjz(localZdjz);
+				//更新工作实绩细项 若代办书记员和书记员不同，说明工作被代办了
+				if(!localZdjz.getSjy().equals(localZdjz.getXzsjy())){
+					TGzsj gzsj = gzsjService.getGzsjByBh(Integer.valueOf(gzsjbh));
+					
+				}
 			}
 		}
 		
