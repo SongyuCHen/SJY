@@ -12,8 +12,6 @@ public class EajJz implements java.io.Serializable{
 	private EajJzId id;
 	private String mc;
 	private String wjgs;
-	
-
 	private Integer wjzs;
 	private Date zzsj;
 	public EajJz(){

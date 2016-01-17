@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 import nju.software.sjy.common.Constants;
+import nju.software.sjy.dao.LocalBlxqDao;
+import nju.software.sjy.dao.LocalKtxqDao;
+import nju.software.sjy.dao.LocalSdxqDao;
+import nju.software.sjy.dao.LocalZdjzDao;
 import nju.software.sjy.dao.da.DajgDao;
 import nju.software.sjy.dao.tdh.EajJzDao;
 import nju.software.sjy.dao.tdh.SjygzlAjxxDao;
@@ -21,6 +25,14 @@ import nju.software.sjy.model.tdh.SjygzlBlxq;
 import nju.software.sjy.model.tdh.SjygzlBlxqId;
 import nju.software.sjy.model.tdh.SjygzlKtxq;
 import nju.software.sjy.model.tdh.SjygzlSdxq;
+import nju.software.sjy.model.xy.LocalBlxq;
+import nju.software.sjy.model.xy.LocalBlxqId;
+import nju.software.sjy.model.xy.LocalKtxq;
+import nju.software.sjy.model.xy.LocalKtxqId;
+import nju.software.sjy.model.xy.LocalSdxq;
+import nju.software.sjy.model.xy.LocalSdxqId;
+import nju.software.sjy.model.xy.LocalZdjz;
+import nju.software.sjy.model.xy.LocalZdjzId;
 import nju.software.sjy.model.xy.TGypz;
 import nju.software.sjy.model.xy.TGzsj;
 import nju.software.sjy.model.xy.TGzsjxx;
@@ -35,6 +47,7 @@ import nju.software.sjy.service.RoleService;
 import nju.software.sjy.service.UserService;
 import nju.software.sjy.service.tdh.SjygzlXqService;
 import nju.software.sjy.util.DateUtil;
+import nju.software.sjy.util.StringUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -61,6 +74,18 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 
 	@Autowired
 	EajJzDao eajJzDao;
+	
+	@Autowired
+	private LocalKtxqDao localKtxqDao;
+	
+	@Autowired
+	private LocalBlxqDao localBlxqDao;
+	
+	@Autowired
+	private LocalSdxqDao localSdxqDao;
+	
+	@Autowired
+	private LocalZdjzDao localZdjzDao;
 	
 	@Autowired
 	private GypzService gypzService;
@@ -124,6 +149,14 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		return ktxqDao.getKtxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
 	}
 	
+	/**
+	 * 对本地的数据库更新放在获取笔录数的每一条记录判断中
+	 * @param fjm
+	 * @param yhdm
+	 * @param kssj
+	 * @param jssj
+	 * @return
+	 */
 	@Cacheable(value="tdhCache")
 	public MGzs getBlsByFyAndYhdm(String fjm, String yhdm,
 			String kssj, String jssj)
@@ -131,12 +164,32 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		Date ksrq = DateUtil.getDateByStr(kssj);
 		Date jsrq = DateUtil.getDateByStr(jssj);
 		MGzs mGzs= new MGzs();
-		int bls = 0;
+		int bls = 0;			
+		LocalBlxq localBlxq;
+		TUser user = userService.getUserByUserid(yhdm);
 		List<SjygzlAjxx> ajxxList = ajxxDao.getWGDAjxxByFydmAndYhdm(fjm, yhdm, kssj);
 		for(SjygzlAjxx aj:ajxxList){
 			List<EajJz> jzList = eajJzDao.getEajJzByAhdmAndZzsj(aj.getId().getAhdm(), ksrq, jsrq);
+
 			for(EajJz jz:jzList){
 				bls += jz.getWjzs();
+				localBlxq =localBlxqDao.getBlxqById(fjm,aj.getId().getAhdm(),jz.getId().getXh());
+				if(null==localBlxq){//若本地不存在，则更新到本地 本地不判断笔录的文件字数是否变化
+					localBlxq = new LocalBlxq();
+					localBlxq.setId(new LocalBlxqId(fjm,aj.getId().getAhdm(),jz.getId().getXh()));
+					localBlxq.setAh(aj.getAh());
+					localBlxq.setBlmc(jz.getMc());
+					localBlxq.setSjy(yhdm);
+					localBlxq.setSjymc(user.getXm());
+					localBlxq.setXzsjy(yhdm);
+					localBlxq.setXzsjymc(user.getXm());
+					localBlxq.setWjzs(jz.getWjzs());
+					localBlxq.setZzrq(jz.getZzsj());
+					localBlxqDao.save(localBlxq);
+				}else if(localBlxq.getWjzs()!=jz.getWjzs()){
+					localBlxq.setWjzs(jz.getWjzs());
+					localBlxqDao.update(localBlxq);
+				}
 			}
 					
 		}
@@ -146,6 +199,7 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		return mGzs;
 	}
 	
+
 	@Cacheable(value="tdhCache")
 	public MGzs getKtsByFyAndYhdm(String fjm, String yhdm,
 			String kssj, String jssj)
@@ -153,6 +207,53 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		return ktxqDao.getKtsByFy(fjm, yhdm, kssj, jssj);
 	}
 	
+	public void updateLocalKtxq(String fjm, String yhdm,
+			String kssj, String jssj){
+		List<SjygzlKtxq> ktxqList = ktxqDao.getKtxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+		LocalKtxq localKtxq;
+		TUser user = userService.getUserByUserid(yhdm);
+		for(SjygzlKtxq ktxq:ktxqList){
+			localKtxq = localKtxqDao.getLocalKtxqByFydm(fjm,ktxq.getId().getAhdm(),ktxq.getId().getKtrq(),ktxq.getId().getKssj());
+			if(null == localKtxq){
+				localKtxq = new LocalKtxq();
+				localKtxq.setId(new LocalKtxqId(fjm,ktxq.getId().getAhdm(),ktxq.getId().getKtrq(),ktxq.getId().getKssj()));
+				localKtxq.setAh(ktxq.getAh());
+				localKtxq.setDd(ktxq.getDd());
+				localKtxq.setJssj(ktxq.getJssj());
+				localKtxq.setSjy(yhdm);
+				localKtxq.setSjymc(user.getXm());
+				localKtxq.setXzsjy(yhdm);
+				localKtxq.setXzsjymc(user.getXm());
+				localKtxqDao.saveLocalKtxq(localKtxq);
+			}else if(!ktxq.getJssj().equals(localKtxq.getJssj())){
+				localKtxq.setJssj(ktxq.getJssj());
+				localKtxqDao.updateLocalKtxq(localKtxq);
+			}
+		}
+	}
+	
+	public void updateLocalSdxq(String fjm, String yhdm,
+			String kssj, String jssj){
+		List<SjygzlSdxq> sdxqList = sdxqDao.getSdxqByFyAndYhdm(fjm, yhdm, kssj, jssj);
+		LocalSdxq localSdxq;
+		TUser user = userService.getUserByUserid(yhdm);
+		for(SjygzlSdxq sdxq:sdxqList){
+			if(StringUtil.isNullOrNone(sdxq.getSddsr()) || StringUtil.isNullOrNone(sdxq.getSdrq()))
+				continue;
+			localSdxq = localSdxqDao.getSdxqById(fjm, sdxq.getId().getAhdm(), sdxq.getSdrq(), sdxq.getSddsr());
+			if(null == localSdxq){
+				localSdxq = new LocalSdxq();
+				localSdxq.setId(new LocalSdxqId(fjm, sdxq.getId().getAhdm(), sdxq.getSdrq(), sdxq.getSddsr()));
+				localSdxq.setAh(sdxq.getAh());
+				localSdxq.setSddz(sdxq.getSddz());
+				localSdxq.setSjy(yhdm);
+				localSdxq.setSjymc(user.getXm());
+				localSdxq.setXzsjy(yhdm);
+				localSdxq.setXzsjymc(user.getXm());
+				localSdxqDao.save(localSdxq);
+			}
+		}
+	}
 	@Cacheable(value="tdhCache")
 	public MGzs getKtljsjByFyAndYhdm(String fjm, String yhdm,
 			String kssj, String jssj)
@@ -172,6 +273,7 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 	{
 		return ajxxDao.getAjsByFydmAndYhdm(fjm, yhdm, kssj, jssj);
 	}
+
 	@Cacheable(value="tdhCache")
 	public MGzs getJzsByFyAndYhdm(String fjm, String yhdm,
 			String kssj, String jssj)
@@ -182,12 +284,32 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		if(ajxxList != null)
 		{
 			mGzs.setFjm(fjm);
-			mGzs.setYhdm(yhdm);			
+			mGzs.setYhdm(yhdm);
+			LocalZdjz localZdjz;
+			TUser user = userService.getUserByUserid(yhdm);
 			for(SjygzlAjxx ajxx : ajxxList)
 			{
 				ViewDajgSsfzxx da = getDaysByAhdm(ajxx.getId().getAhdm());
 				if(da != null){
 					gzs += (da.getZjys() + da.getFjys());
+					//更新本地卷宗
+					localZdjz = localZdjzDao.getZdjzById(fjm, ajxx.getId().getAhdm());
+					if(null == localZdjz){
+						localZdjz = new LocalZdjz();
+						localZdjz.setId(new LocalZdjzId(fjm, ajxx.getId().getAhdm()));
+						localZdjz.setAh(ajxx.getAh());
+						localZdjz.setSjy(yhdm);
+						localZdjz.setSjymc(user.getXm());
+						localZdjz.setXzsjy(yhdm);
+						localZdjz.setXzsjymc(user.getXm());
+						localZdjz.setZjys(da.getZjys());
+						localZdjz.setFjys(da.getFjys());
+						localZdjzDao.save(localZdjz);
+					}else if(localZdjz.getZjys()!=da.getZjys() || localZdjz.getFjys()!=da.getFjys()){
+						localZdjz.setZjys(da.getZjys());
+						localZdjz.setFjys(da.getFjys());
+						localZdjzDao.update(localZdjz);
+					}
 				}
 			}			
 		}
@@ -262,25 +384,26 @@ public class SjygzlXqServiceImpl implements SjygzlXqService
 		List<TGypz> gypzs = gypzService.getGypzByLx(Constants.GZSJ);
 		TGzsj gzsj;
 		MGzs mgzs;
+
 		for(TUser user:useList){
 			gzsj = new TGzsj();
-			if(user.getXm().equals("袁飞"))
-				System.out.println(user.getXm());
 			YHDM = user.getUserid();
 			TGzsj oldGzsj = gzsjService.getGzsjByUserDate(user, yearMonth);
 			Map<String, Integer> value = new HashMap<String, Integer>();
-			mgzs = getAjsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);
-			value.put("案件数", mgzs.getGzs());
+			mgzs = getAjsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);      //案件量太多，且案件的书记员不会产生变化
+			value.put("案件数", mgzs.getGzs());				
 			mgzs = getKtsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,TODAY);
 			value.put("庭审记录", mgzs.getGzs());
-			mgzs = getJzsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);
-			value.put("装订卷宗", mgzs.getGzs());
-			mgzs = getSdsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);
+			updateLocalKtxq(FYDM.getMc(),YHDM,KSSJ,TODAY);				//更新本地庭审记录
+			mgzs = getJzsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);      //在获取装订卷宗的时候更新本地
+			value.put("装订卷宗", mgzs.getGzs());			
+			mgzs = getSdsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);     
 			value.put("送达数", mgzs.getGzs());
-			mgzs = getBlsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);
+			updateLocalSdxq(FYDM.getMc(),YHDM,KSSJ,TODAY);             //更新本地庭审记录
+			mgzs = getBlsByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,JSSJ);     //在获取笔录的时候更新本地
 			value.put("笔录字数", mgzs.getGzs());
 			mgzs = getKtljsjByFyAndYhdm(FYDM.getMc(),YHDM,KSSJ,TODAY);
-			value.put("庭审累计时间", mgzs.getGzs());//开庭时间
+			value.put("庭审累计时间", mgzs.getGzs());                      //开庭时间 本地无需另行更新
 			if(oldGzsj == null){
 				//书记员工作量不存在，需要插入数据库
 				synchronized(sync)
