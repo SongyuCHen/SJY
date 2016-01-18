@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
 <%@include file="base.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/gztb.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/gztb.js"></script>

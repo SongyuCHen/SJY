@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
 <%@include file="base.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.css"/>
 
@@ -547,11 +548,11 @@
 						<td>{{attr4}}</td>
 						<td>{{attr5}}</td>
 						<td>
-							<span class="dbsjy-show dbsjy-span">{{attr6}}</span>
-							<select class="dbsjy-hide dbsjy-select">
+							<span class="dbsjy-show dbsjy-span" style="float:left;margin-left:10px;line-height:30px;">{{attr6}}</span>
+							<select class="dbsjy-hide dbsjy-select" style="float:left;margin-left:10px">
 							</select>
-							<button type="button" class="btn btn-success btn-sm dbsjy-show dbsjy-edit">编辑</button>
-							<button type="button" class="btn btn-success btn-sm dbsjy-hide dbsjy-save">保存</button>
+							<button type="button" class="btn btn-success btn-sm dbsjy-show dbsjy-edit" style="float:right;margin-right:10px">编辑</button>
+							<button type="button" class="btn btn-success btn-sm dbsjy-hide dbsjy-save" style="float:right;margin-right:10px">保存</button>
 							<span class="dbsjy-hide">{{id.fydm}}</span>
 							<span class="dbsjy-hide">{{id.ahdm}}</span>
 							<span class="dbsjy-hide">{{id.attr1}}</span>

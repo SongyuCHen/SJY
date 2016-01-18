@@ -47,7 +47,7 @@ public class LocalSdxqDaoImpl extends BaseDaoImpl implements LocalSdxqDao {
 		DetachedCriteria c = DetachedCriteria.forClass(LocalSdxq.class);
 		c.add(Restrictions.eq("id.fydm", fjm));
 		c.add(Restrictions.or(Restrictions.eq("sjy", yhdm), Restrictions.eq("xzsjy", yhdm)));
-		c.add(Restrictions.or(Restrictions.and(Restrictions.ge("sdrq", kssj), Restrictions.le("sdrq", jssj)), Restrictions.and(Restrictions.ge("ysdrq", kssj), Restrictions.le("ysdrq", jssj))));
+		c.add(Restrictions.or(Restrictions.and(Restrictions.ge("id.sdrq", kssj), Restrictions.le("id.sdrq", jssj)), Restrictions.and(Restrictions.ge("ysdrq", kssj), Restrictions.le("ysdrq", jssj))));
 		
 		return getHibernateTemplate().findByCriteria(c);
 	}

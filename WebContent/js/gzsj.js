@@ -745,9 +745,9 @@ $(document).ready(function(){
 	$(document).on('click', ".dbsjy-edit", function(){
 		console.log("dbsjy-edit");
 		
-		var td = event.target.parentElement;
-		var siblings = td.children;
-		var tr = td.parentElement;
+		var td = $(this).parent();
+		var siblings = $(td).children();
+		var tr = $(td).parent();
 		
 		var span = siblings[0];
 		var select = siblings[1];
@@ -758,32 +758,32 @@ $(document).ready(function(){
 		for(var i=0;i<dbsjyArray.length;i++){
 			var obj = dbsjyArray[i];
 			var option = "<option id='" + obj.id + "'>" + obj.xm + "</option>";
-			
+			//console.log("id:"+obj.id+":xm:"+obj.xm);
 			$(select).append(option);
 		}
 		
-		span.classList.remove('dbsjy-show');
-		span.classList.add('dbsjy-hide');
+		$(span).removeClass('dbsjy-show').prop("dbsjy-show",false);
+		$(span).addClass('dbsjy-hide').prop("dbsjy-hide",false);
 		
-		select.classList.remove('dbsjy-hide');
-		select.classList.add('dbsjy-show');
+		$(select).removeClass('dbsjy-hide').prop("dbsjy-hide",false);
+		$(select).addClass('dbsjy-show').prop("dbsjy-show",false);
 		
-		btn_edit.classList.remove('dbsjy-show');
-		btn_edit.classList.add('dbsjy-hide');
+		$(btn_edit).removeClass('dbsjy-show').prop("dbsjy-show",false);
+		$(btn_edit).addClass('dbsjy-hide').prop("dbsjy-hide",false);
 		
-		btn_save.classList.remove('dbsjy-hide');
-		btn_save.classList.add('dbsjy-show');
+		$(btn_save).removeClass('dbsjy-hide').prop("dbsjy-hide",false);
+		$(btn_save).addClass('dbsjy-show').prop("dbsjy-show",false);
 		
-		console.log("yyy");
+		console.log($(td).val());
 		
 	});
 	
 	$(document).on('click', ".dbsjy-save", function(){
 		console.log("dbsjy-save");
 		
-		var td = event.target.parentElement;
-		var siblings = td.children;
-		var tr = td.parentElement;
+		var td = $(this).parent();
+		var siblings = $(td).children();
+		var tr = $(td).parent();
 		
 		var span = siblings[0];
 		var select = siblings[1];
@@ -806,17 +806,17 @@ $(document).ready(function(){
 		var dbsjy = $(select).val();
 		$(span).text(dbsjy);
 		
-		select.classList.remove('dbsjy-show');
-		select.classList.add('dbsjy-hide');
+		$(select).removeClass('dbsjy-show');
+		$(select).addClass('dbsjy-hide');
 		
-		span.classList.remove('dbsjy-hide');
-		span.classList.add('dbsjy-show');
+		$(span).removeClass('dbsjy-hide');
+		$(span).addClass('dbsjy-show');
 		
-		btn_save.classList.remove('dbsjy-show');
-		btn_save.classList.add('dbsjy-hide');
+		$(btn_save).removeClass('dbsjy-show');
+		$(btn_save).addClass('dbsjy-hide');
 		
-		btn_edit.classList.remove('dbsjy-hide');
-		btn_edit.classList.add('dbsjy-show');
+		$(btn_edit).removeClass('dbsjy-hide');
+		$(btn_edit).addClass('dbsjy-show');
 		
 		console.log("yyy");
 		

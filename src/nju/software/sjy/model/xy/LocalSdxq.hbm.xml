@@ -11,7 +11,7 @@
             <key-property name="ahdm" type="string">
                 <column name="AHDM" length="20" />
             </key-property>
-             <key-property name="sdrq" type="string">
+            <key-property name="sdrq" type="string">
                <column name="SDRQ" length="50" />
         	</key-property>
             <key-property name="sddsr" type="string">

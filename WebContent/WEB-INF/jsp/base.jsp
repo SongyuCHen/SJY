@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<meta http-equiv="X-UA-Compatible" content="IE9;IE=8;IE=7;IE=EDGE;" />
-
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
